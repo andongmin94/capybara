@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h1>Article Page</h1>
-    <RouterLink :to="{ name: 'CreateView' }">
-      [CREATE]
-    </RouterLink>
-    <ArticleList />
+    <h1>금리비교 페이지</h1>
+
+    <InterestList />
   </div>
 </template>
 
@@ -17,7 +15,7 @@ import InterestList from '@/components/InterestList.vue'
 const store = useCounterStore()
 
 onMounted(() => {
-  store.getArticles()
+  store.getFinances()
 })
 
 </script>
