@@ -1,10 +1,8 @@
-<template>
-  <div>
-    <h1>메인 페이지</h1>
-  </div>
-</template>
-
-<script setup lang="ts">
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 let latitude = 0;
 let longitude = 0;
 let level = 0;
@@ -52,6 +50,5 @@ const addMarker = (latitude: number, longitude: number) => {
   });
   marker.setMap(map);
 };
-</script>
 
-<style scoped></style>
+export { mountMap, initMap };
