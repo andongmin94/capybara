@@ -1,4 +1,3 @@
-from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import requests
@@ -10,7 +9,7 @@ from .models import *
 # 상품 목록과 옵션 목록을 DB에 저장 GET
 @api_view(['GET'])
 def save_deposit_products(request):
-    url = f'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json?auth={settings.FINAN_KEY}&topFinGrpNo=020000&pageNo=1'
+    url = f'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json?auth=73488150037f4c385bd4b53f926a10ef&topFinGrpNo=020000&pageNo=1'
     resp = requests.get(url).json()
     baselist = resp.get("result").get("baseList")
     optionlist = resp.get("result").get("optionList")

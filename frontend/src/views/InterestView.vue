@@ -15,6 +15,7 @@ import InterestList from '@/components/InterestList.vue'
 const store = useCounterStore()
 
 onMounted(() => {
+  store.setFinances()
   store.getFinances()
 })
 

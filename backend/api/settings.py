@@ -27,19 +27,19 @@ SECRET_KEY = (
 # 카카오맵 API
 
 # 네이티브 앱 키
-# key : 7f81914973952f37bc7e7c07d3c355c2
+# KEY='7f81914973952f37bc7e7c07d3c355c2'
 
 # REST API 키
-# key : 22447c8b17d2cda7af5360d51958788f
+# KEY='22447c8b17d2cda7af5360d51958788f'
 
 # JavaScript 키
-# key : a2804ef4ab032a17fb5d9d5814076bac
+# KEY='a2804ef4ab032a17fb5d9d5814076bac'
 
 # Admin 키
-# key : 37d9d46b89159b604c3b257ac78166a8
+# KEY='37d9d46b89159b604c3b257ac78166a8'
 
 # 금융감독원 API
-FINAN_KEY='73488150037f4c385bd4b53f926a10ef'
+# KEY='73488150037f4c385bd4b53f926a10ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
