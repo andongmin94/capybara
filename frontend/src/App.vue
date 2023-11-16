@@ -4,7 +4,13 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <nav><RouterLink :to="{ name: 'home' }" /></nav>
+    <v-toolbar title="Application">
+      <RouterLink :to="{ name: 'home' }">홈</RouterLink>
+      <RouterLink :to="{ name: 'community' }">커뮤니티</RouterLink>
+      <RouterLink :to="{ name: 'exchange' }">환율</RouterLink>
+      <RouterLink :to="{ name: 'interest' }">금리비교</RouterLink>
+      <RouterLink :to="{ name: 'map' }">지도</RouterLink>
+    </v-toolbar>
   </header>
 
   <RouterView />

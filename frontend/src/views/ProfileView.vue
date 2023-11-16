@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>메인 페이지</h1>
-  </div>
+  <div>프로필 페이지</div>
 </template>
 
 <script setup lang="ts"></script>
