@@ -24,10 +24,6 @@ SECRET_KEY = (
     'REMOVED_SECRET'
 )
 
-# 한국수출입은행 환율정보 API
-
-# key : D7gdaKVlsgDEXQqLWxGsMFedqWG9xOz
-
 # 카카오맵 API
 
 # 네이티브 앱 키
