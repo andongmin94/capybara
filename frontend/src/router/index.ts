@@ -3,6 +3,7 @@ import HomeView from "@/views/HomeView.vue";
 import CommunityView from "@/views/CommunityView.vue";
 import ExchangeView from "@/views/ExchangeView.vue";
 import InterestView from "@/views/InterestView.vue";
+import InterestDetailView from "@/views/InterestDetailView.vue";
 import MapView from "@/views/MapView.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: "/interest",
       name: "interest",
       component: InterestView,
+    },
+    {
+      path: "/interestDetail/:id",
+      name: "interestDetail",
+      component: InterestDetailView,
     },
     {
       path: "/map",
