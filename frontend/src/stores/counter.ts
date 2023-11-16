@@ -16,7 +16,7 @@ export const useCounterStore = defineStore("counter", () => {
   const getFinances = function () {
     axios({
       method: "get",
-      url: `${API_URL}/api/v1/articles/`,
+      url: `${API_URL}/finlife/deposit-products/`,
     })
       .then((res) => {
         // console.log(res)
