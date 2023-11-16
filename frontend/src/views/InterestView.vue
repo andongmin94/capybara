@@ -1,9 +1,27 @@
 <template>
   <div>
-    <h1>금리비교 페이지</h1>
+    <h1>Article Page</h1>
+    <RouterLink :to="{ name: 'CreateView' }">
+      [CREATE]
+    </RouterLink>
+    <ArticleList />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+import { onMounted } from 'vue'
+import { useCounterStore } from '@/stores/counter'
+import { RouterLink } from 'vue-router'
+import InterestList from '@/components/InterestList.vue'
 
-<style scoped></style>
+const store = useCounterStore()
+
+onMounted(() => {
+  store.getArticles()
+})
+
+</script>
+
+<style>
+
+</style>
