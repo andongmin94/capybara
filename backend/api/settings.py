@@ -24,10 +24,6 @@ SECRET_KEY = (
     'django-insecure-@fn#327r=8uv%&a25(l(jc-e5ir*pu)v_%cyy*l%u@o)(^fnzs'
 )
 
-# 한국수출입은행 환율정보 API
-
-# key : D7gdaKVlsgDEXQqLWxGsMFedqWG9xOz
-
 # 카카오맵 API
 
 # 네이티브 앱 키
