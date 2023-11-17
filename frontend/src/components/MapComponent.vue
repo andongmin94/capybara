@@ -58,7 +58,7 @@ export default {
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     const placesSearchCB = (data: any, status: any, pagination: any) => {
       if (status === window.kakao.maps.services.Status.OK) {
-        for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < data.length; j++) {
           // 기존 마커 제거
           this.removeAllMarkers();
 
