@@ -13,6 +13,8 @@
 import { useArticleStore } from "@/stores/article";
 import ArticleListItem from "@/components/ArticleListItem.vue";
 import type { Article } from "@/types/Article";
+
 const store = useArticleStore();
+
 console.log(store.articles);
 </script>

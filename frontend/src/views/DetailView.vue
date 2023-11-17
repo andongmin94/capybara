@@ -19,7 +19,7 @@ import type { Article } from "@/types/Article";
 
 const store = useArticleStore();
 const route = useRoute();
-const article = ref<Article>(null);
+const article = ref<Article>({});
 
 onMounted(() => {
   axios({
