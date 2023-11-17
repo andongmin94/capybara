@@ -32,7 +32,6 @@ def article_list(request,board_type):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-
 @api_view(['GET'])
 def article_detail(request,board_type ,article_pk):
     article = get_object_or_404(Article, pk=article_pk)
@@ -43,6 +42,7 @@ def article_detail(request,board_type ,article_pk):
         print('게시글들',ar_serializer.data)
         print('댓글들',co_serializer.data,article_pk)
         return Response({'article':ar_serializer.data,'comments':co_serializer.data})
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
