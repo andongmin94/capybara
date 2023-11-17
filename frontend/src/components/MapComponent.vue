@@ -56,23 +56,27 @@ export default {
         level: 3,
       };
 
-      // 지도 객체를 등록합니다.
-      map.value = new window.kakao.maps.Map(container, options);
-
-      infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
-      ps = new window.kakao.maps.services.Places(map.value);
-      ps.value.categorySearch("BK9", placesSearchCB, { useMapBounds: true });
-    };
-
-    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    const placesSearchCB = (data: any, status: any, pagination: any) => {
-      if (status === window.kakao.maps.services.Status.OK) {
-        for (let i = 0; i < data.length; i++) {
-          // 기존 마커 제거
-          this.removeAllMarkers();
-
-          // 지도 범위 재설정
-          var bounds = new window.kakao.maps.LatLngBounds();
+      this.map = new kakao.maps.Map(mapContainer, mapOption);
+      this.infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+    },
+    handleWindowResize() {
+      // 창 크기가 변경될 때 지도 크기 업데이트
+      if (this.map) {
+        this.map.relayout();
+      }
+    },
+    searchPlaces() {
+      // 검색어를 이용하여 장소 검색
+      const ps = new kakao.maps.services.Places();
+      ps.keywordSearch(this.searchKeyword, this.placesSearchCB);
+    },
+    placesSearchCB(data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+        // 검색 결과가 OK일 때 기존 마커들을 모두 제거
+        this.removeAllMarkers();
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가
+        var bounds = new window.kakao.maps.LatLngBounds();
 
         for (var i = 0; i < data.length; i++) {
           this.displayMarker(data[i]);
