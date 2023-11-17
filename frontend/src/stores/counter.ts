@@ -42,6 +42,7 @@ export const useCounterStore = defineStore("counter", () => {
         console.log(err);
       });
   };
+  ////////////////////////////////////////////////////////////////////////////////
 
-  return { count, doubleCount, increment, finances, setFinances, getFinances};
+  return { count, doubleCount, increment, API_URL, finances, setFinances, getFinances};
 });
