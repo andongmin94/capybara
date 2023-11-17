@@ -1,30 +1,83 @@
 <template>
-  <div>
-    <h1>Signup</h1>
-    <form @submit.prevent="signUp">
-      <!-- <input type="text" v-model.trim="아이디" />
-      <input type="password" v-model.trim="비밀번호" />
-      <input type="password" v-model.trim="비밀번호확인" />
-      <v-btn type="submit">Submit</v-btn> -->
-      <v-text-field label="아이디" v-model.trim="username"></v-text-field>
-      <v-text-field label="이메일 주소" v-model.trim="email"></v-text-field>
-      <v-text-field type="password" label="비밀번호" v-model.trim="password1"></v-text-field>
-      <v-text-field type="password" label="비밀번호 확인" v-model.trim="password2"></v-text-field>
-      <v-btn type="submit">Submit</v-btn>
-    </form>
-  </div>
-  
+  <v-sheet class="pa-12 wrapper" rounded>
+    <v-card class="mx-auto px-6 py-8" max-width="344">
+      <v-form v-model="form" @submit.prevent="onSubmit">
+        <v-text-field
+          v-model.trim="username"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="아이디"
+        ></v-text-field>
+
+        <v-text-field
+          v-model.trim="email"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2"
+          clearable
+          label="이메일 주소"
+        ></v-text-field>
+
+        <v-text-field
+          v-model.trim="password1"
+          :readonly="loading"
+          :rules="[required]"
+          clearable
+          label="비밀번호"
+          placeholder="비밀번호를 입력하세요"
+        ></v-text-field>
+
+        <v-text-field
+          v-model.trim="password2"
+          :readonly="loading"
+          :rules="[required]"
+          clearable
+          label="비밀번호 확인"
+          placeholder="비밀번호를 입력하세요"
+        ></v-text-field>
+
+        <br />
+
+        <v-btn
+          :disabled="!form"
+          :loading="loading"
+          block
+          color="success"
+          size="large"
+          type="submit"
+          variant="elevated"
+        >
+          회원가입하기
+        </v-btn>
+      </v-form>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useArticleStore } from "@/stores/article";
 
+const form = ref(false);
+const email = ref(null);
+const loading = ref(false);
+
 const store = useArticleStore();
 const username = ref(null);
-const email = ref(null);
 const password1 = ref(null);
 const password2 = ref(null);
+
+function onSubmit() {
+  if (!form.value) return;
+  loading.value = true;
+  setTimeout(() => (loading.value = false), 2000);
+}
+
+function required(v: any) {
+  return !!v || "필수 값입니다";
+}
 
 const signUp = function () {
   const payload = {
@@ -37,5 +90,16 @@ const signUp = function () {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+$colors: (
+  first: #59452c,
+  second: #8c704f,
+  third: #d9bb96,
+  forth: #402a17,
+  fifth: #f2f2f2,
+);
 
+.wrapper {
+  background-color: map-get($colors, second);
+}
+</style>

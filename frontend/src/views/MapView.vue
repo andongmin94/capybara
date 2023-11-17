@@ -13,7 +13,7 @@
       <option disabled value="">시/군/구</option>
       <option v-for="c in cities" :key="c">{{ c }}</option>
     </select>
-    <select v-model="bank">
+    <select v-model="bank" :disabled="!city">
       <option disabled value="">은행명</option>
       <option v-for="b in banks" :key="b">{{ b }}</option>
     </select>
@@ -23,10 +23,9 @@
 
 <script setup lang="ts">
 import MapComponent from "@/components/MapComponent.vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useMapStore } from "@/stores/map";
 import type { Infos } from "@/types/CityInfo";
-import { watch } from "vue";
 
 const store = useMapStore();
 
