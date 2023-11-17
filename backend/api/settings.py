@@ -179,6 +179,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_ROOT = BASE_DIR /'media'
+
+MEDIA_URL ='media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -213,7 +217,7 @@ AUTHENTICATION_BACKENDS = (
 
 # REST-AUTH 회원가입 기본 Serailizer 재정의
 REST_AUTH = {
-'REGISTER_SERIALIZER': 'accounts.serializer.CustomRegisterSerializer',
+'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
 
 
