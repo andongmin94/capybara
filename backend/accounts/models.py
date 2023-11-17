@@ -32,7 +32,7 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         data = form.cleaned_data
         first_name = data.get("first_name")
         last_name = data.get("last_name")
-        email = form.data.get("email")
+        email = data.get("email")
         username = data.get("username")
         nickname = data.get("nickname")
         age = data.get("age")
