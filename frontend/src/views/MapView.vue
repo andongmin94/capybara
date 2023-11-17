@@ -17,7 +17,7 @@
       <option disabled value="">은행명</option>
       <option v-for="b in banks" :key="b">{{ b }}</option>
     </select>
-    <MapComponent />
+    <MapComponent :province="province" :city="city" :bank="bank" />
   </div>
 </template>
 
