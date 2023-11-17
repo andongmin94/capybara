@@ -22,6 +22,8 @@ export default {
     let infowindow = ref<any>(null);
     let ps = ref<any>(null);
 
+    const markers = ref([]);
+
     const mountMap = (
       _latitude: number,
       _longitude: number,
@@ -48,8 +50,6 @@ export default {
       // 지도 객체를 등록합니다.
       map.value = new window.kakao.maps.Map(container, options);
 
-      // addMarker(latitude.value, longitude.value);
-
       infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
       ps = new window.kakao.maps.services.Places(map.value);
       ps.value.categorySearch("BK9", placesSearchCB, { useMapBounds: true });
@@ -59,18 +59,74 @@ export default {
     const placesSearchCB = (data: any, status: any, pagination: any) => {
       if (status === window.kakao.maps.services.Status.OK) {
         for (let i = 0; i < data.length; i++) {
-          displayMarker(data[i]);
+          // 기존 마커 제거
+          this.removeAllMarkers();
+
+          // 지도 범위 재설정
+          var bounds = new window.kakao.maps.LatLngBounds();
+
+          for (var i = 0; i < data.length; i++) {
+            this.displayMarker(data[i]);
+            bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+          }
+          // 검색된 장소 위치를 기준으로 지도 범위를 재설정
+          this.map.setBounds(bounds);
         }
       }
     };
 
     // 지도에 마커를 표시하는 함수입니다
     const displayMarker = (place: any) => {
-      // 마커를 생성하고 지도에 표시합니다
-      var marker = new window.kakao.maps.Marker({
-        map: map,
-        position: new window.kakao.maps.LatLng(place.y, place.x),
-      });
+      ///////////////
+      //  마커가 표시될 위치입니다
+      var markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
+
+      // 여기를 은행으로 고쳐야 함
+      var positions = [
+        {
+          title: "카카오", // 은행이름
+          latlng: new window.kakao.maps.LatLng(33.450705, 126.570677), // 입력한 도. 시군구의 중심정도
+        },
+        {
+          title: "생태연못",
+          latlng: new window.kakao.maps.LatLng(33.450936, 126.569477),
+        },
+        {
+          title: "텃밭",
+          latlng: new window.kakao.maps.LatLng(33.450879, 126.56994),
+        },
+        {
+          title: "근린공원",
+          latlng: new window.kakao.maps.LatLng(33.451393, 126.570738),
+        },
+      ];
+
+      // 마커 이미지 소스
+      var imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+      for (var i = 0; i < positions.length; i++) {
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new window.kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new window.kakao.maps.MarkerImage(
+          imageSrc,
+          imageSize
+        );
+
+        // 마커를 생성합니다
+        var marker = new window.kakao.maps.Marker({
+          map: map, // 마커를 표시할 지도
+          position: positions[i].latlng, // 마커를 표시할 위치
+          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커 이미지
+        });
+
+        marker.setMap(map.value);
+      }
+
+      ///////////////
 
       // 마커에 클릭이벤트를 등록합니다
       window.kakao.maps.event.addListener(marker, "click", () => {
@@ -100,59 +156,6 @@ export default {
     // }
 
     // );
-
-    // /////////////////////
-    // const addMarker = (_latitude: number, _longitude: number) => {
-    //   // 마커가 표시될 위치입니다
-    //   // var markerPosition = new window.kakao.maps.LatLng(_latitude, _longitude);
-
-    //   // 여기를 은행목록으로 고쳐야 함
-    //   var positions = [
-    //     {
-    //       title: "카카오",
-    //       latlng: new window.kakao.maps.LatLng(33.450705, 126.570677),
-    //     },
-    //     {
-    //       title: "생태연못",
-    //       latlng: new window.kakao.maps.LatLng(33.450936, 126.569477),
-    //     },
-    //     {
-    //       title: "텃밭",
-    //       latlng: new window.kakao.maps.LatLng(33.450879, 126.56994),
-    //     },
-    //     {
-    //       title: "근린공원",
-    //       latlng: new window.kakao.maps.LatLng(33.451393, 126.570738),
-    //     },
-    //   ];
-
-    //   var imageSrc =
-    //     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-    //   for (var i = 0; i < positions.length; i++) {
-    //     // 마커 이미지의 이미지 크기 입니다
-    //     var imageSize = new window.kakao.maps.Size(24, 35);
-
-    //     // 마커 이미지를 생성합니다
-    //     var markerImage = new window.kakao.maps.MarkerImage(
-    //       imageSrc,
-    //       imageSize
-    //     );
-
-    //     // 마커를 생성합니다
-    //     var marker = new window.kakao.maps.Marker({
-    //       map: map, // 마커를 표시할 지도
-    //       position: positions[i].latlng, // 마커를 표시할 위치
-    //       title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-    //       image: markerImage, // 마커 이미지
-    //     });
-
-    //     // 마커를 생성합니다
-    //     // var marker = new window.kakao.maps.Marker({
-    //     //   position: markerPosition,
-    //     // });
-    //     // marker.setMap(map.value);
-    //     // }
 
     onMounted(() => {
       mountMap(37.5665, 126.978, 10); // 기본값
