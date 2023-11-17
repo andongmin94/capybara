@@ -3,23 +3,19 @@
     <h1>내 주변 은행 찾기</h1>
     <!-- single select -->
 
-    <select v-model="province">
+    <select v-model="province" @change="updateCities">
       <option disabled value="">도/시</option>
-      <option v-for="province in store.infos" :key="store.infos.prov">
-        {{ store.infos.prov }}
+      <option v-for="info in infos" :key="info.id">
+        {{ info.prov }}
       </option>
     </select>
-    <select v-model="city">
+    <select v-model="city" :disabled="!province">
       <option disabled value="">시/군/구</option>
-      <option>Alice</option>
-      <option>Bella</option>
-      <option>Cathy</option>
+      <option v-for="c in cities" :key="c">{{ c }}</option>
     </select>
     <select v-model="bank">
       <option disabled value="">은행명</option>
-      <option>Alice</option>
-      <option>Bella</option>
-      <option>Cathy</option>
+      <option v-for="b in banks" :key="b">{{ b }}</option>
     </select>
     <MapComponent />
   </div>
@@ -29,10 +25,27 @@
 import MapComponent from "@/components/MapComponent.vue";
 import { ref } from "vue";
 import { useMapStore } from "@/stores/map";
+import type { Infos } from "@/types/CityInfo";
+import { watch } from "vue";
 
 const store = useMapStore();
+
+const infos: Infos[] = store.infos;
+const banks = store.banks;
+const cities = ref<string[]>([]);
 
 const province = ref("");
 const city = ref("");
 const bank = ref("");
+
+const updateCities = () => {
+  const selectedInfo = infos.find((info) => info.prov === province.value);
+  cities.value = selectedInfo ? selectedInfo.city : [];
+};
+
+watch(province, () => {
+  updateCities();
+});
+
+updateCities();
 </script>
