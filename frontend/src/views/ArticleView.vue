@@ -3,6 +3,7 @@
     <h1>게시판 글 목록 페이지</h1>
     <RouterLink :to="{ name: 'CreateView' }"> [CREATE] </RouterLink>
     <ArticleList />
+    
   </div>
 </template>
 
