@@ -9,8 +9,9 @@
         <p>{{ finance.join_way }}</p>
         <p>{{ finance.spcl_cnd }}</p>
         <RouterLink :to="{ name: 'interestDetail', params:{ id : finance.fin_prdt_cd }}">
-          금리비교
+          <v-btn>상품 보기</v-btn>
         </RouterLink>
+        
       <hr>
     </div>
   </template>
