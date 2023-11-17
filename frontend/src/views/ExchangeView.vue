@@ -11,6 +11,8 @@
       :
       <input
         type="text"
+        placeholder="0"
+        :disabled="!select1"
         v-model.number="payment1"
         @change="updatePayment2((payment1 / rate!) * currencyUnit!)"
       />
@@ -22,11 +24,8 @@
         </option>
       </select>
       :
-      <input
-        type="text"
-        v-model.number="payment2"
-        @change="updatePayment1((payment2 * rate!) / currencyUnit!)"
-      />
+      <!-- input이 아니라 결과값을 받아오는 곳 -->
+      <span v-bind="payment2">{{ payment2 }}</span>
     </div>
   </div>
 </template>
@@ -101,11 +100,13 @@ const payments = ref<string[]>([
 
 const select1 = ref<string | null>(null);
 const select2 = ref<string | null>(null);
+const searchdate = ref<Date | null>(null);
 
+// 비영업일의 데이터, 혹은 영업당일 11시 이전에 해당일의 데이터를 요청할 경우 null 값이 반환
 watch([select1, select2], ([newOption1, newOption2]) => {
-  if (newOption1 !== null && newOption2 !== null) {
+  if (newOption1 !== null && newOption2 !== null && payment1 !== null) {
     axios({
-      url: `https://quotation-api-cdn.dunamu.com/v1/forex/recent?codes=FRX.${newOption1}${newOption2}`,
+      // url: `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=AUTHKEYD7gdaKVlsgDEXQqLWxGsMFedqWG9xOzf&searchdate=${searchdate}&data=AP01${newOption1}${newOption2}`,
       method: "GET",
     })
       .then(({ data }) => {
@@ -118,10 +119,6 @@ watch([select1, select2], ([newOption1, newOption2]) => {
 
 const payment1 = ref<number>(0);
 const payment2 = ref<number>(0);
-
-const updatePayment1 = function (value: number) {
-  payment1.value = value;
-};
 
 const updatePayment2 = function (value: number) {
   payment2.value = value;

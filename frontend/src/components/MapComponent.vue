@@ -1,12 +1,12 @@
 <template>
   <div>
     <p style="margin-top: -12px"></p>
-    <!-- 검색창 추가 -->
-    <input
-      v-model="searchKeyword"
-      @keyup.enter="searchPlaces"
-      placeholder="은행명을 검색하세요"
-    />
+
+    <!-- 검색창 -->
+    <div v-if="false">
+      <input v-model="searchKeyword" @keyup.enter="searchPlaces" />
+    </div>
+
     <!-- 지도를 표시할 컨테이너 -->
     <div ref="mapContainer" style="width: 100%; height: 350px"></div>
   </div>
@@ -15,6 +15,11 @@
 <script>
 export default {
   name: "KakaoMap",
+  props: {
+    province: String,
+    city: String,
+    bank: String,
+  },
   data() {
     return {
       map: null,
