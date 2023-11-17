@@ -88,3 +88,4 @@ def top_rate(request):
     serializer1 = DepositProductsSerializer(top_option.product)
     serializer2 = DepositOptionsSerializer(top_option.product.depositoptions_set.all(), many=True)
     return Response({'deposit_product': serializer1.data, 'options': serializer2.data,})
+    
