@@ -27,10 +27,18 @@ onMounted(() => {
       finance.value = res.data;
     })
     .then((res)=>{
+      // save_trm 필터링
+      finance.value = finance.value.reduce((unique, item) => {
+        const existing = unique.find((el) => el.save_trm === item.save_trm);
+        if (!existing) {
+          unique.push(item);
+        }
+        return unique;
+      }, []);
       console.log(finance._rawValue)
     })
     .catch((err) => {
-      console.log(실패했다람쥐);
+      console.log('실패했다람쥐');
       console.log(err);
     });
 });
