@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p>{{ finance.fin_prdt_cd }}</p>
-        <p>{{ finance.id }}</p>
+        <!-- <p>{{ finance.fin_prdt_cd }}</p> -->
+        <!-- <p>{{ finance.id }}</p> -->
         <p>{{ finance.kor_co_nm }}</p>
         <p>{{ finance.fin_prdt_nm }}</p>
         <p>{{ finance.etc_note }}</p>

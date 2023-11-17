@@ -1,16 +1,15 @@
 <template>
   <div>
-    <h5>{{ article!.id }}</h5>
-    <p>{{ article!.title }}</p>
-    <p>{{ article!.content }}</p>
-    <RouterLink :to="{ name: 'DetailView', params: { id: article!.id }}">
+    <h5>{{ article.id }}</h5>
+    <p>{{ article.title }}</p>
+    <RouterLink :to="{ name: 'DetailView', params: { id: article.id } }">
       [Detail]
     </RouterLink>
     <hr />
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { RouterLink } from "vue-router";
 
 defineProps({

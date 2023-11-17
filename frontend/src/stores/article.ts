@@ -49,7 +49,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res);
         const password = password1;
-        logIn({ username, password });
+        // logIn({ username, password });
       })
       .catch((err) => {
         console.log(err);
@@ -70,7 +70,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res.data);
         token.value = res.data.key;
-        router.push({ name: "ArticleView" });
+        router.push({ name: "article" });
       })
       .catch((err) => {
         console.log(err);
