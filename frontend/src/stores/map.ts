@@ -315,5 +315,6 @@ export const useMapStore = defineStore("map", () => {
     "신한은행",
     "부산은행",
   ]);
+
   return { infos, banks };
 });

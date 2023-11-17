@@ -5,10 +5,13 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <v-toolbar title="Application">
-      <RouterLink :to="{ name: 'home' }"><v-btn>홈</v-btn></RouterLink> | 
-      <RouterLink :to="{ name: 'community' }"><v-btn>커뮤니티</v-btn></RouterLink> | 
-      <RouterLink :to="{ name: 'exchange' }"><v-btn>환율</v-btn></RouterLink> | 
-      <RouterLink :to="{ name: 'interest' }"><v-btn>금리비교</v-btn></RouterLink> | 
+      <RouterLink :to="{ name: 'home' }"><v-btn>홈</v-btn></RouterLink> |
+      <!-- <RouterLink :to="{ name: 'community' }"><v-btn>커뮤니티</v-btn></RouterLink> |  -->
+      <RouterLink :to="{ name: 'exchange' }"><v-btn>환율</v-btn></RouterLink> |
+      <RouterLink :to="{ name: 'interest' }"
+        ><v-btn>금리비교</v-btn></RouterLink
+      >
+      |
       <RouterLink :to="{ name: 'map' }"><v-btn>지도</v-btn></RouterLink>
     </v-toolbar>
   </header>
