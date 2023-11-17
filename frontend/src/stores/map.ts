@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import type { Infos } from "@/types/CityInfo";
 
 export const useMapStore = defineStore("map", () => {
-  const infos = ref([
+  const infos = ref<Infos[]>([
     {
+      id: 1,
       prov: "서울특별시",
       city: [
         "종로구",
@@ -34,6 +36,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 2,
       prov: "부산광역시",
       city: [
         "중구",
@@ -55,6 +58,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 3,
       prov: "대구광역시",
       city: [
         "중구",
@@ -69,6 +73,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 4,
       prov: "인천광역시",
       city: [
         "중구",
@@ -84,22 +89,27 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 5,
       prov: "광주광역시",
       city: ["동구", "서구", "남구", "북구", "광산구"],
     },
     {
+      id: 6,
       prov: "대전광역시",
       city: ["동구", "중구", "서구", "유성구", "대덕구"],
     },
     {
+      id: 7,
       prov: "울산광역시",
       city: ["중구", "남구", "동구", "북구", "울주군"],
     },
     {
+      id: 8,
       prov: "세종특별자치시",
       city: [],
     },
     {
+      id: 9,
       prov: "경기도",
       city: [
         "수원시",
@@ -136,6 +146,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 10,
       prov: "강원특별자치도",
       city: [
         "춘천시",
@@ -159,6 +170,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 11,
       prov: "충청북도",
       city: [
         "청주시",
@@ -175,6 +187,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 12,
       prov: "충청남도",
       city: [
         "천안시",
@@ -195,6 +208,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 13,
       prov: "전라북도",
       city: [
         "목포시",
@@ -222,6 +236,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 14,
       prov: "경상북도",
       city: [
         "포항시",
@@ -249,6 +264,7 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 15,
       prov: "경상남도",
       city: [
         "창원시",
@@ -272,9 +288,32 @@ export const useMapStore = defineStore("map", () => {
       ],
     },
     {
+      id: 16,
       prov: "제주특별자치도",
       city: ["제주시", "서귀포시"],
     },
   ]);
-  return { infos };
+
+  const banks = ref([
+    "산업은행",
+    "광주은행",
+    "기업은행",
+    "제주은행",
+    "국민은행",
+    "전북은행",
+    "수협은행",
+    "경남은행",
+    "농협은행",
+    "새마을금고",
+    "우리은행",
+    "신협은행",
+    "SC은행",
+    "우체국",
+    "씨티은행",
+    "KEB하나은행",
+    "대구은행",
+    "신한은행",
+    "부산은행",
+  ]);
+  return { infos, banks };
 });

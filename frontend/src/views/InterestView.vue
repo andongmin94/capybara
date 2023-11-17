@@ -6,21 +6,18 @@
   </div>
 </template>
 
-<script setup>
-import { onMounted } from 'vue'
-import { useCounterStore } from '@/stores/counter'
-import { RouterLink } from 'vue-router'
-import InterestList from '@/components/InterestList.vue'
+<script setup lang="ts">
+import { onMounted } from "vue";
+import { useCounterStore } from "@/stores/counter";
+import { RouterLink } from "vue-router";
+import InterestList from "@/components/InterestList.vue";
 
-const store = useCounterStore()
+const store = useCounterStore();
 
 onMounted(() => {
-  store.setFinances()
-  store.getFinances()
-})
-
+  store.setFinances();
+  store.getFinances();
+});
 </script>
 
-<style>
-
-</style>
+<style></style>
