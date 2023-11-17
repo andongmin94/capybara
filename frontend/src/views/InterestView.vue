@@ -14,9 +14,14 @@ import InterestList from "@/components/InterestList.vue";
 
 const store = useCounterStore();
 
-onMounted(() => {
-  store.setFinances();
-  store.getFinances();
+onMounted(async () => {
+  try {
+    await store.setFinances();
+    await store.getFinances();
+    console.log('마운트함');
+  } catch (error) {
+    console.error('오류 발생:', error);
+  }
 });
 </script>
 
