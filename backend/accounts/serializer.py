@@ -7,14 +7,14 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 
 class CustomRegisterSerializer(RegisterSerializer):
     # 추가할 필드들을 정의합니다.
-    nickname = serializers.CharField(
-    required=False,
-    allow_blank=True,
-    max_length=255
-    )
-    age = serializers.IntegerField(required=False)
-    money = serializers.IntegerField(required=False)
-    salary = serializers.IntegerField(required=False)
+    # nickname = serializers.CharField(
+    # required=False,
+    # allow_blank=True,
+    # max_length=255
+    # )
+    # age = serializers.IntegerField(required=False)
+    # money = serializers.IntegerField(required=False)
+    # salary = serializers.IntegerField(required=False)
     financial_products = serializers.ListField(child=serializers.IntegerField(), required=False)
 
 
