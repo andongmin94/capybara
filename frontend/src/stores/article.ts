@@ -35,20 +35,21 @@ export const useArticleStore = defineStore("article", () => {
   };
 
   const signUp = function (payload: any) {
-    const { username, password1, password2 } = payload;
+    const { username, email, password1, password2 } = payload;
 
     axios({
       method: "post",
       url: `${API_URL}/accounts/signup/`,
       data: {
         username,
+        email,
         password1,
         password2,
       },
     })
       .then((res) => {
-        console.log(res);
-        const password = password1;
+        console.log('가입 성공');
+        // const password = password1;
         // logIn({ username, password });
       })
       .catch((err) => {
@@ -70,7 +71,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res.data);
         token.value = res.data.key;
-        router.push({ name: "article" });
+        router.push({ name: "ArticleView" });
       })
       .catch((err) => {
         console.log(err);
