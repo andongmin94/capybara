@@ -4,4 +4,8 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+* {
+  font-family: Pretendard-regular;
+}
+</style>

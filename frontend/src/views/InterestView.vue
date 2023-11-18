@@ -18,11 +18,15 @@ onMounted(async () => {
   try {
     await store.setFinances();
     await store.getFinances();
-    console.log('마운트함');
+    console.log("마운트함");
   } catch (error) {
-    console.error('오류 발생:', error);
+    console.error("오류 발생:", error);
   }
 });
 </script>
 
-<style></style>
+<style>
+* {
+  font-family: Pretendard-regular;
+}
+</style>

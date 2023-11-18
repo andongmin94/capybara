@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>게시판 글 목록 페이지</h1>
+    <h1 class="title">게시판 글 목록 페이지</h1>
     <RouterLink :to="{ name: 'CreateView' }"> [CREATE] </RouterLink>
     <ArticleList />
-    
   </div>
 </template>
 
@@ -20,4 +19,9 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.title {
+  font-family: Pretendard-Regular;
+  font-weight: 400;
+}
+</style>
