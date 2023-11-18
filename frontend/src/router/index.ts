@@ -9,6 +9,7 @@ import InterestDetailView from "@/views/InterestDetailView.vue";
 import MapView from "@/views/MapView.vue";
 import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";
+import ProfileView from "@/views/ProfileView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: "/login",
       name: "LogInView",
       component: LogInView,
+    },
+    {
+      path: "/profile",
+      name: "ProfileView",
+      component: ProfileView,
     },
   ],
 });

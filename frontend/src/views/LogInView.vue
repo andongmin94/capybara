@@ -1,21 +1,76 @@
 <template>
-  <div>
-    <h1>Login</h1>
-    <form @submit.prevent="logIn">
-      <input type="text" v-model.trim="username" />
-      <input type="password" v-model.trim="password" />
-      <v-btn type="submit">Submit</v-btn>
-    </form>
-  </div>
+  <v-sheet class="pa-12 wrapper">
+    <v-card class="mx-auto px-6 py-8" max-width="344">
+      <v-form v-model="form" @submit.prevent="logIn">
+        <v-text-field
+          v-model.trim="username"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2 inputform"
+          clearable
+          label="아이디"
+        ></v-text-field>
+
+        <v-text-field
+          v-model.trim="password"
+          :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+          :type="visible ? 'text' : 'password'"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2 inputform"
+          clearable
+          label="비밀번호"
+          placeholder="비밀번호를 입력하세요"
+          @click:append-inner="visible = !visible"
+        ></v-text-field>
+
+        <div>
+          <a
+            class="text-caption text-decoration-none text-blue"
+            href="#"
+            rel="noopener noreferrer"
+          >
+            비밀번호 찾기</a
+          >
+        </div>
+
+        <br />
+
+        <v-btn
+          :disabled="!form"
+          :loading="loading"
+          block
+          class="inputform btn"
+          color="white"
+          size="large"
+          type="submit"
+          variant="elevated"
+        >
+          로그인하기
+        </v-btn>
+      </v-form>
+
+      <v-card-text class="text-center">
+        <RouterLink :to="{ name: 'SignUpView' }">회원가입하기</RouterLink>
+        <v-icon icon="mdi-chevron-right"></v-icon>
+      </v-card-text>
+    </v-card>
+  </v-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useArticleStore } from "@/stores/article";
+import { RouterLink } from "vue-router";
+
+const form = ref(false);
+const loading = ref(false);
 
 const store = useArticleStore();
 const username = ref(null);
 const password = ref(null);
+
+const visible = ref(false);
 
 const logIn = function () {
   const payload = {
@@ -24,6 +79,40 @@ const logIn = function () {
   };
   store.logIn(payload);
 };
+
+function required(v: any) {
+  return !!v || "필수 값입니다";
+}
 </script>
 
-<style></style>
+<script lang="ts">
+export default {
+  data: () => ({
+    visible: false,
+  }),
+};
+</script>
+
+<style lang="scss">
+$colors: (
+  first: #59452c,
+  second: #8c704f,
+  third: #d9bb96,
+  forth: #402a17,
+  fifth: #f2f2f2,
+);
+
+.wrapper {
+  background-color: map-get($colors, third);
+}
+
+.inputform {
+  font-family: Pretendard-regular;
+  font-weight: 300;
+}
+
+.btn {
+  background-color: map-get($colors, second) !important;
+  color: white !important;
+}
+</style>
