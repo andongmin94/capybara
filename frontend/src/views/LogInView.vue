@@ -24,16 +24,6 @@
           @click:append-inner="visible = !visible"
         ></v-text-field>
 
-        <div>
-          <a
-            class="text-caption text-decoration-none text-blue"
-            href="#"
-            rel="noopener noreferrer"
-          >
-            비밀번호 찾기</a
-          >
-        </div>
-
         <br />
 
         <v-btn
@@ -51,6 +41,16 @@
       </v-form>
 
       <v-card-text class="text-center">
+        <span class="mx-3">
+          <a
+            class="text-caption text-decoration-none text-grey"
+            href="#"
+            rel="noopener noreferrer"
+          >
+            비밀번호 찾기</a
+          >
+          <v-icon icon="mdi-chevron-right"></v-icon>
+        </span>
         <RouterLink :to="{ name: 'SignUpView' }">회원가입하기</RouterLink>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
@@ -93,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 $colors: (
   first: #59452c,
   second: #8c704f,
