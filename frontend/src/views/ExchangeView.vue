@@ -71,7 +71,7 @@ import ExChangeItem from "@/components/ExChangeItem.vue";
 import { useExchangeStore } from "@/stores/exchange";
 import { ref, watch } from "vue";
 
-const store = useCounterStore();
+const store = useExchangeStore();
 const from_exchange = ref("");
 const to_exchange = ref("");
 const from_money = ref(0);

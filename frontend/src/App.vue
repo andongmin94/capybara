@@ -29,10 +29,10 @@ const store = useArticleStore();
       >
 
       <!-- 로그인 되어있으면 프로필 페이지로, 아니면 로그인으로, 로그인 내에 회원가입으로 -->
-      <RouterLink :to="{ name: 'LogInView' }" v-if="!store.isLogin"
+      <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
         ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
       >
-      <RouterLink :to="{ name: 'ProfileView' }" v-else
+      <RouterLink :to="{ name: 'profile' }" v-else
         ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
       >
     </v-toolbar>
