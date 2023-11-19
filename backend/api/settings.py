@@ -24,8 +24,12 @@ SECRET_KEY = (
     'REMOVED_SECRET'
 )
 
-# 카카오맵 API
 
+# 한국수출입은행 환율정보 API
+
+KOREAEXIM_KEY='REMOVED_SECRET'
+
+# 카카오맵 API
 # 네이티브 앱 키
 # KEY='7f81914973952f37bc7e7c07d3c355c2'
 
@@ -218,6 +222,7 @@ AUTHENTICATION_BACKENDS = (
 # REST-AUTH 회원가입 기본 Serailizer 재정의
 REST_AUTH = {
 'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+'PASSWORD_RESET_SERIALIZER': 'accounts.serializers.CustomPasswordResetSerializer',
 }
 
 
