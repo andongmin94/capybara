@@ -51,7 +51,7 @@
           >
           <v-icon icon="mdi-chevron-right"></v-icon>
         </span>
-        <RouterLink :to="{ name: 'SignUpView' }">회원가입하기</RouterLink>
+        <RouterLink :to="{ name: 'signup' }">회원가입하기</RouterLink>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>
