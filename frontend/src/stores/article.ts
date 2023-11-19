@@ -49,7 +49,7 @@ export const useArticleStore = defineStore("article", () => {
     })
       .then((res) => {
         console.log('가입 성공');
-        // const password = password1;
+        const password = password1;
         // logIn({ username, password });
       })
       .catch((err) => {
@@ -71,7 +71,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res.data);
         token.value = res.data.key;
-        router.push({ name: "ArticleView" });
+        router.push({ name: "article" });
       })
       .catch((err) => {
         console.log(err);
