@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { QuillEditor } from "@vueup/vue-quill";
+// import { QuillEditor } from "@vueup/vue-quill";
 import { useArticleStore } from "@/stores/article";
 import { RouterLink, useRouter } from "vue-router";
 import axios from "axios";
