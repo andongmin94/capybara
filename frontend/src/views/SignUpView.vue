@@ -88,13 +88,13 @@ const password2 = ref(null);
 const visible = ref(false);
 
 function onSubmit() {
-  console.log('가입시도중')
-  
+  console.log("가입시도중");
+
   // if (!form.value) return;
   loading.value = true;
   setTimeout(() => (loading.value = false), 2000);
 
-  signUp()
+  signUp();
 }
 
 function required(v: any) {
@@ -108,15 +108,13 @@ const signUp = function () {
     password1: password1.value,
     password2: password2.value,
   };
-  store.signUp(payload)
+  store.signUp(payload);
 };
 
 function passwordMatch() {
   // 비밀번호와 비밀번호 확인이 서로 다를 경우 에러 메시지 반환
   return password1.value === password2.value || "비밀번호가 일치하지 않습니다";
 }
-
-
 </script>
 
 <script lang="ts">
@@ -141,7 +139,7 @@ $colors: (
 }
 
 .inputform {
-  font-family: Pretendard-regular;
+  font-family: Pretendard-Regular;
   font-weight: 300;
 }
 

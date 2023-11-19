@@ -107,7 +107,7 @@ $colors: (
 }
 
 .inputform {
-  font-family: Pretendard-regular;
+  font-family: Pretendard-Regular;
   font-weight: 300;
 }
 

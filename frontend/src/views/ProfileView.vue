@@ -6,6 +6,6 @@
 
 <style scoped>
 * {
-  font-family: Pretendard-regular;
+  font-family: Pretendard-Regular;
 }
 </style>
