@@ -44,7 +44,7 @@ const createArticle = function () {
   })
     .then((res) => {
       // console.log(res)
-      router.push({ name: "ArticleView" });
+      router.push({ name: "article" });
     })
     .catch((err) => {
       console.log(err);

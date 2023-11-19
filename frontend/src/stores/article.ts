@@ -50,7 +50,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log('가입 성공');
         const password = password1;
-        // logIn({ username, password });
+        logIn({ username, password });
       })
       .catch((err) => {
         console.log(err);
@@ -71,7 +71,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res.data);
         token.value = res.data.key;
-        router.push({ name: "article" });
+        router.push({ name: "home" });
       })
       .catch((err) => {
         console.log(err);
@@ -85,7 +85,7 @@ export const useArticleStore = defineStore("article", () => {
     })
       .then((res) => {
         token.value = null;
-        router.push({ name: "ArticleView" });
+        router.push({ name: "home" });
       })
       .catch((err) => {
         console.log(err);
