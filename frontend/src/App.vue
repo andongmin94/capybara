@@ -12,9 +12,10 @@ const store = useArticleStore();
         ><v-btn class="nav-item text-black">홈</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'article' }"
+      <RouterLink :to="{ name: 'article' }" v-if="store.isLogin"
         ><v-btn class="nav-item text-black">커뮤니티</v-btn></RouterLink
       >
+      
 
       <!-- <RouterLink :to="{ name: 'exchange' }"
         ><v-btn class="nav-item text-black">환율</v-btn></RouterLink
@@ -32,9 +33,14 @@ const store = useArticleStore();
       <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
         ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
       >
-      <RouterLink :to="{ name: 'profile' }" v-else
+      <RouterLink :to="{ name: 'signup' }" v-if="!store.isLogin"
+        ><v-btn class="nav-item text-black">회원가입</v-btn></RouterLink
+      >
+      <RouterLink :to="{ name: 'profile' }" v-if="store.isLogin"
         ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
       >
+      <!-- 마이페이지에 넣기 -->
+      <!-- <v-btn @click="store.logOut()" v-if="store.isLogin" class="nav-item text-black">로그아웃</v-btn> -->
     </v-toolbar>
   </header>
 
