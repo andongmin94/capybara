@@ -2,10 +2,8 @@
   <div>
     <p style="margin-top: -12px"></p>
 
-    <!-- 검색창 -->
-    <div v-if="false">
-      <input v-model="searchKeyword" @keyup.enter="searchPlaces" />
-    </div>
+    <!-- Add a button to trigger the search -->
+    <button class="searchbtn" @click="searchOnMap">Search on Map</button>
 
     <!-- 지도를 표시할 컨테이너 -->
     <div ref="mapContainer" style="width: 100%; height: 350px"></div>
@@ -55,6 +53,7 @@ export default {
     },
     initializeKakaoMap() {
       // Kakao 지도 API 초기화
+      console.log("Initializing Kakao Map");
       const mapContainer = this.$refs.mapContainer;
       const mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567),
@@ -70,10 +69,16 @@ export default {
         this.map.relayout();
       }
     },
-    searchPlaces() {
-      // 검색어를 이용하여 장소 검색
+    searchOnMap() {
+      console.log("Button clicked");
+      this.isLoading = true;
+      const searchKeyword = `${this.province} ${this.city} ${this.bank}`;
+      console.log("Search Keyword:", searchKeyword);
+      this.searchPlaces(searchKeyword);
+    },
+    searchPlaces(keyword) {
       const ps = new kakao.maps.services.Places();
-      ps.keywordSearch(this.searchKeyword, this.placesSearchCB);
+      ps.keywordSearch(keyword, this.placesSearchCB);
     },
     placesSearchCB(data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
@@ -125,4 +130,8 @@ export default {
 
 <style>
 /* 여기에 스타일을 추가하세요 */
+.searchbtn {
+  margin-top: 10px;
+  border: 1px solid black;
+}
 </style>
