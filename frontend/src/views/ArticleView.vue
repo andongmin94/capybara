@@ -33,6 +33,6 @@ $colors: (
 }
 .title {
   font-family: Pretendard-Regular;
-  font-weight: 400;
+  font-weight: 300;
 }
 </style>

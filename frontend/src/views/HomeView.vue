@@ -6,6 +6,7 @@
         v-for="(item, i) in items"
         :key="i"
         :src="item.src"
+        @click="goThere(item)"
         cover
       ></v-carousel-item>
     </v-carousel>
@@ -13,18 +14,27 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/router";
+
+const goThere = function (item: any) {
+  router.push({ name: item.name });
+};
 const items = [
   {
     src: "./src/assets/main1.svg",
+    name: "interest",
   },
   {
     src: "./src/assets/main2.svg",
+    name: "exchange",
   },
   {
     src: "./src/assets/main3.svg",
+    name: "map",
   },
   {
     src: "./src/assets/main4.svg",
+    name: "profile",
   },
 ];
 </script>
@@ -49,15 +59,5 @@ $colors: (
 .v-image {
   width: 300px;
   max-width: fit-content;
-}
-
-#app
-  > div
-  > div
-  > div
-  > div.v-window-item.v-window-item--active.v-carousel-item
-  > div
-  > img {
-  width: 300px;
 }
 </style>

@@ -50,6 +50,10 @@ $colors: (
   fifth: #f2f2f2,
 );
 
+* {
+  background-color: map-get($colors, third);
+}
+
 .title {
   font-family: Pretendard-Regular;
   font-weight: 300;
