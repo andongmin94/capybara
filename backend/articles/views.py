@@ -12,12 +12,31 @@ from .serializers import ArticleSerializer,CommentSerializer
 from .models import Article,Comment
 
 
+# @api_view(['GET', 'POST'])
+# @permission_classes([IsAuthenticated])
+# def article_list(request, article_type):
+#     print('!!!!',article_type)
+#     if request.method == 'GET':
+#         articles = get_list_or_404(Article,article_type=article_type)
+#         print('게시글들',articles)
+#         for data in articles:
+#             print(data.user)
+#         serializer = ArticleSerializer(articles, many=True)
+#         return Response(serializer.data)
+
+#     elif request.method == 'POST':
+#         print('!!!!',request.data,request.user) #여기서 지금 request.user는 username 
+#         serializer = ArticleSerializer(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             serializer.save(user=request.user)
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def article_list(request,board_type):
-    print('!!!!',board_type)
+def article_list(request):
+    print('!!!!')
     if request.method == 'GET':
-        articles = get_list_or_404(Article,board_type=board_type)
+        articles = get_list_or_404(Article)
         print('게시글들',articles)
         for data in articles:
             print(data.user)
@@ -33,7 +52,7 @@ def article_list(request,board_type):
 
 
 @api_view(['GET'])
-def article_detail(request,board_type ,article_pk):
+def article_detail(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     comment= Comment.objects.filter(article=article).order_by('created_at')
     if request.method == 'GET':
