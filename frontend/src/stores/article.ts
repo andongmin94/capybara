@@ -2,12 +2,14 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import { couldStartTrivia } from "typescript";
 
 export const useArticleStore = defineStore("article", () => {
   const router = useRouter();
   const articles = ref([]);
   const API_URL = "http://127.0.0.1:8000";
   const token = ref(null);
+  const search_username = ref(null);
   const isLogin = computed(() => {
     if (token.value === null) {
       return false;
@@ -71,6 +73,7 @@ export const useArticleStore = defineStore("article", () => {
       .then((res) => {
         console.log(res.data);
         token.value = res.data.key;
+        search_username.value = username;
         router.push({ name: "home" });
       })
       .catch((err) => {
@@ -92,6 +95,27 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
+
+  const get_user_data = function (search_name, errorCallback) {
+    axios({
+      method: 'get',
+      url: `${API_URL}/accounts/profile/get_user_data/${search_name}`,
+    })
+      .then(res => {
+        if (res.data.message === 'success') {
+          search_user.value = res.data.data;
+        } else {
+          alert('없는 사용자입니다.')
+          errorCallback();
+        }
+      })
+      .catch(err => {
+        alert('없는 사용자입니다.')
+        errorCallback();
+      });
+  };
+
+
   return {
     articles,
     API_URL,
@@ -101,5 +125,7 @@ export const useArticleStore = defineStore("article", () => {
     token,
     isLogin,
     logOut,
+    get_user_data,
+    search_username,
   };
 });

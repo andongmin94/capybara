@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { useArticleStore } from "@/stores/article";
 import { RouterLink } from "vue-router";
 import ArticleList from "@/components/ArticleList.vue";
@@ -15,8 +15,10 @@ import ArticleList from "@/components/ArticleList.vue";
 const store = useArticleStore();
 
 onMounted(() => {
-  store.getArticles();
-});
+  store.getArticles()
+})
+
+
 </script>
 
 <style lang="scss" scoped>

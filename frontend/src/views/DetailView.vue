@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <div v-if="article">
-      <p>제목 : {{ article.article.title }}</p>
-      <p>내용 : {{ article.article.content }}</p>
-      <p>작성일 : {{ article.article.created_at.slice(0,4) }}년 {{ article.article.created_at.slice(5,7) }}월 {{ article.article.created_at.slice(8,10) }}일 {{ article.article.created_at.slice(11,13) }}시 {{ article.article.created_at.slice(14,16) }}분</p>
-      <p>수정일 : {{ article.article.updated_at.slice(0,4) }}년 {{ article.article.updated_at.slice(5,7) }}월 {{ article.article.updated_at.slice(8,10) }}일 {{ article.article.updated_at.slice(11,13) }}시 {{ article.article.updated_at.slice(14,16) }}분</p>
+      <p>제목 : {{ article.title }}</p>
+      <p>내용 : {{ article.content }}</p>
+      <p>작성일 : {{ article.created_at.slice(0,4) }}년 {{ article.created_at.slice(5,7) }}월 {{ article.created_at.slice(8,10) }}일 {{ article.created_at.slice(11,13) }}시 {{ article.created_at.slice(14,16) }}분</p>
+      <p>수정일 : {{ article.updated_at.slice(0,4) }}년 {{ article.updated_at.slice(5,7) }}월 {{ article.updated_at.slice(8,10) }}일 {{ article.updated_at.slice(11,13) }}시 {{ article.updated_at.slice(14,16) }}분</p>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ onMounted(() => {
   })
     .then((res) => {
       console.log(res.data)
-      article.value = res.data;
+      article.value = res.data.article;
     })
     .catch((err) => {
       console.log(err);
