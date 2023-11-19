@@ -8,7 +8,10 @@ const store = useArticleStore();
 <template>
   <header>
     <v-toolbar class="title" title="카피바라">
-      <RouterLink :to="{ name: 'home' }"
+      <div v-if="store.isLogin">
+      {{ store.search_username }} 님 환영합니다.
+      </div>
+      <RouterLink :to="{ name: 'home' }" 
         ><v-btn class="nav-item text-black">홈</v-btn></RouterLink
       >
 
@@ -33,10 +36,7 @@ const store = useArticleStore();
       <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
         ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
       >
-      <RouterLink :to="{ name: 'signup' }" v-if="!store.isLogin"
-        ><v-btn class="nav-item text-black">회원가입</v-btn></RouterLink
-      >
-      <RouterLink :to="{ name: 'profile' }" v-if="store.isLogin"
+      <RouterLink :to="{ name: 'profile', params:{search_username : store.search_username} }" v-if="store.isLogin"
         ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
       >
       <!-- 마이페이지에 넣기 -->

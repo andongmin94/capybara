@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     username = models.CharField(max_length=30, unique=True)
     name = models.CharField(max_length=30, blank=True, null=True)
+    image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     nickname = models.CharField(max_length=255, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
@@ -13,11 +14,28 @@ class User(AbstractUser):
     salary = models.IntegerField(blank=True, null=True)
     # 리스트 데이터 저장을 위해 Text 형태로 저장
     # financial_products = models.TextField(blank=True, null=True)
-    # superuser fields
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
     USERNAME_FIELD = 'username'
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+        related_name="custom_user_set",
+        related_query_name="user",
+    )
+    
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name="custom_user_set",
+        related_query_name="user",
+    )
+
+    def __str__(self):
+        return self.username
 
 
 from allauth.account.adapter import DefaultAccountAdapter
@@ -74,3 +92,8 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         # this adapter by adding
             user.save()
         return user
+    
+
+class FinancialProduct(models.Model):
+    name = models.CharField(max_length=100)
+    # 기타 필드...

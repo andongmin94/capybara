@@ -5,6 +5,8 @@ from allauth.account.adapter import get_adapter
 from .models import User
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from dj_rest_auth.serializers import PasswordResetSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,8 +36,6 @@ class CustomRegisterSerializer(RegisterSerializer):
         'password1': self.validated_data.get('password1', ''),
         'email': self.validated_data.get('email', ''),
         'name': self.validated_data.get('name', ''),
-        # 'first_name': self.validated_data.get('first_name', ''),
-        # 'last_name': self.validated_data.get('last_name', ''),
         'nickname': self.validated_data.get('nickname', ''),
         'age': self.validated_data.get('age', ''),
         'money': self.validated_data.get('money', ''),
@@ -56,4 +56,19 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
     username = serializers.CharField()
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+    followers = serializers.SerializerMethodField()
+    financial_products = serializers.StringRelatedField(many=True)  # ManyToManyField
 
+    class Meta:
+        model = User
+        fields = [
+            'username', 'email', 'image', 'name',
+            'financial_products', 'capital', 'salary',
+            'created_at', 'updated_at', 'followings', 'followers','id'
+        ]
+        depth = 1  # followings 필드를 위한 설정
+
+    def get_followers(self, obj):
+        # obj는 User 모델의 인스턴스
+        return [follower.username for follower in obj.followers.all()]
