@@ -16,9 +16,9 @@ const store = useArticleStore();
         ><v-btn class="nav-item text-black">커뮤니티</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'exchange' }"
+      <!-- <RouterLink :to="{ name: 'exchange' }"
         ><v-btn class="nav-item text-black">환율</v-btn></RouterLink
-      >
+      > -->
 
       <RouterLink :to="{ name: 'interest' }"
         ><v-btn class="nav-item text-black">금리비교</v-btn></RouterLink
