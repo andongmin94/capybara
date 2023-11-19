@@ -1,131 +1,168 @@
 <template>
-  <div>
-    <h1>환율 계산기</h1>
-    <p v-if="rate">현재 환율은 {{ rate }}입니다.</p>
+  <div class="max-w-xl mx-auto p-4 bg-white shadow-lg rounded-lg">
+    <h3 class="text-xl font-semibold text-blue-700 mb-6">환율정보</h3>
+    <hr class="mb-6 border-blue-300" />
     <div>
-      <select v-model="select1">
-        <option v-for="payment in payments" :key="payment" :value="payment">
-          {{ payment }}
-        </option>
-      </select>
-      :
-      <input
-        type="text"
-        placeholder="0"
-        :disabled="!select1"
-        v-model.number="payment1"
-        @change="updatePayment2((payment1 / rate!) * currencyUnit!)"
-      />
+      <div class="mb-6">
+        <label
+          class="block text-blue-700 text-sm font-bold mb-2"
+          for="from_exchange"
+        >
+          환전 출발 국가
+        </label>
+        <select
+          v-model="from_exchange"
+          id="from_exchange"
+          class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+        >
+          <option disabled value="">국가 선택</option>
+          <option
+            v-for="(value, name) in store.exchange_data"
+            :key="value"
+            :value="value"
+          >
+            {{ value.cur_nm }}
+          </option>
+        </select>
+        <input
+          v-model="from_money"
+          @input="updateFromMoney($event.target.value)"
+          class="mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+          placeholder="금액 입력"
+        />
+      </div>
+      <div>
+        <label
+          class="block text-blue-700 text-sm font-bold mb-2"
+          for="to_exchange"
+        >
+          환전 도착 국가
+        </label>
+        <select
+          v-model="to_exchange"
+          id="to_exchange"
+          class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+        >
+          <option disabled value="">국가 선택</option>
+          <option
+            v-for="(value, name) in store.exchange_data"
+            :key="value"
+            :value="value"
+          >
+            {{ value.cur_nm }}
+          </option>
+        </select>
+        <input
+          v-model="to_money"
+          @input="updateToMoney($event.target.value)"
+          class="mt-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+          placeholder="금액 입력"
+        />
+      </div>
     </div>
-    <div>
-      <select v-model="select2">
-        <option v-for="payment in payments" :key="payment" :value="payment">
-          {{ payment }}
-        </option>
-      </select>
-      :
-      <!-- input이 아니라 결과값을 받아오는 곳 -->
-      <span v-bind="payment2">{{ payment2 }}</span>
+    <div v-for="data in store.exchange_data" :key="data.cur_nm" class="mt-6">
+      <ExChangeItem :data="data" />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed, watch } from "vue";
-import axios from "axios";
+<script setup>
+import ExChangeItem from "@/components/ExChangeItem.vue";
+import { useExchangeStore } from "@/stores/exchange";
+import { ref, watch } from "vue";
 
-const payments = ref<string[]>([
-  "EUR",
-  "JPY",
-  "GBP",
-  "CHF",
-  "CAD",
-  "AUD",
-  "CNY",
-  "HKD",
-  "SEK",
-  "NZD",
-  "KRW",
-  "SGD",
-  "NOK",
-  "MXN",
-  "INR",
-  "RUB",
-  "ZAR",
-  "TRY",
-  "BRL",
-  "AED",
-  "BHD",
-  "BND",
-  "CNH",
-  "CZK",
-  "DKK",
-  "IDR",
-  "ILS",
-  "MYR",
-  "QAR",
-  "SAR",
-  "THB",
-  "TWD",
-  "CLP",
-  "COP",
-  "EGP",
-  "HKD",
-  "HUF",
-  "KWD",
-  "OMR",
-  "PHP",
-  "PLN",
-  "PKR",
-  "RON",
-  "BRL",
-  "BDT",
-  "DZD",
-  "ETB",
-  "FJD",
-  "JOD",
-  "KES",
-  "KHR",
-  "KZT",
-  "LKR",
-  "LYD",
-  "MMK",
-  "MNT",
-  "MOP",
-  "NPR",
-  "TZS",
-  "UZS",
-  "VND",
-]);
+const store = useCounterStore();
+const from_exchange = ref("");
+const to_exchange = ref("");
+const from_money = ref(0);
+const to_money = ref(0);
+const isUserTriggeredFrom = ref(false);
+const isUserTriggeredTo = ref(false);
 
-const select1 = ref<string | null>(null);
-const select2 = ref<string | null>(null);
-const searchdate = ref<Date | null>(null);
+const calculateExchange = (amount, fromRate, toRate) => {
+  // Remove commas and convert rates to numbers
+  const cleanedFromRate = parseFloat(fromRate.replace(/,/g, ""));
+  const cleanedToRate = parseFloat(toRate.replace(/,/g, ""));
 
-// 비영업일의 데이터, 혹은 영업당일 11시 이전에 해당일의 데이터를 요청할 경우 null 값이 반환
-watch([select1, select2], ([newOption1, newOption2]) => {
-  if (newOption1 !== null && newOption2 !== null && payment1 !== null) {
-    axios({
-      // url: `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=AUTHKEYD7gdaKVlsgDEXQqLWxGsMFedqWG9xOzf&searchdate=${searchdate}&data=AP01${newOption1}${newOption2}`,
-      method: "GET",
-    })
-      .then(({ data }) => {
-        rate.value = data[0]?.basePrice || -1;
-        currencyUnit.value = data[0]?.currencyUnit || 1;
-      })
-      .catch((err) => console.log(err));
-  }
-});
-
-const payment1 = ref<number>(0);
-const payment2 = ref<number>(0);
-
-const updatePayment2 = function (value: number) {
-  payment2.value = value;
+  // Perform the calculation
+  return (amount * cleanedFromRate) / cleanedToRate;
 };
+function to_Numeric(cur_unit) {
+  // Forcefully convert cur_unit to a string
+  const strUnit = String(cur_unit);
 
-const rate = ref<number | null>(null);
-const currencyUnit = ref<number | null>(null);
+  // Use a regular expression to find digits
+  const match = strUnit.match(/\d+/);
+
+  if (match) {
+    return parseInt(match[0], 10); // Convert the extracted string to a number
+  }
+
+  return 1; // Default to 1 if no digits are found
+}
+
+watch(
+  [from_money, from_exchange, to_exchange],
+  ([newFromMoney]) => {
+    if (
+      isUserTriggeredFrom.value &&
+      from_exchange.value &&
+      to_exchange.value &&
+      newFromMoney
+    ) {
+      console.log(from_exchange.value.cur_unit);
+      const tmp_x = to_Numeric(from_exchange.value.cur_unit);
+      console.log(tmp_x);
+      to_money.value =
+        calculateExchange(
+          newFromMoney,
+          from_exchange.value.deal_bas_r,
+          to_exchange.value.deal_bas_r
+        ) / tmp_x.toFixed(2);
+      isUserTriggeredFrom.value = false;
+      console.log(
+        "감지",
+        newFromMoney,
+        from_exchange.value.deal_bas_r,
+        to_exchange.value.deal_bas_r,
+        (newFromMoney * from_exchange.value.deal_bas_r) /
+          to_exchange.value.deal_bas_r
+      );
+    }
+  },
+  { deep: true }
+);
+
+watch(
+  [to_money, from_exchange, to_exchange],
+  ([newToMoney]) => {
+    if (
+      isUserTriggeredTo.value &&
+      from_exchange.value &&
+      to_exchange.value &&
+      newToMoney
+    ) {
+      const tmp_y = to_Numeric(from_exchange.value.cur_unit);
+      from_money.value =
+        calculateExchange(
+          newToMoney,
+          to_exchange.value.deal_bas_r,
+          from_exchange.value.deal_bas_r
+        ) / tmp_y.toFixed(2);
+      isUserTriggeredTo.value = false;
+    }
+  },
+  { deep: true }
+);
+
+// 사용자 입력에 따른 플래그 업데이트 함수
+function updateFromMoney(value) {
+  isUserTriggeredFrom.value = true;
+  from_money.value = value;
+}
+
+function updateToMoney(value) {
+  isUserTriggeredTo.value = true;
+  to_money.value = value;
+}
 </script>
-
-<style scoped></style>

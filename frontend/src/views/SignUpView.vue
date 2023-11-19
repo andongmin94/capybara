@@ -115,7 +115,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 $colors: (
   first: #59452c,
   second: #8c704f,
