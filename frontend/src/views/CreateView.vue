@@ -23,11 +23,10 @@ const store = useArticleStore();
 const router = useRouter();
 
 const goBack = function () {
-  router.go(-1);
-};
-
-const cancelCreate = function () {
-  alert("작성 중인 글이 저장되지 않습니다. 정말 떠나시겠습니까?");
+  const userConfirmed = confirm("작성 중인 글이 저장되지 않습니다. 정말 떠나시겠습니까?");
+  if (userConfirmed) {
+    router.go(-1);
+  }
 };
 
 const createArticle = function () {
