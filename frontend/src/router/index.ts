@@ -28,12 +28,12 @@ const router = createRouter({
     },
     {
       path: "/article/:id",
-      name: "DetailView",
+      name: "articleDetail",
       component: DetailView,
     },
     {
       path: "/create",
-      name: "CreateView",
+      name: "create",
       component: CreateView,
     },
     // 환율
@@ -62,17 +62,17 @@ const router = createRouter({
     // 회원기능
     {
       path: "/signup",
-      name: "SignUpView",
+      name: "signup",
       component: SignUpView,
     },
     {
       path: "/login",
-      name: "LogInView",
+      name: "login",
       component: LogInView,
     },
     {
       path: "/profile",
-      name: "ProfileView",
+      name: "profile",
       component: ProfileView,
     },
   ],
