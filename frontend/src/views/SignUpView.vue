@@ -63,7 +63,7 @@
       </v-form>
 
       <v-card-text class="text-center">
-        <RouterLink :to="{ name: 'LogInView' }">로그인하기</RouterLink>
+        <RouterLink :to="{ name: 'login' }">로그인하기</RouterLink>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>
