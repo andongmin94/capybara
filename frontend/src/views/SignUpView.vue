@@ -38,7 +38,7 @@
           :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
           :type="visible ? 'text' : 'password'"
           :readonly="loading"
-          :rules="[required]"
+          :rules="[required, passwordMatch]"
           class="inputform"
           clearable
           label="비밀번호 확인"
@@ -63,7 +63,7 @@
       </v-form>
 
       <v-card-text class="text-center">
-        <RouterLink :to="{ name: 'LogInView' }">로그인하기</RouterLink>
+        <RouterLink :to="{ name: 'login' }">로그인하기</RouterLink>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>
@@ -87,9 +87,13 @@ const password2 = ref(null);
 const visible = ref(false);
 
 function onSubmit() {
-  if (!form.value) return;
+  console.log('가입시도중')
+  
+  // if (!form.value) return;
   loading.value = true;
-  setTimeout(() => (loading.value = false), 1000);
+  setTimeout(() => (loading.value = false), 2000);
+
+  signUp()
 }
 
 function required(v: any) {
@@ -103,8 +107,15 @@ const signUp = function () {
     password1: password1.value,
     password2: password2.value,
   };
-  store.signUp(payload);
+  store.signUp(payload)
 };
+
+function passwordMatch() {
+  // 비밀번호와 비밀번호 확인이 서로 다를 경우 에러 메시지 반환
+  return password1.value === password2.value || "비밀번호가 일치하지 않습니다";
+}
+
+
 </script>
 
 <script lang="ts">
