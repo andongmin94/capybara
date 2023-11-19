@@ -1,11 +1,10 @@
 <template>
   <div class="wrapper">
-    <h1>Detail</h1>
     <div v-if="article">
-      <p>제목 : {{ article.title }}</p>
-      <p>내용 : {{ article.content }}</p>
-      <p>작성일 : {{ article.created_at }}</p>
-      <p>수정일 : {{ article.updated_at }}</p>
+      <p>제목 : {{ article.article.title }}</p>
+      <p>내용 : {{ article.article.content }}</p>
+      <p>작성일 : {{ article.article.created_at.slice(0,4) }}년 {{ article.article.created_at.slice(5,7) }}월 {{ article.article.created_at.slice(8,10) }}일 {{ article.article.created_at.slice(11,13) }}시 {{ article.article.created_at.slice(14,16) }}분</p>
+      <p>수정일 : {{ article.article.updated_at.slice(0,4) }}년 {{ article.article.updated_at.slice(5,7) }}월 {{ article.article.updated_at.slice(8,10) }}일 {{ article.article.updated_at.slice(11,13) }}시 {{ article.article.updated_at.slice(14,16) }}분</p>
     </div>
   </div>
 </template>
@@ -25,9 +24,12 @@ onMounted(() => {
   axios({
     method: "get",
     url: `${store.API_URL}/api/v1/articles/${route.params.id}/`,
+    headers: {
+      Authorization: `Token ${store.token}`,
+    },
   })
     .then((res) => {
-      // console.log(res.data)
+      console.log(res.data)
       article.value = res.data;
     })
     .catch((err) => {
