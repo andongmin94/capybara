@@ -74,6 +74,7 @@
 import { ref } from "vue";
 import { useArticleStore } from "@/stores/article";
 import { RouterLink } from "vue-router";
+import axios from "axios";
 
 const form = ref(false);
 const email = ref(null);
