@@ -9,7 +9,9 @@ export const useArticleStore = defineStore("article", () => {
   const articles = ref([]);
   const API_URL = "http://127.0.0.1:8000";
   const token = ref(null);
+
   const search_username = ref(null);
+  const user_data = ref(null);
   const isLogin = computed(() => {
     if (token.value === null) {
       return false;
@@ -74,6 +76,7 @@ export const useArticleStore = defineStore("article", () => {
         console.log(res.data);
         token.value = res.data.key;
         search_username.value = username;
+        user_data.value = res.data;
         router.push({ name: "home" });
       })
       .catch((err) => {
@@ -95,19 +98,36 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
+  const createComments = function (payload: any) {
+    console.log('router', payload)
+    axios({
+      method: 'post',
+      url: `${API_URL}/articles/comment/${payload.article_pk}/${payload.parent_pk}/`,
+      data: {
+        content: payload.content,
+      },
+      headers: {
+        Authorization: `Token ${token.value}`
+      }
+    })
+      .then((res) => {
+        // console.log(res)
+        console.log(res.data.message)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
-  const get_user_data = function (search_name, errorCallback) {
+
+  const get_user_data = function (search_username:any, errorCallback:any) {
     axios({
       method: 'get',
-      url: `${API_URL}/accounts/profile/get_user_data/${search_name}`,
+      url: `${API_URL}/accounts/profile/get_user_data/${search_username}`,
     })
       .then(res => {
-        if (res.data.message === 'success') {
-          search_user.value = res.data.data;
-        } else {
-          alert('없는 사용자입니다.')
-          errorCallback();
-        }
+          console.log(res.data)
+          user_data.value = res.data;
       })
       .catch(err => {
         alert('없는 사용자입니다.')
@@ -127,5 +147,7 @@ export const useArticleStore = defineStore("article", () => {
     logOut,
     get_user_data,
     search_username,
+    createComments,
+    
   };
 });

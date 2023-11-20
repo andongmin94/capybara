@@ -13,3 +13,9 @@ class DepositOptionsSerializer(serializers.ModelSerializer):
         model = DepositOptions
         fields = '__all__'
         read_only_fields = ('product',)
+
+
+class InstallmentsProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = installmentsProducts
+        fields = '__all__'
