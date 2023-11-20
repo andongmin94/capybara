@@ -51,7 +51,7 @@ def article_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def article_detail(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     comment= Comment.objects.filter(article=article).order_by('created_at')
@@ -61,6 +61,18 @@ def article_detail(request, article_pk):
         print('게시글들',ar_serializer.data)
         print('댓글들',co_serializer.data,article_pk)
         return Response({'article':ar_serializer.data,'comments':co_serializer.data})
+    
+    elif request.method == 'DELETE':
+        if article.user == request.user:
+            article.delete()
+            return Response( 
+                {'delete': f'{article_pk}번 게시글이 삭제되었습니다'}, 
+                status=status.HTTP_204_NO_CONTENT
+            )
+        else:
+            return Response(
+                {'message': '게시글 작성자가 아닙니다'},
+            )
 
 
 @api_view(['POST'])
