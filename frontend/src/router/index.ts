@@ -6,7 +6,7 @@ import DetailView from "@/views/DetailView.vue";
 import CreateView from "@/views/CreateView.vue";
 import ExchangeView from "@/views/ExchangeView.vue";
 import InterestView from "@/views/InterestView.vue";
-import InterestDetailView from "@/views/InterestDetailView.vue";
+import InterestDetailView from "@/components/InterestListItemDetail.vue";
 import MapView from "@/views/MapView.vue";
 import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";

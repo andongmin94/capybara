@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="pa-12 wrapper">
+  <v-sheet class="pa-12">
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="onSubmit">
         <v-text-field

@@ -9,7 +9,6 @@ export const useCounterStore = defineStore("counter", () => {
     count.value++;
   }
 
-  ////////////////////////////////////////////////////////////////////////////////
   // DRF에 fin 조회 요청을 보내는 action
   const API_URL = "http://127.0.0.1:8000";
 
@@ -22,10 +21,9 @@ export const useCounterStore = defineStore("counter", () => {
     axios({
       method: "get",
       url: `${API_URL}/finlife/save-deposit-products/`,
-    })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).catch((err) => {
+      console.log(err);
+    });
   };
 
   // 금융 데이터를 조회하는 메서드
@@ -42,7 +40,14 @@ export const useCounterStore = defineStore("counter", () => {
         console.log(err);
       });
   };
-  ////////////////////////////////////////////////////////////////////////////////
 
-  return { count, doubleCount, increment, API_URL, finances, setFinances, getFinances};
+  return {
+    count,
+    doubleCount,
+    increment,
+    API_URL,
+    finances,
+    setFinances,
+    getFinances,
+  };
 });
