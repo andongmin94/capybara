@@ -19,7 +19,13 @@
       }}분
     </p>
   </div>
+  
   <div v-else class="text-center">로딩중...</div>
+  <div style="text-align: center;">
+  <v-btn>회원정보 수정</v-btn>
+  <v-btn>비밀번호 변경</v-btn>
+  <v-btn>회원탈퇴</v-btn>
+</div>
 </template>
 
 <script setup>

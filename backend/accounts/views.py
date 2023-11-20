@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import UserDetailSerializer, ProfileSerializer
+from .serializers import UserDetailSerializer, ProfileSerializer, CustomPasswordResetSerializer
 from .models import User
 from rest_framework.decorators import permission_classes
 
@@ -42,7 +42,7 @@ def follow(request):
     return Response({'message':message}, status=status.HTTP_200_OK)
 
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
 def edit(request):
     if request.method =='DELETE':
@@ -51,6 +51,22 @@ def edit(request):
             user=User.objects.get(id=user_id)
             user.delete()
             print('삭제 완료')
+            return Response({'message':'success'},status=status.HTTP_200_OK)  # 추후 스테이터스 변경 필요
+        except:
+            return Response({'message':'error'},status=status.HTTP_404_NOT_FOUND)
+        
+    elif request.method =='PUT':
+        try:
+            user_id=request.data['user_id']
+            user=User.objects.get(id=user_id)
+            user.name=request.data['name']
+            user.nickname=request.data['nickname']
+            user.age=request.data['age']
+            user.money=request.data['money']
+            user.salary=request.data['salary']
+            user.financial_products=request.data['financial_products']
+            user.save()
+            print('수정 완료')
             return Response({'message':'success'},status=status.HTTP_200_OK)  # 추후 스테이터스 변경 필요
         except:
             return Response({'message':'error'},status=status.HTTP_404_NOT_FOUND)
