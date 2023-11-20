@@ -47,14 +47,14 @@ const isCurrentUser = computed(() => {
 
 onMounted(() => {
   // console.log(route.params.search_username.value);
-  store.get_user_data(route.params.search_username, () => router.push('/'));
+  store.get_user_data(store.search_username, () => router.push('/'));
 });
 
 const filteredsearch_user = computed(() => store.search_user);
 
-watch(() => route.params.search_username, (newSearch_username) => {
-  store.get_user_data(newSearch_username, () => router.push('/'));
-});
+// watch(() => route.params.search_username, (newSearch_username) => {
+//   store.get_user_data(newSearch_username, () => router.push('/'));
+// });
 
 const editProfile = () => {
   // 프로필 수정 로직

@@ -19,6 +19,7 @@ def save_deposit_products(request):
     optionlist = resp.get("result").get("optionList")
     for base in baselist:
         save_data = {
+            'dcls_month': base.get('dcls_month'), # '202001
             'fin_prdt_cd': base.get('fin_prdt_cd'),
             'kor_co_nm': base.get('kor_co_nm'),
             'fin_prdt_nm': base.get('fin_prdt_nm'),
@@ -36,6 +37,7 @@ def save_deposit_products(request):
             serializer.save()
     for option in optionlist:
         save_data = {
+            'dcls_month': option.get('dcls_month'), # '202001
             'fin_prdt_cd': option.get('fin_prdt_cd'),
             'intr_rate_type_nm': option.get('intr_rate_type_nm'),
             'intr_rate': option.get('intr_rate'),

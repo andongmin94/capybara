@@ -35,7 +35,6 @@ const goBack = function () {
   }
 };
 
-
 const createArticle = function () {
   axios({
     method: "post",
