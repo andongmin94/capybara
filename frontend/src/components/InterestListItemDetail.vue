@@ -11,7 +11,6 @@
       <p>이자율 : {{ detail.intr_rate }}</p>
       <p>이자율 : {{ detail.intr_rate2 }}</p>
       <v-chip>가입하기</v-chip>
-      <v-btn>체커</v-btn>
       <hr />
     </div>
   </div>

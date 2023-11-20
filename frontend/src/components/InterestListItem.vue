@@ -40,7 +40,7 @@
                   <RouterLink
                     :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
                   >
-                    <v-chip class="detailbtn">상품 보기</v-chip>
+                    <v-chip class="detailbtn" @click="selectItem(finance)">상품 보기</v-chip>
                   </RouterLink>
                 </v-card-actions>
               </v-card>
