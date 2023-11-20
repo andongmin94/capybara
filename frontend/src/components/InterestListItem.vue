@@ -9,6 +9,7 @@
         <v-container>
           <v-row align="center" justify="center">
             <v-col
+              class="d-flex align-self-start"
               cols="12"
               md="6"
               lg="4"
@@ -16,12 +17,12 @@
               :key="finance"
             >
               <v-card
-                class="mx-auto card"
-                max-width="600"
-                height="auto"
+                class="card mx-auto mb-6"
+                height="380"
+                width="525"
                 elevation="16"
               >
-                <v-card-item class="mx-2 mb-4">
+                <v-card-item class="mx-2 mb-4 card-item">
                   <div class="text-overline mt-2 mb-3">
                     <v-chip>{{ finance!.kor_co_nm }}</v-chip>
                   </div>
@@ -88,9 +89,20 @@ $colors: (
 .card {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
+  display: flex;
+  flex-direction: column;
 }
+
+.card-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .btn-wrapper {
   background-color: map-get($map: $colors, $key: second);
+  max-height: 50px;
 }
 .detailbtn {
   color: map-get($colors, fifth);

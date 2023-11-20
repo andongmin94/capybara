@@ -7,7 +7,7 @@
         <v-col align="center" justify="center">
           <h1>{{ store.selectedItem.value.fin_prdt_nm }}</h1>
           <h2>{{ store.selectedItem.value.kor_co_nm }}</h2>
-          <v-list lines="default" class="description">
+          <v-list class="description">
             <v-list-item><v-chip>상품 설명</v-chip></v-list-item>
             <v-list-item>{{ store.selectedItem.value.etc_note }}</v-list-item>
 
