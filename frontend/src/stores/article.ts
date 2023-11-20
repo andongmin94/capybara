@@ -92,7 +92,6 @@ export const useArticleStore = defineStore("article", () => {
         token.value = res.data.key;
         search_username.value = username;
         console.log(search_username);
-        user_data.value = res.data;
         router.push({ name: "home" });
       })
       .catch((err) => {
@@ -142,7 +141,7 @@ export const useArticleStore = defineStore("article", () => {
     })
       .then((res) => {
         console.log(res.data);
-        // user_data.value = res.data;
+        user_data.value = res.data;
       })
       .catch((err) => {
         alert("없는 사용자입니다.");
