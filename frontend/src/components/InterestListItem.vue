@@ -38,7 +38,7 @@
 
                 <v-card-actions>
                   <RouterLink
-                    :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd } }"
+                    :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
                   >
                     <v-chip class="detailbtn">상품 보기</v-chip>
                   </RouterLink>
@@ -56,9 +56,16 @@
 import { RouterLink } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
 import { ref } from "vue";
+import InterestListItemDetail from "./InterestListItemDetail.vue";
+import { couldStartTrivia } from "typescript";
 
 const tab = ref(null);
 const store = useCounterStore();
+const selectedItem = store.selectedItem;
+
+const selectItem = (finance: any) => {
+  selectedItem.value = finance;
+};
 </script>
 
 <script lang="ts">
