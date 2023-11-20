@@ -96,7 +96,7 @@ const deleteArticle = function () {
       article.value = res.data;
       setTimeout(() => {
         router.push({ name: "article" });
-      }, 500);
+      }, 1000);
     })
     .catch((err) => {
       console.log(err);
