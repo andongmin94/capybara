@@ -20,6 +20,9 @@
         {{ article.article.updated_at.slice(11, 13) }}시
         {{ article.article.updated_at.slice(14, 16) }}분
       </p>
+      <v-btn @click="deleteArticle">
+        삭제
+      </v-btn>
     </div>
     <!-- 댓글 작성 폼 -->
     <div class="mt-6">
@@ -35,6 +38,7 @@
       >
         댓글 작성
       </v-btn>
+
     </div>
 
     <p>댓글 목록</p>
@@ -80,6 +84,23 @@ onMounted(() => {
 
 const goBack = function () {
   router.go(-1);
+};
+
+const deleteArticle = function () {
+  axios({
+    method: "delete",
+    url: `${store.API_URL}/api/v1/articles/${route.params.id}/`,
+    headers: { Authorization: `Token ${store.token}` },
+  })
+    .then((res) => {
+      article.value = res.data;
+      setTimeout(() => {
+        router.push({ name: "article" });
+      }, 500);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const submitComment = (parent_pk: any) => {
