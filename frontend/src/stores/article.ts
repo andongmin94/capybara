@@ -2,7 +2,6 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import { couldStartTrivia } from "typescript";
 
 export const useArticleStore = defineStore("article", () => {
   const router = useRouter();
@@ -52,7 +51,7 @@ export const useArticleStore = defineStore("article", () => {
       },
     })
       .then((res) => {
-        console.log('가입 성공');
+        console.log("가입 성공");
         const password = password1;
         logIn({ username, password });
       })
@@ -99,42 +98,40 @@ export const useArticleStore = defineStore("article", () => {
   };
 
   const createComments = function (payload: any) {
-    console.log('router', payload)
+    console.log("router", payload);
     axios({
-      method: 'post',
+      method: "post",
       url: `${API_URL}/articles/comment/${payload.article_pk}/${payload.parent_pk}/`,
       data: {
         content: payload.content,
       },
       headers: {
-        Authorization: `Token ${token.value}`
-      }
+        Authorization: `Token ${token.value}`,
+      },
     })
       .then((res) => {
         // console.log(res)
-        console.log(res.data.message)
+        console.log(res.data.message);
       })
       .catch((err) => {
-        console.log(err)
-      })
-  }
-
-
-  const get_user_data = function (search_username:any, errorCallback:any) {
-    axios({
-      method: 'get',
-      url: `${API_URL}/accounts/profile/get_user_data/${search_username}`,
-    })
-      .then(res => {
-          console.log(res.data)
-          user_data.value = res.data;
-      })
-      .catch(err => {
-        alert('없는 사용자입니다.')
-        errorCallback();
+        console.log(err);
       });
   };
 
+  const get_user_data = function (search_username: any, errorCallback: any) {
+    axios({
+      method: "get",
+      url: `${API_URL}/accounts/profile/get_user_data/${search_username}`,
+    })
+      .then((res) => {
+        console.log(res.data);
+        user_data.value = res.data;
+      })
+      .catch((err) => {
+        alert("없는 사용자입니다.");
+        errorCallback();
+      });
+  };
 
   return {
     articles,
@@ -148,6 +145,5 @@ export const useArticleStore = defineStore("article", () => {
     get_user_data,
     search_username,
     createComments,
-    
   };
 });

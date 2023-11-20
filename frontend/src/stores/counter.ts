@@ -10,7 +10,6 @@ export const useCounterStore = defineStore("counter", () => {
   }
   const selectedItem = ref({});
 
-
   // DRF에 fin 조회 요청을 보내는 action
   const API_URL = "http://127.0.0.1:8000";
 
@@ -23,9 +22,13 @@ export const useCounterStore = defineStore("counter", () => {
     axios({
       method: "get",
       url: `${API_URL}/finlife/save-deposit-products/`,
-    }).catch((err) => {
-      console.log(err);
-    });
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // 금융 데이터를 조회하는 메서드

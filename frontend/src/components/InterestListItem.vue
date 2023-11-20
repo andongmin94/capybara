@@ -18,31 +18,31 @@
               <v-card
                 class="mx-auto card"
                 max-width="600"
-                height="300px"
+                height="auto"
                 elevation="16"
               >
-                <v-card-item>
-                  <div class="text-overline mb-1">
-                    {{ finance!.kor_co_nm }}
+                <v-card-item class="mx-2 mb-4">
+                  <div class="text-overline mt-2 mb-3">
+                    <v-chip>{{ finance!.kor_co_nm }}</v-chip>
                   </div>
-                  <div class="text-h6 mb-1">
+                  <div class="text-h5 mb-4">
                     {{ finance!.fin_prdt_nm }}
                   </div>
                   <div class="text-caption">
                     <p>{{ finance!.etc_note }}</p>
-                    <p>- 가입 대상 : {{ finance!.join_member }}</p>
-                    <p>- 가입 방법 : {{ finance!.join_way }}</p>
-                    <p>- 특이 사항 : {{ finance!.spcl_cnd }}</p>
+                    <p>- 대상 : {{ finance!.join_member }}</p>
+                    <p>- 가입 방법 : {{ finance.join_way }}</p>
+                    <p>- 특이 사항 : {{ finance.spcl_cnd }}</p>
                   </div>
                 </v-card-item>
 
-                <v-card-actions>
-                  <RouterLink
+                <v-btn block @click="selectItem(finance)" class="btn-wrapper"
+                  ><RouterLink
                     :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
-                  >
-                    <v-chip class="detailbtn" @click="selectItem(finance)">상품 보기</v-chip>
-                  </RouterLink>
-                </v-card-actions>
+                    class="text-decoration-none detailbtn"
+                    >상품 보기
+                  </RouterLink></v-btn
+                >
               </v-card>
             </v-col>
           </v-row>
@@ -56,8 +56,6 @@
 import { RouterLink } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
 import { ref } from "vue";
-import InterestListItemDetail from "./InterestListItemDetail.vue";
-import { couldStartTrivia } from "typescript";
 
 const tab = ref(null);
 const store = useCounterStore();
@@ -91,8 +89,10 @@ $colors: (
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
 }
-
+.btn-wrapper {
+  background-color: map-get($map: $colors, $key: second);
+}
 .detailbtn {
-  color: white;
+  color: map-get($colors, fifth);
 }
 </style>

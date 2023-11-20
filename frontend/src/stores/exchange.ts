@@ -6,11 +6,12 @@ export const useExchangeStore = defineStore("exchange", () => {
   const router = useRouter();
   const exchange_data = ref({});
   const exchange_datetime = ref("");
+  const API_URL = "127.0.0.1:8000";
 
   const getExChange = function () {
     axios({
       method: "get",
-      //   url: `${API_URL}/api/v1/exchange/`,
+      url: `${API_URL}/api/v1/exchange/`,
     })
       .then((res) => {
         exchange_data.value = res.data.data;
