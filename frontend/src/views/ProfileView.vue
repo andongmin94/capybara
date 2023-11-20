@@ -1,5 +1,5 @@
 <template>
-
+ 
   <div v-if="store.user_data" class="container mx-auto mt-10">
     <p>아이디 : {{ store.user_data.data.username }}</p>
     <p>나이 : {{ store.user_data.data.age }}</p>
