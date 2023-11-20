@@ -7,7 +7,10 @@ const store = useArticleStore();
 
 <template>
   <header>
-    <v-toolbar class="title" title="카피바라">
+    <v-toolbar>
+      <v-toolbar-title
+        ><v-img class="title" src="../src/assets/appbarlogo.svg" alt=""
+      /></v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }} 님 환영합니다.</div>
       <RouterLink :to="{ name: 'home' }"
         ><v-btn class="nav-item text-black">홈</v-btn></RouterLink
@@ -63,13 +66,12 @@ $colors: (
 }
 
 .title {
-  font-family: Pretendard-Regular;
-  font-weight: 300;
-  background-color: map-get($map: $colors, $key: third);
+  height: 50px;
+  width: 120px;
 }
 
 .nav-item {
   font-family: Pretendard-Regular;
-  font-weight: 200;
+  font-weight: 900;
 }
 </style>

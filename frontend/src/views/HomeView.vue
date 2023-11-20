@@ -20,8 +20,9 @@ import { useArticleStore } from "@/stores/article";
 
 const store = useArticleStore();
 onMounted(() => {
-  store.getArticles()
-})
+  store.getArticles();
+  store.setFinances();
+});
 
 const goThere = function (item: any) {
   router.push({ name: item.name });
