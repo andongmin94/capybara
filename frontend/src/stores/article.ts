@@ -76,6 +76,7 @@ export const useArticleStore = defineStore("article", () => {
         console.log(res.data);
         token.value = res.data.key;
         search_username.value = username;
+        console.log(search_username);
         user_data.value = res.data;
         router.push({ name: "home" });
       })
@@ -148,6 +149,6 @@ export const useArticleStore = defineStore("article", () => {
     get_user_data,
     search_username,
     createComments,
-    
+    user_data,
   };
 });

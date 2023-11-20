@@ -64,7 +64,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'username', 'email', 'image', 'name',
-            'financial_products', 'capital', 'salary',
+            'financial_products', 'salary',
             'created_at', 'updated_at', 'followings', 'followers','id'
         ]
         depth = 1  # followings 필드를 위한 설정
@@ -72,3 +72,9 @@ class UserDetailSerializer(serializers.ModelSerializer):
     def get_followers(self, obj):
         # obj는 User 모델의 인스턴스
         return [follower.username for follower in obj.followers.all()]
+    
+    
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ('password', 'is_superuser', 'is_staff',)
