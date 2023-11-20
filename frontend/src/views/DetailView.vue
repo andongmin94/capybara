@@ -29,18 +29,19 @@
         class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="댓글을 입력하세요"
       ></textarea>
-      <button
+      <v-btn
         @click="submitComment(0)"
-        class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="mt-2 bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
       >
         댓글 작성
-      </button>
+      </v-btn>
     </div>
 
     <p>댓글 목록</p>
     <div v-if="article">
       <p v-for="comment in article.comments">
-        댓글 {{ comment.id }} : {{ comment.content }}
+        작성자 : {{ comment.user.username }}
+        내용 : {{ comment.content }}
       </p>
     </div>
   </div>

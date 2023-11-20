@@ -51,7 +51,12 @@ const createArticle = function () {
   })
     .then((res) => {
       // console.log(res)
-      router.push({ name: "article" });
+      store.getArticles()
+    })
+    .then(() => {
+      setTimeout(() => {
+        router.push({ name: "article" });
+      }, 500);
     })
     .catch((err) => {
       console.log(err);
