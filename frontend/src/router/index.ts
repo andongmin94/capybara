@@ -11,7 +11,6 @@ import MapView from "@/views/MapView.vue";
 import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";
 import ProfileView from "@/views/ProfileView.vue";
-import CommentView from "@/views/CommentView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,11 +36,6 @@ const router = createRouter({
       path: "/create",
       name: "create",
       component: CreateView,
-    },
-    {
-      path: "/comment",
-      name: "comment",
-      component: CommentView,
     },
     // 환율
     // {
