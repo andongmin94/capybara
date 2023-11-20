@@ -8,6 +8,7 @@ export const useCounterStore = defineStore("counter", () => {
   function increment() {
     count.value++;
   }
+  const selectedItem = ref({});
 
   // DRF에 fin 조회 요청을 보내는 action
   const API_URL = "http://127.0.0.1:8000";
@@ -49,5 +50,6 @@ export const useCounterStore = defineStore("counter", () => {
     finances,
     setFinances,
     getFinances,
+    selectedItem,
   };
 });
