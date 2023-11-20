@@ -1,6 +1,8 @@
 <template>
   <div>
     <v-chip @click="goBack">상품 목록으로 돌아가기</v-chip>
+    {{ store.selectedItem.value.kor_co_nm }}
+
     <div v-for="detail in finance">
       <p>옵션 번호 : {{ detail.id }}</p>
       <p>가입 기간 : {{ detail.save_trm }}개월</p>
@@ -19,6 +21,7 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import { useRouter, useRoute } from "vue-router";
+import { defineProps } from "vue";
 
 const router = useRouter();
 const store = useCounterStore();
@@ -50,7 +53,7 @@ onMounted(() => {
         }
         return unique;
       }, []);
-      console.log(finance._rawValue);
+      // console.log(finance._rawValue);
     })
     .catch((err) => {
       console.log("실패했다람쥐");
