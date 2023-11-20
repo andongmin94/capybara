@@ -9,12 +9,13 @@ import { onMounted } from "vue";
 import { useCounterStore } from "@/stores/counter";
 import { RouterLink } from "vue-router";
 import InterestListItem from "@/components/InterestListItem.vue";
+import axios from "axios";
 const store = useCounterStore();
 
 onMounted(async () => {
   try {
-    await store.setFinances();
-    await store.getFinances();
+    store.setFinances();
+    store.getFinances();
     console.log("마운트함");
   } catch (error) {
     console.error("오류 발생:", error);
