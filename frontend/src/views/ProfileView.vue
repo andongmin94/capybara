@@ -1,32 +1,11 @@
 <template>
-  <div v-if="filteredsearch_user" class="container mx-auto mt-10">
-      <!-- 유저 프로필 -->
-      <div class="profile-header bg-white shadow p-6 rounded-lg">
-          <!-- 이미지와 사용자 정보 표시 -->
-          <div class="profile-info">
-              id : {{ filteredsearch_user.username }}
-              <h2 class="text-2xl font-bold">{{ filteredsearch_user.nickname }}</h2>
-              <p class="text-gray-600">Followers: {{ filteredsearch_user.followers.length }}</p>
-              <p class="text-gray-600">Following: {{ filteredsearch_user.followings.length }}</p>
-          </div>
-          <button v-if="isCurrentUser" @click="editProfile"
-              class="edit-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit
-              Profile</button>
-          <button v-else @click="followUser"
-              class="follow-button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Follow</button>
-          <button v-if="isCurrentUser" @click="showDeleteConfirmation"
-              class="delete-button bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete
-              Account</button>
-      </div>
 
-      <!-- 유저 상세 정보 -->
-      <div class="profile-details bg-white shadow mt-4 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">User Details</h3>
-          <p><strong>Username:</strong> {{ filteredsearch_user.username }}</p>
-          <p><strong>Email:</strong> {{ filteredsearch_user.email }}</p>
-          <p><strong>Capital:</strong> {{ filteredsearch_user.capital }}</p>
-          <p><strong>Salary:</strong> {{ filteredsearch_user.salary }}</p>
-      </div>
+  <div v-if="store.user_data" class="container mx-auto mt-10">
+    <p>아이디 : {{ store.user_data.data.username }}</p>
+    <p>나이 : {{ store.user_data.data.age }}</p>
+    <p>메일 : {{ store.user_data.data.email }}</p>
+    <p>가입일 : {{ store.user_data.data.date_joined }}</p>
+    <p>최근 접속일 : {{ store.user_data.data.last_login }}</p>
   </div>
   <div v-else class="text-center">
       로딩중...
@@ -50,7 +29,6 @@ onMounted(() => {
   store.get_user_data(store.search_username, () => router.push('/'));
 });
 
-const filteredsearch_user = computed(() => store.search_user);
 
 // watch(() => route.params.search_username, (newSearch_username) => {
 //   store.get_user_data(newSearch_username, () => router.push('/'));
