@@ -19,6 +19,22 @@ export const useArticleStore = defineStore("article", () => {
     }
   });
 
+
+  // 금융 데이터 초기 세팅하는 메서드
+  // InterestView에 마운트 시켜놨음
+  const setFinances = function () {
+    axios({
+      method: "get",
+      url: `${API_URL}/finlife/save-deposit-products/`,
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   // DRF에 article 조회 요청을 보내는 action
   const getArticles = function () {
     axios({
@@ -147,5 +163,6 @@ export const useArticleStore = defineStore("article", () => {
     search_username,
     createComments,
     user_data,
+    setFinances,
   };
 });
