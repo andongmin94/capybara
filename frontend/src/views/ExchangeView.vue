@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align: center;">
     <h1>환율 계산기</h1>
     <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
     <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>

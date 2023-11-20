@@ -38,11 +38,11 @@ const router = createRouter({
       component: CreateView,
     },
     // 환율
-    // {
-    //   path: "/exchange",
-    //   name: "exchange",
-    //   component: ExchangeView,
-    // },
+    {
+      path: "/exchange",
+      name: "exchange",
+      component: ExchangeView,
+    },
     // 금리 비교
     {
       path: "/interest",
