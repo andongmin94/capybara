@@ -16,21 +16,6 @@ export const useCounterStore = defineStore("counter", () => {
   // 금융 데이터를 저장하는 반응형 배열
   const finances = ref([]);
 
-  // 금융 데이터 초기 세팅하는 메서드
-  // InterestView에 마운트 시켜놨음
-  const setFinances = function () {
-    axios({
-      method: "get",
-      url: `${API_URL}/finlife/save-deposit-products/`,
-    })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   // 금융 데이터를 조회하는 메서드
   const getFinances = function () {
     axios({
@@ -52,7 +37,6 @@ export const useCounterStore = defineStore("counter", () => {
     increment,
     API_URL,
     finances,
-    setFinances,
     getFinances,
     selectedItem,
   };

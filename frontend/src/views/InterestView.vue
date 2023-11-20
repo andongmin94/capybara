@@ -14,7 +14,6 @@ const store = useCounterStore();
 
 onMounted(async () => {
   try {
-    store.setFinances();
     store.getFinances();
     console.log("마운트함");
   } catch (error) {
