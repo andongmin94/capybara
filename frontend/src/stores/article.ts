@@ -126,7 +126,7 @@ export const useArticleStore = defineStore("article", () => {
     })
       .then((res) => {
         console.log(res.data);
-        user_data.value = res.data;
+        // user_data.value = res.data;
       })
       .catch((err) => {
         alert("없는 사용자입니다.");
