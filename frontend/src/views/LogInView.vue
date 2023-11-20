@@ -42,16 +42,11 @@
 
       <v-card-text class="text-center">
         <span class="mx-3">
-          <a
-            class="text-caption text-decoration-none text-grey"
-            href="#"
-            rel="noopener noreferrer"
-          >
-            비밀번호 찾기</a
-          >
+          <RouterLink :to="{ name: 'findpassword' }" style="text-decoration: none; color:black">비밀번호 찾기</RouterLink>
           <v-icon icon="mdi-chevron-right"></v-icon>
         </span>
-        <RouterLink :to="{ name: 'signup' }">회원가입하기</RouterLink>
+
+        <RouterLink :to="{ name: 'signup' }" style="text-decoration: none; color:black">회원가입하기</RouterLink>
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>
