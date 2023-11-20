@@ -1,14 +1,14 @@
 <template>
   <div>
     <h1>Detail</h1>
-      <div v-for="detail in finance">
-        {{ detail }}
-      </div>
+    <div v-for="detail in finance">
+      {{ detail }}
+    </div>
     <hr />
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useCounterStore } from "@/stores/counter";
@@ -21,12 +21,12 @@ const finance = ref(null);
 onMounted(() => {
   axios({
     method: "get",
-    url: `${store.API_URL}/finlife/deposit-product-options/${route.params.id}/`
+    url: `${store.API_URL}/finlife/deposit-product-options/${route.params.id}/`,
   })
     .then((res) => {
       finance.value = res.data;
     })
-    .then((res)=>{
+    .then((res) => {
       // save_trm 필터링
       finance.value = finance.value.reduce((unique, item) => {
         const existing = unique.find((el) => el.save_trm === item.save_trm);
@@ -35,10 +35,10 @@ onMounted(() => {
         }
         return unique;
       }, []);
-      console.log(finance._rawValue)
+      console.log(finance._rawValue);
     })
     .catch((err) => {
-      console.log('실패했다람쥐');
+      console.log("실패했다람쥐");
       console.log(err);
     });
 });

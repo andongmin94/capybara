@@ -1,23 +1,36 @@
 <template>
   <div>
-    <h1>내 주변 은행 찾기</h1>
-    <!-- single select -->
+    <v-container>
+      <v-row>
+        <v-col align="center">
+          <h1>내 주변 은행 찾기</h1>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col align="center">
+          <select v-model="province" @change="updateCities">
+            <option value="">도/시</option>
+            <option v-for="info in infos" :key="info.id">
+              {{ info.prov }}
+            </option>
+          </select>
+          <select v-model="city">
+            <option value="">시/군/구</option>
+            <option v-for="c in cities" :key="c">{{ c }}</option>
+          </select>
+          <select v-model="bank">
+            <option value="">은행명</option>
+            <option v-for="b in banks" :key="b">{{ b }}</option>
+          </select>
+        </v-col>
+      </v-row>
 
-    <select v-model="province" @change="updateCities">
-      <option disabled value="">도/시</option>
-      <option v-for="info in infos" :key="info.id">
-        {{ info.prov }}
-      </option>
-    </select>
-    <select v-model="city" :disabled="!province">
-      <option disabled value="">시/군/구</option>
-      <option v-for="c in cities" :key="c">{{ c }}</option>
-    </select>
-    <select v-model="bank" :disabled="!city">
-      <option disabled value="">은행명</option>
-      <option v-for="b in banks" :key="b">{{ b }}</option>
-    </select>
-    <MapComponent :province="province" :city="city" :bank="bank" />
+      <v-row>
+        <v-col>
+          <MapComponent :province="province" :city="city" :bank="bank" />
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 

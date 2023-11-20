@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <p style="margin-top: -12px"></p>
-
-    <!-- Add a button to trigger the search -->
-    <button class="searchbtn" @click="searchOnMap">Search on Map</button>
-
+  <div class="wrapper">
+    <v-chip class="mb-5 searchbtn" @click="searchOnMap">검색하기</v-chip>
     <!-- 지도를 표시할 컨테이너 -->
     <div ref="mapContainer" style="width: 100%; height: 350px"></div>
   </div>
@@ -129,9 +125,12 @@ export default {
 </script>
 
 <style>
-/* 여기에 스타일을 추가하세요 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .searchbtn {
-  margin-top: 10px;
-  border: 1px solid black;
+  width: fit-content;
 }
 </style>
