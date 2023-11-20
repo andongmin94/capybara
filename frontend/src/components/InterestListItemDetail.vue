@@ -9,6 +9,7 @@
       <p>이자율 : {{ detail.intr_rate }}</p>
       <p>이자율 : {{ detail.intr_rate2 }}</p>
       <v-chip>가입하기</v-chip>
+      <v-btn>체커</v-btn>
       <hr />
     </div>
   </div>
@@ -23,11 +24,7 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const store = useCounterStore();
 const route = useRoute();
-const finance = ref(null);
-
-defineProps({
-  selectedItem: Object,
-});
+const finance = ref();
 
 const goBack = function () {
   router.go(-1);
@@ -50,7 +47,7 @@ onMounted(() => {
         }
         return unique;
       }, []);
-      console.log(finance._rawValue);
+      // console.log(finance._rawValue);
     })
     .catch((err) => {
       console.log("실패했다람쥐");
