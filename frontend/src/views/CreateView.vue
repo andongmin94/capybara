@@ -5,7 +5,7 @@
 
       <v-text-field v-model="title" label="제목" />
       <v-textarea v-model="content" label="내용 " />
-      <v-file-input label="파일 첨부하기"></v-file-input>
+      <v-file-input v-model="img" label="파일 첨부하기"></v-file-input>
       <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
       <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
 
@@ -24,6 +24,7 @@ import axios from "axios";
 
 const title = ref<string>("");
 const content = ref<string>("");
+const img = ref<[]>([]);
 const store = useArticleStore();
 const router = useRouter();
 
@@ -42,6 +43,7 @@ const createArticle = function () {
     data: {
       title: title.value,
       content: content.value,
+      // image: img.value,
     },
     headers: {
       Authorization: `Token ${store.token}`,
