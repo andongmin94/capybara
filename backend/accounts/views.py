@@ -6,20 +6,22 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import UserDetailSerializer
+from .serializers import UserDetailSerializer, ProfileSerializer
 from .models import User
 from rest_framework.decorators import permission_classes
 
 
 @api_view(['GET'])
-def Detail(request, search_name):
-    try:
-        print(request)
-        user = User.objects.get(username=search_name)
-        serializer = UserDetailSerializer(user)
-        return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
-    except:
-        return Response({'message':'error임'}, status=status.HTTP_404_NOT_FOUND)
+def detail(request, search_name):
+    if request.method == 'GET':
+        # try:
+            # print(request)
+            user = get_user_model().objects.get(username=search_name)
+            # serializer = UserDetailSerializer(user)
+            serializer = ProfileSerializer(user)   
+            return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
+        # except:
+        #     return Response({'message':'error임 왜안대노'}, status=status.HTTP_404_NOT_FOUND)
     
 
 @api_view(['POST'])
