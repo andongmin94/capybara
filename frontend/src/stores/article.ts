@@ -146,9 +146,6 @@ export const useArticleStore = defineStore("article", () => {
     get_user_data,
     search_username,
     createComments,
-<<<<<<< HEAD
-=======
     user_data,
->>>>>>> 70c2bb0c56b76cb0aff640e820e9aaf8b2d1353b
   };
 });
