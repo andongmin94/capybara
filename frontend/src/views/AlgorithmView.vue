@@ -72,8 +72,8 @@ function getRandomNumber(min, max) {
 
 <style lang="scss">
 .row {
-    margin-left: 30px;
-    transform: scale(1.2);
+  margin-left: 30px;
+  transform: scale(1.2);
 }
 
 .resultBtn {
