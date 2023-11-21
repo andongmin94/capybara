@@ -39,7 +39,7 @@
           type="submit"
           variant="elevated"
         >
-          로그인하기  
+          로그인하기
         </v-btn>
       </v-form>
 
