@@ -9,7 +9,7 @@ const store = useArticleStore();
   <header>
     <v-toolbar>
       <!--화면 가장 작을때 사라지는거 수정하기 -->
-      <v-toolbar-title class="">
+      <v-toolbar-title>
         <RouterLink :to="{ name: 'home' }">
           <v-img class="title" src="../src/assets/appbarlogo.svg" alt="" />
         </RouterLink>
@@ -81,6 +81,7 @@ $colors: (
   transform: scale(1.4);
   margin-top: 10px;
   margin-left: 10px;
+  min-width: 120px;
   :hover {
     transform: scale(1.1);
   }
@@ -97,4 +98,5 @@ $colors: (
     transform: none;
   }
 }
+
 </style>
