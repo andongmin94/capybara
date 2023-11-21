@@ -70,7 +70,15 @@ function getRandomNumber(min, max) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+$colors: (
+  first: #59452c,
+  second: #8c704f,
+  third: #d9bb96,
+  forth: #402a17,
+  fifth: #f2f2f2,
+);
+
 .row {
   margin-left: 30px;
   transform: scale(1.2);
@@ -82,7 +90,7 @@ function getRandomNumber(min, max) {
 
 .resultBtn:hover {
   color: white;
-  background-color: rgb(134, 55, 2);
+  background-color: map-get($map: $colors, $key: second);
   transform: scale(1.2);
 }
 </style>

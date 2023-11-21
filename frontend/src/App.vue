@@ -8,49 +8,51 @@ const store = useArticleStore();
 <template>
   <header>
     <v-toolbar>
-      <v-toolbar-title>
+      <!--화면 가장 작을때 사라지는거 수정하기 -->
+      <v-toolbar-title class="px-5 mt-0">
         <RouterLink :to="{ name: 'home' }">
           <v-img class="title" src="../src/assets/appbarlogo.svg" alt="" />
         </RouterLink>
       </v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }} 님 환영합니다.</div>
 
-      <RouterLink :to="{ name: 'algorithm' }"
-        ><v-btn class="nav-item text-black">추천 상품</v-btn></RouterLink
+      <RouterLink :to="{ name: 'algorithm' }" class="nav-item mx-2"
+        ><v-btn class="nav-item-text text-black"
+          >✨MBTI로 추천받기</v-btn
+        ></RouterLink
       >
 
-      <RouterLink :to="{ name: 'home' }"
-        ><v-btn class="nav-item text-black">홈</v-btn></RouterLink
+      <RouterLink
+        :to="{ name: 'article' }"
+        class="nav-item mx-2"
+        v-if="store.isLogin"
+        ><v-btn class="nav-item-text text-black">커뮤니티</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'article' }" v-if="store.isLogin"
-        ><v-btn class="nav-item text-black">커뮤니티</v-btn></RouterLink
+      <RouterLink :to="{ name: 'exchange' }" class="nav-item mx-2"
+        ><v-btn class="nav-item-text text-black">환율</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'exchange' }"
-        ><v-btn class="nav-item text-black">환율</v-btn></RouterLink
+      <RouterLink :to="{ name: 'interest' }" class="nav-item mx-2"
+        ><v-btn class="nav-item-text text-black">금리비교</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'interest' }"
-        ><v-btn class="nav-item text-black">금리비교</v-btn></RouterLink
+      <RouterLink :to="{ name: 'map' }" class="nav-item mx-2"
+        ><v-btn class="nav-item-text text-black">지도</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'map' }"
-        ><v-btn class="nav-item text-black">지도</v-btn></RouterLink
-      >
-
-      <RouterLink :to="{ name: 'cart' }"
-        ><v-btn class="nav-item text-black">장바구니</v-btn></RouterLink
-      >
-
-      <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
-        ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
+      <RouterLink
+        :to="{ name: 'login' }"
+        class="nav-item mx-2"
+        v-if="!store.isLogin"
+        ><v-btn class="nav-item-text text-black">로그인</v-btn></RouterLink
       >
       <RouterLink
         :to="{
           name: 'profile',
           params: { search_username: store.search_username },
         }"
+        class="nav-item mx-2"
         v-if="store.isLogin"
         ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
       >
@@ -83,14 +85,13 @@ $colors: (
     transform: scale(1.1);
   }
 }
-
 .nav-item {
+  :hover {
+    transform: scale(1.1);
+  }
+}
+.nav-item-text {
   font-family: Pretendard-Regular;
   font-weight: 900;
-
-  :hover {
-    transform: scale(1.2);
-    text-decoration: underline;
-  }
 }
 </style>

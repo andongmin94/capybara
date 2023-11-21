@@ -6,53 +6,59 @@
     </v-tabs>
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
-        <div v-if="n===1">
-        <v-container>
-          <v-row align="center" justify="center">
-            <v-col
-              class="d-flex align-self-start"
-              cols="12"
-              md="6"
-              lg="4"
-              v-for="finance in store.finances"
-              :key="finance"
-            >
-              <v-card
-                class="card mx-auto mb-6"
-                height="380"
-                width="525"
-                elevation="16"
+        <div v-if="n === 1">
+          <RouterLink :to="{ name: 'cart' }"
+            ><v-chip class="nav-item text-black mt-4"
+              >내가 찜한 목록 🎁</v-chip
+            ></RouterLink
+          >
+          <v-container>
+            <v-row align="center" justify="center">
+              <v-col
+                class="d-flex align-self-start"
+                cols="12"
+                md="6"
+                lg="4"
+                v-for="finance in store.finances"
+                :key="finance"
               >
-                <v-card-item class="mx-2 mb-4 card-item">
-                  <div class="text-overline mt-2 mb-3">
-                    <v-chip>{{ finance!.kor_co_nm }}</v-chip>
-                  </div>
-                  <div class="text-h5 mb-4">
-                    {{ finance!.fin_prdt_nm }}
-                  </div>
-                  <div class="text-caption">
-                    <p>{{ finance!.etc_note }}</p>
-                    <p>- 대상 : {{ finance!.join_member }}</p>
-                    <p>- 가입 방법 : {{ finance.join_way }}</p>
-                    <p>- 특이 사항 : {{ finance.spcl_cnd }}</p>
-                  </div>
-                </v-card-item>
-
-                <v-btn block @click="selectItem(finance)" class="btn-wrapper"
-                  ><RouterLink
-                    :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
-                    class="text-decoration-none detailbtn"
-                    >상품 보기
-                  </RouterLink></v-btn
+                <v-card
+                  class="card mx-auto mb-6"
+                  height="380"
+                  width="525"
+                  elevation="16"
                 >
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </div>
-      <div v-else>
-        
-      </div>
+                  <v-card-item class="mx-2 mb-4 card-item">
+                    <div class="text-overline mt-2 mb-3">
+                      <v-chip>{{ finance!.kor_co_nm }}</v-chip>
+                    </div>
+                    <div class="text-h5 mb-4">
+                      {{ finance!.fin_prdt_nm }}
+                    </div>
+                    <div class="text-caption">
+                      <p>{{ finance!.etc_note }}</p>
+                      <p>- 대상 : {{ finance!.join_member }}</p>
+                      <p>- 가입 방법 : {{ finance.join_way }}</p>
+                      <p>- 특이 사항 : {{ finance.spcl_cnd }}</p>
+                    </div>
+                  </v-card-item>
+
+                  <v-btn block @click="selectItem(finance)" class="btn-wrapper"
+                    ><RouterLink
+                      :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
+                      class="text-decoration-none detailbtn"
+                      >상품 보기
+                    </RouterLink></v-btn
+                  >
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+        <div v-else class="wrapper-none">
+          <div><img src="@/assets/workingon.png" alt="" /></div>
+          <div class="content"><strong>서비스 준비 중입니다. </strong></div>
+        </div>
       </v-window-item>
     </v-window>
   </v-card>
@@ -111,5 +117,13 @@ $colors: (
 }
 .detailbtn {
   color: map-get($colors, fifth);
+}
+
+.wrapper-none {
+  height: 1000px;
+}
+
+.content {
+  font-size: larger;
 }
 </style>

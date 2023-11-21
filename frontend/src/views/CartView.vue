@@ -1,14 +1,14 @@
 <template>
   <div>
     <v-container>
-      <v-row class="mb-6" align="center" justify="center">
-        <h1>비교 상품 목록</h1>
-      </v-row>
-      <v-row align="center" justify="center">
-        <UserChart :mom-products="momProducts" :cart-items="cartItems" />
+      <v-row class="mt-4 mb-5" align="center" justify="center">
+        <h1>찜한 상품 모아보기</h1>
       </v-row>
 
-      <div v-if="cartItems">
+      <div v-if="cartItems.length !== 0">
+        <v-row align="center" justify="center" class="mb-5">
+          <UserChart :mom-products="momProducts" :cart-items="cartItems" />
+        </v-row>
         <div v-for="product in cartItems" :key="product.id">
           <v-card class="eachcard mb-5">
             <v-card-item>
@@ -59,8 +59,14 @@
         </div>
       </div>
 
-      <div v-else>
-        <strong>장바구니에 담긴 상품이 없습니다.</strong>
+      <div v-else align="center">
+        <div><img src="@/assets/empty.png" alt="" /></div>
+        <div><strong class="content">찜한 상품이 없습니다.</strong></div>
+        <div class="mt-5">
+          <RouterLink :to="{ name: 'interest' }" class="nav-item mx-2">
+            <v-chip class="text-black">모든 상품 보러가기</v-chip></RouterLink
+          >
+        </div>
       </div>
     </v-container>
   </div>
@@ -129,10 +135,15 @@ $colors: (
 );
 
 .eachcard {
-  background-color: map-get($map: $colors, $key: forth);
+  background-color: map-get($map: $colors, $key: first);
   color: map-get($map: $colors, $key: fifth);
 }
 .product-name {
+  font-size: larger;
+}
+
+.content {
+  font-family: Pretendard-Regular;
   font-size: larger;
 }
 </style>
