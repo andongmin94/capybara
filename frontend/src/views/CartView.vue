@@ -1,37 +1,87 @@
 <template>
   <div>
     <h1>장바구니</h1>
+    {{ momProducts }}
+
     <div v-if="cartItems">
-      <div v-for="product in cartItems" :key="product">
-        <!-- <img :src="product.image" alt="" /> -->
-        <strong>{{ product }}</strong>
-        <!-- <p>가격 : ${{ product.price }}</p> -->
-        <!-- <button @click="goDetail(product)">상세페이지로 이동</button> -->
-        <button @click="removeCart(product)">장바구니에서 삭제</button>
+      <div v-for="product in cartItems" :key="product.id">
+        <v-card>
+          <v-card-item class="d-flex">
+            <div v-for="mom in momProducts">
+              <div v-if="mom.fin_prdt_cd === product.fin_prdt_cd">
+                <div>
+                  {{ mom.fin_prdt_nm }}
+                </div>
+                <div>
+                  <strong>{{ product.fin_prdt_cd }}</strong>
+                </div>
+                <div>
+                  <strong>{{ product.intr_rate_type_nm }}</strong>
+                </div>
+                <div>
+                  <strong>{{ product.intr_rate }}</strong>
+                </div>
+                <div>
+                  <strong>{{ product.intr_rate2 }}</strong>
+                </div>
+                <div>
+                  <strong>{{ product.save_trm }}</strong>
+                </div>
+              </div>
+            </div>
+            <div>
+              <!-- <v-chip @click="goDetail(product)">상세페이지로 이동</v-chip> -->
+              <v-chip @click="removeCart(product)">장바구니에서 삭제</v-chip>
+            </div>
+          </v-card-item>
+        </v-card>
       </div>
     </div>
     <div v-else>
       <strong>장바구니에 담긴 상품이 없습니다.</strong>
     </div>
+    <UserChart />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import UserChart from "@/components/UserChart.vue";
+import { useCounterStore } from "@/stores/counter.ts";
 
 const router = useRouter();
-
+const store = useCounterStore();
 const cartItems = ref(null);
+const moms = ref(store.finances);
+
+const momProducts = ref([]);
 
 cartItems.value = JSON.parse(localStorage.getItem("cart"));
 
-//   const goDetail = (product) => {
-//     router.push(`/${product.id}`)
-//   }
+// 옵션에 해당하는 상품 찾기
+onMounted(() => {
+  store.getFinances();
+
+  cartItems.value.map((iteminCart) => {
+    const isDuplicate = moms.value.find((iteminMoms) => {
+      return iteminMoms.fin_prdt_cd === iteminCart.fin_prdt_cd;
+    });
+
+    moms.value.forEach((mom) => {
+      if (iteminCart.fin_prdt_cd === mom.fin_prdt_cd && !isDuplicate) {
+        momProducts.value.push(mom);
+      }
+    });
+  });
+});
+
+// const goDetail = (product) => {
+//   router.push(`interestDetail/${product.fin_prdt_cd}`);
+// };
 
 const removeCart = (product) => {
-  console.log(product.fin_prdt_cd);
+  console.log(product.id);
   // localStoage 에서 삭제
   // 현재 cartItems.value 에서 삭제
   // 1. 현재 localStorage 에 저장된 데이터를 가져오기
@@ -39,9 +89,7 @@ const removeCart = (product) => {
   // const existingCart = JSON.parse(localStorage.getItem('cart'))
 
   // 2. 삭제할 아이템 index 검색
-  const itemIdx = cartItems.value.findIndex(
-    (item) => item.fin_prdt_cd === product.fin_prdt_cd
-  );
+  const itemIdx = cartItems.value.findIndex((item) => item.id === product.id);
 
   // 3. 데이터 삭제
   cartItems.value.splice(itemIdx, 1);
