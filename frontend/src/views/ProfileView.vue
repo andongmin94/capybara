@@ -26,8 +26,10 @@
   <RouterLink :to="{name:'modify'}">
   <v-btn>회원정보 수정</v-btn>
   </RouterLink>
-  <v-btn>비밀번호 변경</v-btn>
-  <v-btn>회원탈퇴</v-btn>
+  <RouterLink :to="{name:'changepassword'}">
+    <v-btn>비밀번호 변경</v-btn>
+  </RouterLink>
+  <v-btn @click="checkDelete">회원탈퇴</v-btn>
   <v-btn @click="store.logOut">로그아웃</v-btn>
 </div>
 </template>
@@ -45,6 +47,16 @@ const store = useArticleStore();
 onMounted(() => {
   store.get_user_data(store.search_username, () => router.push("/"));
 });
+
+const checkDelete = () => {
+    if(confirm('정말 탈퇴하시겠습니까?')) {
+      alert('탈퇴가 완료되었습니다.')
+      store.logOut()
+    }
+    else {
+      alert('취소되었습니다.')
+    }
+}
 
 </script>
 
