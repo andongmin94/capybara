@@ -2,6 +2,7 @@
   <v-sheet class="pa-12 wrapper">
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="logIn">
+        <h1 class="text-center mb-5">로그인</h1>
         <v-text-field
           v-model.trim="username"
           :readonly="loading"
@@ -42,11 +43,19 @@
 
       <v-card-text class="text-center">
         <span class="mx-3">
-          <RouterLink :to="{ name: 'findpassword' }" style="text-decoration: none; color:black">비밀번호 찾기</RouterLink>
+          <RouterLink
+            :to="{ name: 'findpassword' }"
+            style="text-decoration: none; color: black"
+            >비밀번호 찾기</RouterLink
+          >
           <v-icon icon="mdi-chevron-right"></v-icon>
         </span>
 
-        <RouterLink :to="{ name: 'signup' }" style="text-decoration: none; color:black">회원가입하기</RouterLink>
+        <RouterLink
+          :to="{ name: 'signup' }"
+          style="text-decoration: none; color: black"
+          >회원가입하기</RouterLink
+        >
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>

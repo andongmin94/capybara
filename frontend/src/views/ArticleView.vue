@@ -9,10 +9,8 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import ArticleList from "@/components/ArticleList.vue";
+import temparticlelist from "@/components/temparticlelist.vue";
 import { watch } from "vue";
-
-
-
 </script>
 
 <style lang="scss" scoped>

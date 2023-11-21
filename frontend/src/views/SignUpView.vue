@@ -2,6 +2,7 @@
   <v-sheet class="pa-12">
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="onSubmit">
+        <h1 class="text-center mb-5">회원 가입</h1>
         <v-text-field
           v-model.trim="username"
           :readonly="loading"
@@ -46,8 +47,6 @@
           @click:append-inner="visible = !visible"
         ></v-text-field>
 
-        <br />
-
         <v-btn
           :disabled="!form"
           :loading="loading"
@@ -63,7 +62,11 @@
       </v-form>
 
       <v-card-text class="text-center">
-        <RouterLink :to="{ name: 'login' }">로그인하기</RouterLink>
+        <RouterLink
+          :to="{ name: 'login' }"
+          style="text-decoration: none; color: black"
+          >로그인하기</RouterLink
+        >
         <v-icon icon="mdi-chevron-right"></v-icon>
       </v-card-text>
     </v-card>

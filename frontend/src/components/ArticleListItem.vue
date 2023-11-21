@@ -1,10 +1,27 @@
 <template>
   <div>
-    <h5>{{ article!.id }}번 게시글</h5>
-    <RouterLink :to="{ name: 'articleDetail', params: { id: article!.id } }">
-      <p>제목 : {{ article!.title }}</p>
-    </RouterLink>
-    <hr />
+    <v-container>
+      <v-row>
+        <v-col cols="2" class="align-self-center">
+          {{ article.id }}
+        </v-col>
+        <v-col cols="10">
+          <div>
+            <div class="title">
+              <RouterLink
+                :to="{ name: 'articleDetail', params: { id: article!.id } }"
+                class="title"
+              >
+                {{ article!.title }}
+              </RouterLink>
+            </div>
+            <div>{{ article!.content }}</div>
+            <div>작성자 : {{ article!.user.username }}</div>
+            <div>게시일 : {{ article!.created_at.substr(0, 10) }}</div>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -17,10 +34,10 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
-p {
-  display: inline;
-}
-a {
+.title {
+  font-family: Pretendard-Regular;
+  font-weight: 900;
+  font-size: x-large;
   color: black;
   text-decoration: none;
   :hover {
