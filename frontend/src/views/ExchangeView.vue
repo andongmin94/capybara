@@ -3,20 +3,24 @@
     <h1>환율 계산기</h1>
     <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
     <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>
-    <p v-else>두 통화를 선택해주세요.</p>
+    <p v-else>환전할 금액을 입력해 주세요.</p>
     <div>
-      <select v-model="select1">
+      <div>환전 출발</div>
+      <p>{{ select1 }}</p>
+      <select v-model="select1" class="selectbox">
         <option v-for="payment in payments" :key="payment" :value="payment">
           {{ country[payment] }}
         </option>
       </select>
       :
-      <input type="text" v-model.number="input_money" />
+      <div><input type="text" v-model.number="input_money" /></div>
     </div>
-    <button @click="calculate">계산</button>
+    <v-chip @click="calculate">계산</v-chip>
 
     <div>
-      <select v-model="select2">
+      <div>환전 도착</div>
+      <p>{{ select2 }}</p>
+      <select v-model="select2" class="selectbox">
         <option v-for="payment in payments" :key="payment" :value="payment">
           {{ country[payment] }}
         </option>
@@ -165,4 +169,8 @@ const calculate = function () {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.selectbox {
+  border: 1px black solid;
+}
+</style>
