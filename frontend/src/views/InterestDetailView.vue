@@ -8,8 +8,8 @@
 
       <v-row>
         <v-col align="center" justify="center">
-          <h1 class="mb-5">{{ store.selectedItem.value.fin_prdt_nm }}</h1>
-          <h2 class="mb-10">{{ store.selectedItem.value.kor_co_nm }}</h2>
+          <h1 class="mb-5">{{ store.selectedItem?.value?.fin_prdt_nm }}</h1>
+          <h2 class="mb-10">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
           <v-row>
             <v-col cols="6">
               <v-col>
@@ -49,6 +49,10 @@
           </v-row>
         </v-col>
       </v-row>
+      <!-- <hr /> -->
+      <!-- <v-row>
+        <img src="@/assets/hr.svg" alt="" />
+      </v-row> -->
       <v-row align="center" justify="center">
         <v-chip>가입기간</v-chip>
       </v-row>
