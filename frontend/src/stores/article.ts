@@ -113,6 +113,32 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
+  const editProfile = function () {
+    const { name, nickname, email, age, money, salary } = payload;
+    axios({
+      method: "put",
+      url: `${API_URL}/accounts/profile/`,
+      headers: {
+        Authorization: `Token ${token.value}`,
+      },
+      data : {
+        name,
+        nickname,
+        email,
+        age,
+        money,
+        salary,
+      }
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   const createComments = function (payload: any) {
     console.log("router", payload);
     axios({
@@ -163,5 +189,6 @@ export const useArticleStore = defineStore("article", () => {
     createComments,
     user_data,
     setFinances,
+    editProfile,
   };
 });
