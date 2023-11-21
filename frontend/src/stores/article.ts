@@ -138,6 +138,27 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
+  const changePassword = function () {
+    const { name, nickname, email, age, money, salary } = payload;
+    axios({
+      method: "post",
+      url: `${API_URL}/accounts/password/change/`,
+      headers: {
+        Authorization: `Token ${token.value}`,
+      },
+      data : {
+        old_password,
+        new_password1,
+        new_password2,
+      }
+    })
+      .then((res) => {
+        console.log('비밀번호 변경 성공');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const createComments = function (payload: any) {
     console.log("router", payload);

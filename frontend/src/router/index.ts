@@ -14,6 +14,7 @@ import LogInView from "@/views/LogInView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import FindPasswordView from "@/views/FindPasswordView.vue";
 import ModifyView from "@/views/ModifyView.vue";
+import changePasswordView from "@/views/changePasswordView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -93,6 +94,11 @@ const router = createRouter({
       path: "/modify",
       name: "modify",
       component: ModifyView,
+    },
+    {
+      path: "/changepassword",
+      name: "changepassword",
+      component: changePasswordView,
     },
   ],
 });
