@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="pa-12 wrapper">
-    <v-card class="mx-auto px-6 py-8" max-width="344">
+    <v-card class="px-6 py-8 form-card" max-width="344">
       <v-form v-model="form" @submit.prevent="editProfile">
         <h1 class="text-center mb-5">회원정보 수정 페이지</h1>
 
@@ -100,4 +100,7 @@ const editProfile = function () {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form-card {
+}
+</style>

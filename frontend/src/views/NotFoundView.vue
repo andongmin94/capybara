@@ -4,7 +4,7 @@
       <h1>404 NOT FOUND</h1>
       <p>잘못된 접근입니다</p>
       <img class="image" src="@/assets/404.png" />
-      <v-chip @click="goHome">돌아갈래요</v-chip>
+      <v-chip @click="goHome">돌아가기</v-chip>
     </v-container>
   </div>
 </template>
@@ -18,6 +18,6 @@ const goHome = function () {
 </script>
 <style scoped lang="scss">
 .image {
-  width: 300px;
+  width: 250px;
 }
 </style>
