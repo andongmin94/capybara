@@ -17,6 +17,7 @@ import ModifyView from "@/views/ModifyView.vue";
 import changePasswordView from "@/views/changePasswordView.vue";
 import AlgorithmView from "@/views/AlgorithmView.vue";
 import AlgorithmResultView from "@/views/AlgorithmResultView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -113,6 +114,7 @@ const router = createRouter({
       name: "algorithmresult",
       component: AlgorithmResultView,
     },
+    { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFoundView },
   ],
 });
 
