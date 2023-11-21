@@ -3,7 +3,7 @@
     <v-row>
       <v-col align="center">
         <h1>환율 계산기</h1>
-        <p>기준 시각 : {{ modifiedAt }}</p>
+        <p>기준 시각 : {{ modifiedAt.substr(0, 10) }}</p>
         <br />
         <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
         <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>

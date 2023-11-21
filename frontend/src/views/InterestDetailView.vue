@@ -140,11 +140,11 @@ const addCart = (detail) => {
 
   // 중복이 아니라면 추가
   if (!isDuplicate) {
-    alert("장바구니에 추가합니다.");
+    alert("찜 목록에 추가합니다.");
     existingCart.push(detail);
     router.go(-1);
   } else {
-    alert("이미 장바구니에 추가된 상품입니다.");
+    alert("이미 찜한 상품입니다.");
   }
 
   // 수정된 카트 데이터를 localStorage 에 저장
