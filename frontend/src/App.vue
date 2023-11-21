@@ -32,6 +32,10 @@ const store = useArticleStore();
         ><v-btn class="nav-item text-black">지도</v-btn></RouterLink
       >
 
+      <RouterLink :to="{ name: 'cart' }"
+        ><v-btn class="nav-item text-black">장바구니</v-btn></RouterLink
+      >
+
       <!-- 로그인 되어있으면 프로필 페이지로, 아니면 로그인으로, 로그인 내에 회원가입으로 -->
       <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
         ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
