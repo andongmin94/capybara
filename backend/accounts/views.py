@@ -57,10 +57,10 @@ def edit(request):
         
     elif request.method =='PUT':
         try:
-            user_id=request.data['user_id']
             user=User.objects.get(id=user_id)
             user.name=request.data['name']
             user.nickname=request.data['nickname']
+            user.email=request.data['email']
             user.age=request.data['age']
             user.money=request.data['money']
             user.salary=request.data['salary']

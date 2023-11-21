@@ -12,6 +12,7 @@ import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import FindPasswordView from "@/views/FindPasswordView.vue";
+import ModifyView from "@/views/ModifyView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,6 +82,11 @@ const router = createRouter({
       path: "/findpassword",
       name: "findpassword",
       component: FindPasswordView,
+    },
+    {
+      path: "/modify",
+      name: "modify",
+      component: ModifyView,
     },
   ],
 });
