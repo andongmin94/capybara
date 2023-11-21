@@ -3,7 +3,7 @@
     <v-row>
       <v-col align="center">
         <h1>환율 계산기</h1>
-        <p>기준 시각 : {{ modifiedAt.substr(0, 10) }}</p>
+        <!-- <p>기준 시각 : {{ modifiedAt.substr(0, 10) }}</p> -->
         <br />
         <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
         <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>
@@ -18,7 +18,7 @@
           v-model="select1"
           class="selectbox"
           label="환전 출발"
-          variant="solo-inverted"
+          variant="solo-filled"
         >
         </v-select>
 
@@ -28,7 +28,7 @@
           v-model="select2"
           class="selectbox"
           label="환전 도착"
-          variant="solo-inverted"
+          variant="solo-filled"
         >
         </v-select>
 
@@ -39,6 +39,7 @@
           v-model.number="input_money"
           class="selectbox"
           label="금액"
+          variant="solo-filled"
         />
         <p>계산 결과 : {{ output_money.toFixed(2) }}</p>
         <br />

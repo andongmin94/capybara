@@ -4,28 +4,28 @@
     <v-card-text>
       <v-container fluid>
         <v-row align="center" justify="center" class="row">
-          <v-col cols="12" sm="1" md="1">
+          <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.M" column>
               <v-radio label="E" color="red-darken-3" value="E"></v-radio>
               <v-radio label="I" color="primary" value="I"></v-radio>
             </v-radio-group>
           </v-col>
 
-          <v-col cols="12" sm="1" md="1">
+          <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.B" column>
               <v-radio label="S" color="red" value="S"></v-radio>
               <v-radio label="N" color="secondary" value="N"></v-radio>
             </v-radio-group>
           </v-col>
 
-          <v-col cols="12" sm="1" md="1">
+          <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.T" column>
               <v-radio label="T" color="orange-darken-3" value="T"></v-radio>
               <v-radio label="F" color="info" value="F"></v-radio>
             </v-radio-group>
           </v-col>
 
-          <v-col cols="12" sm="1" md="1">
+          <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.I" column>
               <v-radio label="J" color="indigo" value="J"></v-radio>
               <v-radio label="P" color="success" value="P"></v-radio>
