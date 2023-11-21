@@ -18,7 +18,7 @@ const store = useArticleStore();
 
       <RouterLink :to="{ name: 'algorithm' }" class="nav-item mx-1"
         ><v-btn class="nav-item-text text-black"
-          >✨MBTI로 추천받기</v-btn
+          >✨MBTI로 추천받기✨</v-btn
         ></RouterLink
       >
 
@@ -29,16 +29,16 @@ const store = useArticleStore();
         ><v-btn class="nav-item-text text-black">커뮤니티</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'exchange' }" class="nav-item mx-1"
-        ><v-btn class="nav-item-text text-black">환율</v-btn></RouterLink
+      <RouterLink :to="{ name: 'interest' }" class="nav-item mx-1"
+        ><v-btn class="nav-item-text text-black">상품보기</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'interest' }" class="nav-item mx-1"
-        ><v-btn class="nav-item-text text-black">금리비교</v-btn></RouterLink
+      <RouterLink :to="{ name: 'exchange' }" class="nav-item mx-1"
+        ><v-btn class="nav-item-text text-black">환전하기</v-btn></RouterLink
       >
 
       <RouterLink :to="{ name: 'map' }" class="nav-item mx-1"
-        ><v-btn class="nav-item-text text-black">지도</v-btn></RouterLink
+        ><v-btn class="nav-item-text text-black">은행찾기</v-btn></RouterLink
       >
 
       <RouterLink

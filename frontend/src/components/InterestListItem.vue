@@ -121,6 +121,9 @@ $colors: (
 
 .wrapper-none {
   height: 1000px;
+  img {
+    width: 200px;
+  }
 }
 
 .content {

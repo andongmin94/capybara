@@ -1,14 +1,33 @@
 <template>
   <div class="wrapper">
-    <v-carousel show-arrows="hover" hide-delimiters height="auto">
+    <v-carousel show-arrows="hover" hide-delimiters height="auto" cycle>
       <v-carousel-item
         class="c-image"
         v-for="(item, i) in items"
         :key="i"
         :src="item.src"
-        @click="goThere(item)"
         cover
-      ></v-carousel-item>
+      >
+        <!-- 짝수 - 왼쪽 아래 -->
+        <v-chip
+          variant="elevated"
+          size="x-large"
+          v-if="i === 2 || i === 0"
+          class="chip-left"
+          @click="goThere(item)"
+        >
+          {{ item.content }}↗</v-chip
+        >
+        <!-- 홀수 - 오른쪽 아래 -->
+        <v-chip
+          variant="elevated"
+          size="x-large"
+          v-else
+          class="chip-right"
+          @click="goThere(item)"
+          ><strong>{{ item.content }}↗</strong></v-chip
+        >
+      </v-carousel-item>
     </v-carousel>
   </div>
 </template>
@@ -31,18 +50,22 @@ const items = [
   {
     src: "./src/assets/main1.svg",
     name: "interest",
+    content: "예금 상품 비교하러 가기 ",
   },
   {
     src: "./src/assets/main2.svg",
     name: "exchange",
+    content: "환율 계산하러 가기 ",
   },
   {
     src: "./src/assets/main3.svg",
     name: "map",
+    content: "가까운 은행 지점 찾기 ",
   },
   {
     src: "./src/assets/main4.svg",
     name: "algorithm",
+    content: "테스트하고 추천받기 ",
   },
 ];
 </script>
@@ -67,5 +90,23 @@ $colors: (
 .v-image {
   width: 300px;
   max-width: fit-content;
+}
+.c-image {
+  position: relative;
+}
+.chip-left {
+  position: absolute;
+  left: 50px;
+  bottom: 50px;
+  background-color: map-get($map: $colors, $key: forth);
+  color: map-get($map: $colors, $key: fifth);
+}
+
+.chip-right {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  background-color: map-get($map: $colors, $key: third);
+  color: map-get($map: $colors, $key: forth);
 }
 </style>
