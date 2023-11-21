@@ -71,9 +71,7 @@
               <p>최고 우대 금리: {{ detail.intr_rate2 }}%</p>
             </v-card-text>
             <v-card-actions
-              ><v-chip @click="addCart(detail)"
-                >가입하기</v-chip
-              ></v-card-actions
+              ><v-chip @click="addCart(detail)">찜하기</v-chip></v-card-actions
             >
           </v-card>
         </v-col>
