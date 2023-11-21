@@ -3,9 +3,9 @@
     <v-container>
       <h1 class="header">새 글 작성</h1>
 
-      <v-text-field v-model="title" label="제목" />
-      <v-textarea v-model="content" label="내용 " />
-      <v-file-input v-model="img" label="파일 첨부하기"></v-file-input>
+      <v-text-field v-model="title" label="제목" variant="solo-filled"/>
+      <v-textarea v-model="content" label="내용" variant="solo-filled"/>
+      <v-file-input v-model="img" label="파일 첨부하기" variant="solo-filled" class="file" />
       <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
       <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
 
@@ -76,5 +76,11 @@ $colors: (
 .header {
   background-color: map-get($colors, third);
   font-family: Pretendard-Regular;
+}
+
+.file {
+  :hover {
+    transform: translateY(-1px);
+  }
 }
 </style>

@@ -42,7 +42,7 @@ const items = [
   },
   {
     src: "./src/assets/main4.svg",
-    name: "profile",
+    name: "algorithm",
   },
 ];
 </script>

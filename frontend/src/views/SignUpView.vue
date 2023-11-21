@@ -10,6 +10,7 @@
           class="mb-2 inputform"
           clearable
           label="아이디"
+          variant="solo-inverted"
         ></v-text-field>
 
         <v-text-field
@@ -19,6 +20,7 @@
           class="mb-2 inputform"
           clearable
           label="이메일 주소"
+          variant="solo-inverted"
         ></v-text-field>
 
         <v-text-field
@@ -32,6 +34,7 @@
           label="비밀번호"
           placeholder="비밀번호를 입력하세요"
           @click:append-inner="visible = !visible"
+          variant="solo-inverted"
         ></v-text-field>
 
         <v-text-field
@@ -45,6 +48,7 @@
           label="비밀번호 확인"
           placeholder="비밀번호를 입력하세요"
           @click:append-inner="visible = !visible"
+          variant="solo-inverted"
         ></v-text-field>
 
         <v-btn

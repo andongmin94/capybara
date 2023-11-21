@@ -6,6 +6,7 @@
     </v-tabs>
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
+        <div v-if="n===1">
         <v-container>
           <v-row align="center" justify="center">
             <v-col
@@ -48,6 +49,10 @@
             </v-col>
           </v-row>
         </v-container>
+      </div>
+      <div v-else>
+        
+      </div>
       </v-window-item>
     </v-window>
   </v-card>

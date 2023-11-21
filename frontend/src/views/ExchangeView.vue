@@ -1,33 +1,50 @@
 <template>
   <div style="text-align: center">
-    <h1>환율 계산기</h1>
-    <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
-    <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>
-    <p v-else>환전할 금액을 입력해 주세요.</p>
-    <div>
-      <div>환전 출발</div>
-      <p>{{ select1 }}</p>
-      <select v-model="select1" class="selectbox">
-        <option v-for="payment in payments" :key="payment" :value="payment">
-          {{ country[payment] }}
-        </option>
-      </select>
-      :
-      <div><input type="text" v-model.number="input_money" /></div>
-    </div>
-    <v-chip @click="calculate">계산</v-chip>
+    <v-row>
+      <v-col align="center">
+        <h1>환율 계산기</h1>
+        <p>기준 시각 : {{ modifiedAt }}</p>
+        <br />
+        <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
+        <p v-else-if="rate">현재 환율은 {{ currencyUnit / rate }}입니다.</p>
+        <p v-else>환전할 금액을 입력해 주세요.</p>
+        <br />
 
-    <div>
-      <div>환전 도착</div>
-      <p>{{ select2 }}</p>
-      <select v-model="select2" class="selectbox">
-        <option v-for="payment in payments" :key="payment" :value="payment">
-          {{ country[payment] }}
-        </option>
-      </select>
-      <p>{{ output_money }}</p>
-      <p>기준 시각 : {{ modifiedAt }}</p>
-    </div>
+        <br />
+
+        <v-select
+          clearable
+          :items="payments"
+          v-model="select1"
+          class="selectbox"
+          label="환전 출발"
+          variant="solo-inverted"
+        >
+        </v-select>
+
+        <v-select
+          clearable
+          :items="payments"
+          v-model="select2"
+          class="selectbox"
+          label="환전 도착"
+          variant="solo-inverted"
+        >
+        </v-select>
+
+        <br />
+        <br />
+        계산할 금액을 입력하세요.
+        <v-text-field
+          v-model.number="input_money"
+          class="selectbox"
+          label="금액"
+        />
+        <p>계산 결과 : {{ output_money.toFixed(2) }}</p>
+        <br />
+        <v-chip @click="calculate">계산</v-chip>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -37,68 +54,6 @@ import axios from "axios";
 // prettier-ignore
 const payments = ref(["KRW", "USD","JPY","CNY", "EUR", "TWD", "VND", "GBP","CHF","CAD","AUD","HKD","SEK","NZD", "SGD","NOK","MXN","INR","RUB","ZAR","TRY","BRL","AED","BHD","BND","CNH","CZK","DKK","IDR","ILS","MYR","QAR","SAR","THB","CLP","COP","EGP","HUF","KWD","OMR","PHP","PLN","PKR","RON", "BDT","DZD","ETB","FJD","JOD","KES","KHR","KZT","LKR","LYD","MMK","MNT","MOP","NPR","TZS","UZS",
   ]);
-const country = ref({
-  KRW: "남한 원",
-  USD: "US 달러",
-  JPY: "일본 엔",
-  CNY: "중국 위안",
-  EUR: "유로",
-  TWD: "대만 대만달러",
-  VND: "베트남 동",
-  GBP: "영국 파운드",
-  CHF: "스위스 프랑",
-  CAD: "캐나디안 달러",
-  AUD: "오스트레일리아 달러",
-  HKD: "홍콩 달러",
-  SEK: "스웨덴 크로나",
-  NZD: "뉴질랜드 달러",
-  SGD: "싱가포르 달러",
-  NOK: "노르웨이 크로네",
-  MXN: "멕시코 페소",
-  INR: "인디안 루피",
-  RUB: "러시아 루블",
-  ZAR: "남아공 랜드",
-  TRY: "터키 리라",
-  BRL: "브라질리안 헤알",
-  AED: "아랍에미리트 디르함",
-  BHD: "바레인 디나르",
-  BND: "브루나이 달러",
-  CNH: "역외 중국 위안",
-  CZK: "체코 코루나",
-  DKK: "덴마크 크로네",
-  IDR: "인도네시아 루피아",
-  ILS: "이스라엘 셰켈",
-  MYR: "말레이시아 링겟",
-  QAR: "카타르 리알",
-  SAR: "사우디 리알",
-  THB: "태국 바트",
-  CLP: "칠레 페소",
-  COP: "콜롬비아 페소",
-  EGP: "이집트 파운드",
-  HUF: "헝가리 포린트",
-  KWD: "쿠웨이트 디나르",
-  OMR: "오만 리알",
-  PHP: "필리핀 페소",
-  PLN: "폴란드 즐로티",
-  PKR: "파키스탄 루피",
-  RON: "루마니아 레우",
-  BDT: "방글라데쉬 타카",
-  DZD: "알제리 디나르",
-  ETB: "에디오피아 디르",
-  FJD: "피지 달러",
-  JOD: "요르단 디나르",
-  KES: "케냐 실링",
-  KHR: "캄보디아 릴",
-  KZT: "카자흐스탄 텡게",
-  LKR: "스리랑카 루피",
-  LYD: "리비아 디나르",
-  MMK: "미얀마 차트",
-  MNT: "몽골 투그리크",
-  MOP: "마카오 파타카",
-  NPR: "네팔 루피",
-  TZS: "탄자니아 실링",
-  UZS: "우즈베키스탄 숨",
-});
 
 const select1 = ref(null);
 const select2 = ref(null);
@@ -171,6 +126,6 @@ const calculate = function () {
 
 <style lang="scss" scoped>
 .selectbox {
-  border: 1px black solid;
+  width: 300px;
 }
 </style>
