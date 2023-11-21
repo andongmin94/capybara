@@ -15,6 +15,8 @@ import ProfileView from "@/views/ProfileView.vue";
 import FindPasswordView from "@/views/FindPasswordView.vue";
 import ModifyView from "@/views/ModifyView.vue";
 import changePasswordView from "@/views/changePasswordView.vue";
+import AlgorithmView from "@/views/AlgorithmView.vue";
+import AlgorithmResultView from "@/views/AlgorithmResultView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,6 +101,17 @@ const router = createRouter({
       path: "/changepassword",
       name: "changepassword",
       component: changePasswordView,
+    },
+    // 알고리즘
+    {
+      path: "/algorithm",
+      name: "algorithm",
+      component: AlgorithmView,
+    },
+    {
+      path: "/algorithmresult",
+      name: "algorithmresult",
+      component: AlgorithmResultView,
     },
   ],
 });
