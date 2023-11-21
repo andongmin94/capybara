@@ -14,7 +14,7 @@
       <Marker
         :value="1000"
         label="Avg."
-        color="#e76f51"
+        color="#8c704f"
         :strokeWidth="2"
         strokeDasharray="6 6"
       />
@@ -22,10 +22,12 @@
 
     <template #widgets>
       <Tooltip
-        borderColor="#48CAE4"
+        borderColor="#59452c"
         :config="{
-          lowRate: { color: '#90e0ef' },
-          highRate: { color: '#0096c7' },
+          saveTerm: { label: '저축 기간', color: '#402a17' },
+          lowRate: { label: '옵션 저축 금리', color: '#59452c' },
+          highRate: { label: '최고 우대 금리', color: '#8c704f' },
+          name: { label: '상품 이름', color: '#59452c' },
         }"
       />
     </template>
@@ -62,7 +64,7 @@ watch(
         // 최고 우대 금리
         highRate: item.intr_rate2,
         // 엄마 상품 이름
-        name: `${item.save_trm}개월 - ${momProd}`,
+        name: `[${item.save_trm}개월] ${momProd}`,
       });
     });
   },
@@ -71,9 +73,9 @@ watch(
 
 const direction = ref("horizontal");
 const margin = ref({
-  left: 20,
+  left: 0,
   top: 20,
-  right: 20,
+  right: 0,
   bottom: 20,
 });
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container>
+    <v-container align="center">
       <v-row class="mt-4 mb-5" align="center" justify="center">
         <h1>찜한 상품 모아보기</h1>
       </v-row>
@@ -9,6 +9,7 @@
         <v-row align="center" justify="center" class="mb-5">
           <UserChart :mom-products="momProducts" :cart-items="cartItems" />
         </v-row>
+
         <div v-for="product in cartItems" :key="product.id">
           <v-card class="eachcard mb-5">
             <v-card-item>
@@ -28,7 +29,7 @@
                         </div>
                       </v-col>
 
-                      <v-col class="d-flex flex-column" cols="4">
+                      <v-col class="d-flex flex-column" cols="5">
                         <div>
                           <div>{{ product.intr_rate_type_nm }}</div>
                         </div>
@@ -42,14 +43,14 @@
                           <div>기간: {{ product.save_trm }}개월</div>
                         </div>
                       </v-col>
-                      <v-col class="align-self-center custom5" cols="2">
+                      < class="align-self-center" cols="1">
                         <div>
                           <!-- <v-chip @click="goDetail(mom)">상세페이지로 이동</v-chip> -->
-                          <v-chip class="px-1 custom5" @click="removeCart(product)"
-                            >　가입 상품 삭제　</v-chip
+                          <v-chip class="px-1" @click="removeCart(product)"
+                            >찜 삭제</v-chip
                           >
                         </div>
-                      </v-col>
+                      </>
                     </v-row>
                   </v-container>
                 </div>
@@ -137,6 +138,7 @@ $colors: (
 .eachcard {
   background-color: map-get($map: $colors, $key: first);
   color: map-get($map: $colors, $key: fifth);
+  max-width: 1100px;
 }
 .product-name {
   font-size: larger;
