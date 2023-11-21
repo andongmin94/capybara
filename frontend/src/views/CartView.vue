@@ -42,11 +42,11 @@
                           <div>기간: {{ product.save_trm }}개월</div>
                         </div>
                       </v-col>
-                      <v-col class="align-self-center" cols="2">
+                      <v-col class="align-self-center custom5" cols="2">
                         <div>
                           <!-- <v-chip @click="goDetail(mom)">상세페이지로 이동</v-chip> -->
-                          <v-chip class="px-1" @click="removeCart(product)"
-                            >장바구니에서 삭제</v-chip
+                          <v-chip class="px-1 custom5" @click="removeCart(product)"
+                            >　가입 상품 삭제　</v-chip
                           >
                         </div>
                       </v-col>
@@ -146,4 +146,9 @@ $colors: (
   font-family: Pretendard-Regular;
   font-size: larger;
 }
+
+.custom5 {
+  transform: scale(1.2);
+}
+
 </style>

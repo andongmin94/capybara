@@ -9,7 +9,7 @@
           class="mb-2 inputform"
           clearable
           label="이름"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -17,7 +17,7 @@
           class="mb-2 inputform"
           clearable
           label="닉네임"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -25,7 +25,7 @@
           class="mb-2 inputform"
           clearable
           label="이메일"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -33,7 +33,7 @@
           class="mb-2 inputform"
           clearable
           label="나이"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -41,7 +41,7 @@
           class="mb-2 inputform"
           clearable
           label="자산"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -49,7 +49,7 @@
           class="mb-2 inputform"
           clearable
           label="연봉"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <br />

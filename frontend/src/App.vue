@@ -93,5 +93,8 @@ $colors: (
 .nav-item-text {
   font-family: Pretendard-Regular;
   font-weight: 900;
+  :hover {
+    transform: none;
+  }
 }
 </style>

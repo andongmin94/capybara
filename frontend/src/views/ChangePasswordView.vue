@@ -14,7 +14,7 @@
           label="기존 비밀번호"
           placeholder="기존 비밀번호를 입력하세요"
           @click:append-inner="visible = !visible"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -26,7 +26,7 @@
           label="새로운 비밀번호"
           placeholder="새로운 비밀번호를 입력하세요"
           @click:append-inner="visible = !visible"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -38,7 +38,7 @@
           label="비밀번호 확인"
           placeholder="새로운 비밀번호를 확인합니다"
           @click:append-inner="visible = !visible"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-btn
