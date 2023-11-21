@@ -59,5 +59,4 @@ watch(province, () => {
   updateCities();
 });
 
-updateCities();
 </script>

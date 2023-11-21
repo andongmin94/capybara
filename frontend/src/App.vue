@@ -8,9 +8,11 @@ const store = useArticleStore();
 <template>
   <header>
     <v-toolbar>
-      <v-toolbar-title
-        ><v-img class="title" src="../src/assets/appbarlogo.svg" alt=""
-      /></v-toolbar-title>
+      <v-toolbar-title>
+        <RouterLink :to="{ name: 'home' }">
+          <v-img class="title" src="../src/assets/appbarlogo.svg" alt="" />
+        </RouterLink>
+      </v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }} 님 환영합니다.</div>
 
       <RouterLink :to="{ name: 'algorithm' }"
@@ -41,7 +43,6 @@ const store = useArticleStore();
         ><v-btn class="nav-item text-black">장바구니</v-btn></RouterLink
       >
 
-      <!-- 로그인 되어있으면 프로필 페이지로, 아니면 로그인으로, 로그인 내에 회원가입으로 -->
       <RouterLink :to="{ name: 'login' }" v-if="!store.isLogin"
         ><v-btn class="nav-item text-black">로그인</v-btn></RouterLink
       >
@@ -53,8 +54,6 @@ const store = useArticleStore();
         v-if="store.isLogin"
         ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
       >
-      <!-- 마이페이지에 넣기 -->
-      <!-- <v-btn @click="store.logOut()" v-if="store.isLogin" class="nav-item text-black">로그아웃</v-btn> -->
     </v-toolbar>
   </header>
 
@@ -77,10 +76,21 @@ $colors: (
 .title {
   height: 50px;
   width: 120px;
+  transform: scale(1.4);
+  margin-top: 10px;
+  margin-left: 10px;
+  :hover {
+    transform: scale(1.1);
+  }
 }
 
 .nav-item {
   font-family: Pretendard-Regular;
   font-weight: 900;
+
+  :hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+  }
 }
 </style>

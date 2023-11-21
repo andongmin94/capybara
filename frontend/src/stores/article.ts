@@ -96,6 +96,7 @@ export const useArticleStore = defineStore("article", () => {
       })
       .catch((err) => {
         console.log(err);
+        alert('아이디 또는 비밀번호가 틀렸습니다.');
       });
   };
 
