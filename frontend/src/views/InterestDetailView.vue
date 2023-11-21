@@ -2,6 +2,9 @@
   <div>
     <v-container>
       <v-chip @click="goBack">상품 목록으로 돌아가기</v-chip>
+      <v-chip @click="addCart(store.selectedItem.value)">
+        장바구니에 추가
+      </v-chip>
 
       <v-row>
         <v-col align="center" justify="center">
@@ -87,6 +90,36 @@ onMounted(() => {
       console.log(err);
     });
 });
+
+const addCart = (product) => {
+  console.log(product.fin_prdt_cd);
+  // 하나의 데이터만 저장하기
+  // 문제점 : 덮어쓰기 된다.
+  // localStorage.setItem('cart', JSON.stringify(product))
+
+  // 여러 데이터 저장하기
+  // 현재 localStorage 에 저장된 데이터 가져오기
+  // 만약 없다면 비어있는 리스트로 초기화
+  const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // 중복된 제품이 있는지 확인
+  const isDuplicate =
+    existingCart.length > 0 &&
+    existingCart.find((item) => item.fin_prdt_cd === product.fin_prdt_cd);
+
+  // 중복이 아니라면 추가
+  if (!isDuplicate) {
+    alert("장바구니에 추가합니다");
+    existingCart.push(product);
+  } else {
+    alert("이미 있는 상품입니다. 장바구니로 이동합니다.");
+  }
+
+  // 수정된 카트 데이터를 localStorage 에 저장
+  localStorage.setItem("cart", JSON.stringify(existingCart));
+
+  router.push("/cart");
+};
 </script>
 
 <style scoped lang="scss">
