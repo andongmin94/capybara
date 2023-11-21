@@ -13,7 +13,7 @@
           class="mb-2 inputform"
           clearable
           label="아이디"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <v-text-field
@@ -23,7 +23,7 @@
           class="mb-2 inputform"
           clearable
           label="이메일 주소"
-          variant="solo-inverted"
+          variant="solo-filled"
         ></v-text-field>
 
         <br />

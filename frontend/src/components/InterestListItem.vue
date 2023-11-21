@@ -7,8 +7,8 @@
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
-          <RouterLink :to="{ name: 'cart' }"
-            ><v-chip class="nav-item text-black mt-4"
+          <RouterLink :to="{ name: 'cart' }" class="custom"
+            ><v-chip class="nav-item text-black mt-4 custom2"
               >내가 찜한 목록 🎁</v-chip
             ></RouterLink
           >
@@ -128,5 +128,17 @@ $colors: (
 
 .content {
   font-size: larger;
+}
+
+.custom {
+  :hover {
+    transform: scale(1.2);
+  }
+}
+
+.custom2 {
+  :hover {
+    transform: none;
+  }
 }
 </style>
