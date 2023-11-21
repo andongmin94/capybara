@@ -31,6 +31,11 @@ export const useCounterStore = defineStore("counter", () => {
       });
   };
 
+  const M = ref("");
+  const B = ref("");
+  const T = ref("");
+  const I = ref("");
+
   return {
     count,
     doubleCount,
@@ -39,5 +44,6 @@ export const useCounterStore = defineStore("counter", () => {
     finances,
     getFinances,
     selectedItem,
+    M, B, T, I,
   };
 });

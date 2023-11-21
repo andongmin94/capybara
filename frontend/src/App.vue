@@ -12,6 +12,11 @@ const store = useArticleStore();
         ><v-img class="title" src="../src/assets/appbarlogo.svg" alt=""
       /></v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }} 님 환영합니다.</div>
+
+      <RouterLink :to="{ name: 'algorithm' }"
+        ><v-btn class="nav-item text-black">추천 상품</v-btn></RouterLink
+      >
+
       <RouterLink :to="{ name: 'home' }"
         ><v-btn class="nav-item text-black">홈</v-btn></RouterLink
       >
