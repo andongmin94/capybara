@@ -6,7 +6,13 @@
   </v-data-table>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { RouterLink } from "vue-router";
+
+defineProps({
+  article: Object,
+});
+
 const items = [
   {
     id: 1,
