@@ -7,6 +7,7 @@ import CreateView from "@/views/CreateView.vue";
 import ExchangeView from "@/views/ExchangeView.vue";
 import InterestView from "@/views/InterestView.vue";
 import InterestDetailView from "@/views/InterestDetailView.vue";
+import CartView from "@/views/CartView.vue";
 import MapView from "@/views/MapView.vue";
 import SignUpView from "@/views/SignUpView.vue";
 import LogInView from "@/views/LogInView.vue";
@@ -54,6 +55,11 @@ const router = createRouter({
       path: "/interestDetail/:id",
       name: "interestDetail",
       component: InterestDetailView,
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartView,
     },
     // 지도
     {
