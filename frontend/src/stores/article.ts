@@ -19,7 +19,6 @@ export const useArticleStore = defineStore("article", () => {
     }
   });
 
-
   // 금융 데이터 초기 세팅하는 메서드
   // InterestView에 마운트 시켜놨음
   const setFinances = function () {
@@ -96,7 +95,7 @@ export const useArticleStore = defineStore("article", () => {
       })
       .catch((err) => {
         console.log(err);
-        alert('아이디 또는 비밀번호가 틀렸습니다.');
+        alert("아이디 또는 비밀번호가 틀렸습니다.");
       });
   };
 
@@ -122,14 +121,14 @@ export const useArticleStore = defineStore("article", () => {
       headers: {
         Authorization: `Token ${token.value}`,
       },
-      data : {
+      data: {
         name,
         nickname,
         email,
         age,
         money,
         salary,
-      }
+      },
     })
       .then((res) => {
         console.log(res.data);
@@ -147,14 +146,14 @@ export const useArticleStore = defineStore("article", () => {
       headers: {
         Authorization: `Token ${token.value}`,
       },
-      data : {
+      data: {
         old_password,
         new_password1,
         new_password2,
-      }
+      },
     })
       .then((res) => {
-        console.log('비밀번호 변경 성공');
+        console.log("비밀번호 변경 성공");
       })
       .catch((err) => {
         console.log(err);

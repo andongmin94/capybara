@@ -1,4 +1,5 @@
 <template>
+  <!-- 화면 작아지면 선택지 안보이는 거 수정하기 -->
   <v-card flat>
     <v-card-text>
       <v-container fluid>

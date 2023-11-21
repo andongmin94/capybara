@@ -9,14 +9,14 @@ const store = useArticleStore();
   <header>
     <v-toolbar>
       <!--화면 가장 작을때 사라지는거 수정하기 -->
-      <v-toolbar-title class="px-5 mt-0">
+      <v-toolbar-title class="">
         <RouterLink :to="{ name: 'home' }">
           <v-img class="title" src="../src/assets/appbarlogo.svg" alt="" />
         </RouterLink>
       </v-toolbar-title>
-      <div v-if="store.isLogin">{{ store.search_username }} 님 환영합니다.</div>
+      <div v-if="store.isLogin">{{ store.search_username }}님 환영합니다.</div>
 
-      <RouterLink :to="{ name: 'algorithm' }" class="nav-item mx-2"
+      <RouterLink :to="{ name: 'algorithm' }" class="nav-item mx-1"
         ><v-btn class="nav-item-text text-black"
           >✨MBTI로 추천받기</v-btn
         ></RouterLink
@@ -24,26 +24,26 @@ const store = useArticleStore();
 
       <RouterLink
         :to="{ name: 'article' }"
-        class="nav-item mx-2"
+        class="nav-item mx-1"
         v-if="store.isLogin"
         ><v-btn class="nav-item-text text-black">커뮤니티</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'exchange' }" class="nav-item mx-2"
+      <RouterLink :to="{ name: 'exchange' }" class="nav-item mx-1"
         ><v-btn class="nav-item-text text-black">환율</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'interest' }" class="nav-item mx-2"
+      <RouterLink :to="{ name: 'interest' }" class="nav-item mx-1"
         ><v-btn class="nav-item-text text-black">금리비교</v-btn></RouterLink
       >
 
-      <RouterLink :to="{ name: 'map' }" class="nav-item mx-2"
+      <RouterLink :to="{ name: 'map' }" class="nav-item mx-1"
         ><v-btn class="nav-item-text text-black">지도</v-btn></RouterLink
       >
 
       <RouterLink
         :to="{ name: 'login' }"
-        class="nav-item mx-2"
+        class="nav-item mx-1"
         v-if="!store.isLogin"
         ><v-btn class="nav-item-text text-black">로그인</v-btn></RouterLink
       >
@@ -52,9 +52,9 @@ const store = useArticleStore();
           name: 'profile',
           params: { search_username: store.search_username },
         }"
-        class="nav-item mx-2"
+        class="nav-item mx-1"
         v-if="store.isLogin"
-        ><v-btn class="nav-item text-black">마이페이지</v-btn></RouterLink
+        ><v-btn class="nav-item-text text-black">마이페이지</v-btn></RouterLink
       >
     </v-toolbar>
   </header>
