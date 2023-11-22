@@ -7,12 +7,13 @@
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
-          <div style="text-align: center;">
-          <RouterLink :to="{ name: 'cart' }" class="custom" 
-            ><v-chip class="nav-item text-black mt-4 custom2" elevation="2"
-              >내가 찜한 목록 🎁</v-chip
-            ></RouterLink
-          ></div>
+          <div style="text-align: center">
+            <RouterLink :to="{ name: 'cart' }" class="custom"
+              ><v-chip class="nav-item text-black mt-4 custom2" elevation="2"
+                >내가 찜한 목록 🎁</v-chip
+              ></RouterLink
+            >
+          </div>
           <v-container>
             <v-row align="center" justify="center">
               <v-col
@@ -56,7 +57,8 @@
             </v-row>
           </v-container>
         </div>
-        <div v-else class="wrapper-none custom3"><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div v-else class="wrapper-none custom3">
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
           <div><img src="@/assets/workingon.png" alt="" /></div>
           <div class="content"><strong>서비스 준비 중입니다. </strong></div>
         </div>
