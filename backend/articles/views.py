@@ -72,12 +72,15 @@ def comments_create(request, article_pk,parent_pk):
     return Response({'message': 'fail'})
 
 
-@api_view(['POST'])
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def comments_delete(request, article_pk, comment_pk):
-    '''
-    if request.user.is_authenticated:
-        comment = get_object_or_404(Comment, pk=comment_pk)
-        if request.user == comment.user:
-            comment.delete()
-    return redirect('articles:detail', article_pk)
-    '''
+    print(12123)
+    comment = get_object_or_404(Comment, article_id=article_pk, pk=comment_pk)
+
+    # 댓글 작성자와 현재 사용자가 같은지 확인
+    if request.user != comment.user:
+        return Response({'message': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
+
+    comment.delete()
+    return Response({'message': '댓글이 삭제되었습니다.'}, status=status.HTTP_204_NO_CONTENT)
