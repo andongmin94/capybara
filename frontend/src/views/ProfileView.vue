@@ -2,7 +2,7 @@
   <div v-if="store.user_data" class="profile-container d-flex justify-center">
     <v-card
       class="profile-card d-flex flex-column justify-space-around mt-4"
-      height="420px"
+      height="480px"
     >
       <v-container class="px-8">
         <v-row class="mt-5">
