@@ -16,10 +16,10 @@
           <v-col>
             <div class="d-flex justify-center">
               <RouterLink :to="{ name: 'modify' }">
-                <v-chip class="text-black mx-3">회원정보 수정</v-chip>
+                <v-chip class="text-black mx-3 custom7">회원정보 수정</v-chip>
               </RouterLink>
               <RouterLink :to="{ name: 'changepassword' }">
-                <v-chip class="text-black mx-3">비밀번호 변경</v-chip>
+                <v-chip class="text-black mx-3 custom7">비밀번호 변경</v-chip>
               </RouterLink>
             </div>
           </v-col>
@@ -95,8 +95,14 @@ const checkDelete = () => {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .container {
   text-align: center;
+}
+
+.custom7 {
+  :hover{
+    cursor: pointer;;
+  }
 }
 </style>

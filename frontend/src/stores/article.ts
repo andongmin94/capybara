@@ -113,7 +113,7 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const editProfile = function () {
+  const editProfile = function (payload:any) {
     const { name, nickname, email, age, money, salary } = payload;
     axios({
       method: "put",
@@ -138,8 +138,7 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const changePassword = function () {
-    const { name, nickname, email, age, money, salary } = payload;
+  const changePassword = function (payload:any) {
     axios({
       method: "post",
       url: `${API_URL}/accounts/password/change/`,
