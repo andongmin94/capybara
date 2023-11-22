@@ -88,9 +88,11 @@ const deleteArticle = function () {
     headers: { Authorization: `Token ${store.token}` },
   })
     .then((res) => {
-      article.value = res.data;
+      console.log('여기서부터')
+      console.log(article);
+      article.value = res.data.article;
       setTimeout(() => {
-        router.push({ name: "article" });
+        router.push({ name: "home" });
       }, 1000);
     })
     .catch((err) => {
