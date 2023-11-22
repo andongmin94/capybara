@@ -1,49 +1,82 @@
 <template>
   <div class="article-detail-wrapper">
-    <v-btn @click="goBack">목록</v-btn>
-    <div v-if="article">
-      <p>제목 : {{ article.article.title }}</p>
-      <p>작성자 : {{ article.article.user.username }}</p>
-      <p>내용 : {{ article.article.content }}</p>
-      <p>
-        작성일 : {{ article.article.created_at.slice(0, 4) }}년
-        {{ article.article.created_at.slice(5, 7) }}월
-        {{ article.article.created_at.slice(8, 10) }}일
-        {{ article.article.created_at.slice(11, 13) }}시
-        {{ article.article.created_at.slice(14, 16) }}분
-      </p>
-      <p>
-        수정일 : {{ article.article.updated_at.slice(0, 4) }}년
-        {{ article.article.updated_at.slice(5, 7) }}월
-        {{ article.article.updated_at.slice(8, 10) }}일
-        {{ article.article.updated_at.slice(11, 13) }}시
-        {{ article.article.updated_at.slice(14, 16) }}분
-      </p>
-      <v-btn @click="deleteArticle"> 삭제 </v-btn>
-    </div>
-    <!-- 댓글 작성 폼 -->
-    <div class="mt-6">
-      <h2 class="text-xl font-bold mb-3">댓글 작성하기</h2>
-      <textarea
-        v-model.trim="newComment"
-        class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="댓글을 입력하세요"
-      ></textarea>
-      <v-btn
-        @click="submitComment(0)"
-        class="mt-2 bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
-      >
-        댓글 작성
-      </v-btn>
-    </div>
+    <v-container>
+      <v-row>
+        <v-col cols="8" offset="2">
+          <v-sheet elevation="3" class="article-detail-sheet pa-10">
+            <v-chip @click="goBack" class="mb-5">뒤로 가기</v-chip>
+            <div v-if="article">
+              <p class="article-detail-title mb-7">{{ article.article.title }}</p>
+              <div class="d-flex mb-7">
+              <p class="article-detail-detail mr-5">
+                <strong>작성자</strong>
+                <div>{{ article.article.user.nickname }}</div>
+              </p>
+                <p class="article-detail-detail mr-5">
+                  <strong>작성일시</strong> 
+                  <div>
+                  {{ article.article.created_at.slice(0, 4) }}년
+                  {{ article.article.created_at.slice(5, 7) }}월
+                  {{ article.article.created_at.slice(8, 10) }}일
+                  {{ article.article.created_at.slice(11, 13) }}시
+                  {{ article.article.created_at.slice(14, 16) }}분
+                </div>
+                </p>
+                <p class="article-detail-detail">
+                 <strong> 마지막 수정일시 </strong>
+                  <div>
+                  {{ article.article.updated_at.slice(0, 4) }}년
+                  {{ article.article.updated_at.slice(5, 7) }}월
+                  {{ article.article.updated_at.slice(8, 10) }}일
+                  {{ article.article.updated_at.slice(11, 13) }}시
+                  {{ article.article.updated_at.slice(14, 16) }}분
+                </div>
+                </p>
+              </div>
+              <p class="article-detail-content mb-5 pa-3">
+                {{ article.article.content }}
+              </p>
+              <div class="d-flex flex-row-reverse">
+                <v-chip @click="deleteArticle" color="red" class="ml-2"> 글 삭제 </v-chip>
+                <v-chip @click="deleteArticle" color="primary"> 글 수정 </v-chip>
+            </div>
+            </div>
+            <!-- 댓글 작성 폼 -->
+            <div class="mt-6">
+              <div class="text-xl font-bold mb-3">댓글</div>
+              <div class="d-flex">
+              <v-text-field
+                v-model.trim="newComment"
+                class="article-detail-comment-input mr-4"
+                placeholder="댓글을 입력하세요"
+              ></v-text-field>
+              <v-chip
+                @click="submitComment(0)"
+             
+                class="mt-2 text-black font-bold py-2 px-4"
+              >
+                 작성
+              </v-chip>
+            </div>
+            </div>
 
-    <p>댓글 목록</p>
-    <div v-if="article">
-      <p v-for="comment in article.comments">
-        작성자 : {{ comment.user.username }} 내용 : {{ comment.content }}
-        <button @click="deleteComment(comment)">댓글 삭제</button>
-      </p>
-    </div>
+            
+            <div v-if="article">
+              <p v-for="comment in article.comments" class="mb-5">
+                <div class="article-detail-comment-user">
+                  <strong> {{ comment.user.nickname }}</strong>
+                </div>
+                
+                <div class="d-flex justify-space-between"> 
+                  <div>{{ comment.content }}</div>
+                  <v-chip color="red" size="small" @click="deleteComment(comment)">x</v-chip>
+                </div>
+              </p>
+            </div>
+          </v-sheet>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -162,5 +195,31 @@ $colors: (
 
 .article-detail-wrapper {
   background-color: map-get($colors, third);
+}
+
+.article-detail-sheet {
+  border-radius: 5px;
+}
+
+.article-detail-title {
+  font-size: xx-large;
+  font-weight: 900;
+}
+
+.article-detail-detail {
+  font-size: smaller;
+}
+.article-detail-content {
+  
+  min-height: 400px;
+  
+}
+
+.article-detail-comment-input{
+  min-width : 50px;
+
+}
+.article-detail-comment-user {
+  font-size: smaller;
 }
 </style>

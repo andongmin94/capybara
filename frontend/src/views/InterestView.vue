@@ -1,6 +1,7 @@
 <template>
   <div>
     <InterestListItem />
+    <ScrollToTop />
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import { useCounterStore } from "@/stores/counter";
 import { RouterLink } from "vue-router";
 import InterestListItem from "@/components/InterestListItem.vue";
 import axios from "axios";
+import ScrollToTop from "@/components/ScrollToTop.vue";
 const store = useCounterStore();
 
 onMounted(async () => {
