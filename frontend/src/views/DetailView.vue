@@ -37,8 +37,8 @@
                 {{ article.article.content }}
               </p>
               <div class="d-flex flex-row-reverse">
-                <v-chip @click="deleteArticle" color="red" class="ml-2"> 글 삭제 </v-chip>
-                <v-chip @click="deleteArticle" color="primary"> 글 수정 </v-chip>
+                <v-chip elevation="2" @click="deleteArticle" color="red" class="ml-2"> 글 삭제 </v-chip>
+                <v-chip  elevation="2" color="primary"> 글 수정 </v-chip>
             </div>
             </div>
             <!-- 댓글 작성 폼 -->
@@ -52,7 +52,7 @@
               ></v-text-field>
               <v-chip
                 @click="submitComment(0)"
-             
+             elevation="2"
                 class="mt-2 text-black font-bold py-2 px-4"
               >
                  작성
@@ -69,7 +69,7 @@
                 
                 <div class="d-flex justify-space-between"> 
                   <div>{{ comment.content }}</div>
-                  <v-chip color="red" size="small" @click="deleteComment(comment)">x</v-chip>
+                  <v-chip size="small" @click="deleteComment(comment)">x</v-chip>
                 </div>
               </p>
             </div>
@@ -210,7 +210,7 @@ $colors: (
   font-size: smaller;
 }
 .article-detail-content {
-  
+  background-color: map-get($map: $colors, $key: fifth);
   min-height: 400px;
   
 }
