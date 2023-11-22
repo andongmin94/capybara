@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="pa-12 wrapper">
+  <v-sheet class="pa-12 login-wrapper">
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="logIn">
         <h1 class="text-center mb-5">로그인</h1>
@@ -7,7 +7,7 @@
           v-model.trim="username"
           :readonly="loading"
           :rules="[required]"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="아이디"
           variant="solo-filled"
@@ -19,7 +19,7 @@
           :type="visible ? 'text' : 'password'"
           :readonly="loading"
           :rules="[required]"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="비밀번호"
           placeholder="비밀번호를 입력하세요"
@@ -33,7 +33,7 @@
           :disabled="!form"
           :loading="loading"
           block
-          class="inputform btn"
+          class="login-btn"
           color="white"
           size="large"
           type="submit"
@@ -108,16 +108,11 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.wrapper {
+.login-wrapper {
   background-color: map-get($colors, third);
 }
 
-.inputform {
-  font-family: Pretendard-Regular;
-  font-weight: 300;
-}
-
-.btn {
+.login-btn {
   background-color: map-get($colors, second) !important;
   color: white !important;
 }

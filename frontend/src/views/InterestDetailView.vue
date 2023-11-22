@@ -8,8 +8,14 @@
 
       <v-row>
         <v-col align="center" justify="center">
-          <h1 class="mb-5">{{ store.selectedItem?.value?.fin_prdt_nm }}</h1>
-          <h2 class="mb-10">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
+          <h1 class="mb-5 interest-detail-product">
+            {{ store.selectedItem?.value?.fin_prdt_nm }}
+          </h1>
+          <h2 class="mb-6">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
+          <v-divider
+            class="interest-detail-divider mb-5"
+            :thickness="3"
+          ></v-divider>
           <v-col cols="10" lg="8">
             <v-row>
               <v-col cols="6">
@@ -55,7 +61,11 @@
       </v-row>
 
       <v-row align="center" justify="center">
-        <v-chip>가입기간</v-chip>
+        <v-divider
+          class="interest-detail-divider mb-5"
+          :thickness="1"
+        ></v-divider>
+        <v-chip class="mt-3">가입기간</v-chip>
       </v-row>
       <v-row align="center" justify="center">
         <v-col cols="12" md="4" lg="3" v-for="detail in finance" :key="detail">
@@ -72,7 +82,9 @@
               <p>최고 우대 금리: {{ detail.intr_rate2 }}%</p>
             </v-card-text>
             <v-card-actions
-              ><v-chip @click="addCart(detail)">찜하기</v-chip></v-card-actions
+              ><v-chip elevation="1" @click="addCart(detail)"
+                >✔ 찜하기</v-chip
+              ></v-card-actions
             >
           </v-card>
         </v-col>
@@ -161,5 +173,10 @@ $colors: (
 * {
   font-family: Pretendard-Regular;
   font-weight: 600;
+}
+
+.interest-detail-divider {
+  opacity: 100%;
+  width: 200px;
 }
 </style>

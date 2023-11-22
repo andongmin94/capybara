@@ -141,6 +141,7 @@ $colors: (
 }
 .map-search-btn {
   width: fit-content;
+
   background-color: map-get($map: $colors, $key: first);
   color: map-get($map: $colors, $key: fifth);
 }

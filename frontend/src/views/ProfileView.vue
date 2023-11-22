@@ -1,11 +1,11 @@
 <template>
-  <div v-if="store.user_data" class="container d-flex justify-center">
+  <div v-if="store.user_data" class="profile-container d-flex justify-center">
     <v-card
       class="profile-card d-flex flex-column justify-space-around mt-4"
-      height="400px"
+      height="420px"
     >
-      <v-container>
-        <v-row>
+      <v-container class="px-8">
+        <v-row class="mt-5">
           <v-col>
             <v-card-title>
               <strong>{{ store.user_data.data.username }}님의 프로필</strong>
@@ -24,7 +24,6 @@
             </div>
           </v-col>
         </v-row>
-        <!-- <p>나이 : {{ store.user_data.data.age }}</p> -->
         <v-row class="d-flex flex-column align-center">
           <v-col>
             <v-card-text>
@@ -57,7 +56,7 @@
           </v-col>
         </v-row>
 
-        <v-row>
+        <v-row class="pb-10">
           <v-col>
             <v-chip @click="store.logOut" class="mx-3" color="secondary"
               >로그아웃</v-chip
@@ -99,7 +98,7 @@ const checkDelete = () => {
 </script>
 
 <style>
-.container {
+.profile-container {
   text-align: center;
 }
 </style>

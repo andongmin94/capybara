@@ -3,7 +3,7 @@
     <v-container class="d-flex flex-column align-center">
       <h1>404 NOT FOUND</h1>
       <p>잘못된 접근입니다</p>
-      <img class="image" src="@/assets/404.png" />
+      <img class="not-found-image" src="@/assets/404.png" />
       <v-chip @click="goHome">돌아가기</v-chip>
     </v-container>
   </div>
@@ -17,7 +17,7 @@ const goHome = function () {
 };
 </script>
 <style scoped lang="scss">
-.image {
+.not-found-image {
   width: 250px;
 }
 </style>

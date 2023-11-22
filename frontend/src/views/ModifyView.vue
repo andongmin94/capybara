@@ -1,12 +1,12 @@
 <template>
-  <v-sheet class="pa-12 wrapper">
+  <v-sheet class="pa-12" align="center">
     <v-card class="px-6 py-8 form-card" max-width="344">
       <v-form v-model="form" @submit.prevent="editProfile">
         <h1 class="text-center mb-5">회원정보 수정 페이지</h1>
 
         <v-text-field
           v-model.trim="nickname"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="닉네임"
           variant="solo-filled"
@@ -14,7 +14,7 @@
 
         <v-text-field
           v-model.trim="email"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="이메일"
           variant="solo-filled"
@@ -26,11 +26,9 @@
           :disabled="!form"
           :loading="loading"
           block
-          class="inputform btn"
-          color="white"
+          class="modify-btn"
           size="large"
           type="submit"
-          variant="elevated"
         >
           수정하기
         </v-btn>
@@ -61,6 +59,15 @@ const editProfile = function () {
 </script>
 
 <style lang="scss" scoped>
-.form-card {
+$colors: (
+  first: #59452c,
+  second: #8c704f,
+  third: #d9bb96,
+  forth: #402a17,
+  fifth: #f2f2f2,
+);
+.modify-btn {
+  background-color: map-get($map: $colors, $key: second);
+  color: map-get($map: $colors, $key: fifth);
 }
 </style>
