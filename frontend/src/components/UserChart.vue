@@ -9,8 +9,18 @@
     <template #layers>
       <Grid strokeDasharray="2, 2" />
       <!-- key, value -->
-      <Bar :dataKeys="['name', 'lowRate']" :barStyle="{ fill: '#59452c' }" />
-      <Bar :dataKeys="['name', 'highRate']" :barStyle="{ fill: '#8c704f' }" />
+      <Bar
+        class="bar"
+        :dataKeys="['name', 'lowRate']"
+        :barStyle="{ fill: '#59452c' }"
+        :borderWidth="2"
+      />
+      <Bar
+        class="bar"
+        :dataKeys="['name', 'highRate']"
+        :barStyle="{ fill: '#8c704f' }"
+        :strok="10"
+      />
       <Marker
         :value="1000"
         label="Avg."
@@ -99,4 +109,8 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+
+.bar {
+  width: 50px;
+}
 </style>
