@@ -22,10 +22,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('articles.urls')),
     path('articles/',include('articles.urls')),
-    path('accounts/profile/', include('accounts.urls')),
-    path('accounts/signup/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('dj_rest_auth.urls')),
+    path('accounts/signup/', include('dj_rest_auth.registration.urls')),
+    path('accounts/profile/', include('accounts.urls')),
     path('finlife/', include('finlife.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

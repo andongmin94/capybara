@@ -4,32 +4,12 @@ from rest_framework import status
 
 # permission Decorators
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import IsAuthenticated,IsAdminUser
-
+from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .serializers import ArticleSerializer,CommentSerializer
 from .models import Article,Comment
 
-
-# @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
-# def article_list(request, article_type):
-#     print('!!!!',article_type)
-#     if request.method == 'GET':
-#         articles = get_list_or_404(Article,article_type=article_type)
-#         print('게시글들',articles)
-#         for data in articles:
-#             print(data.user)
-#         serializer = ArticleSerializer(articles, many=True)
-#         return Response(serializer.data)
-
-#     elif request.method == 'POST':
-#         print('!!!!',request.data,request.user) #여기서 지금 request.user는 username 
-#         serializer = ArticleSerializer(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             serializer.save(user=request.user)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -44,7 +24,7 @@ def article_list(request):
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        print('!!!!',request.data,request.user) #여기서 지금 request.user는 username 
+        print('!!!!',request.data,request.user) # 여기서 지금 request.user는 username 
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save(user=request.user)

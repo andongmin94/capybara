@@ -8,9 +8,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { useCounterStore } from "@/stores/counter";
-import { RouterLink } from "vue-router";
 import InterestListItem from "@/components/InterestListItem.vue";
-import axios from "axios";
 const store = useCounterStore();
 
 onMounted(async () => {
