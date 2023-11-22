@@ -113,8 +113,8 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const editProfile = function () {
-    const { name, nickname, email, age, money, salary } = payload;
+  const editProfile = function (payload: any) {
+    const { nickname, email } = payload;
     axios({
       method: "put",
       url: `${API_URL}/accounts/profile/`,
@@ -122,12 +122,8 @@ export const useArticleStore = defineStore("article", () => {
         Authorization: `Token ${token.value}`,
       },
       data: {
-        name,
         nickname,
         email,
-        age,
-        money,
-        salary,
       },
     })
       .then((res) => {
@@ -138,8 +134,8 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const changePassword = function () {
-    const { name, nickname, email, age, money, salary } = payload;
+  const changePassword = function (payload: any) {
+    const { old_password, new_password1, new_password2 } = payload;
     axios({
       method: "post",
       url: `${API_URL}/accounts/password/change/`,
@@ -152,11 +148,14 @@ export const useArticleStore = defineStore("article", () => {
         new_password2,
       },
     })
-      .then((res) => {
+      .then(() => {
         console.log("비밀번호 변경 성공");
+        alert("비밀번호가 변경되었습니다. 다시 로그인해주세요.");
+        logOut();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        console.log("비밀번호 변경 실패");
+        alert("뭔가 잘못되었으니까 다시 하세요.");
       });
   };
 
@@ -187,10 +186,9 @@ export const useArticleStore = defineStore("article", () => {
       url: `${API_URL}/accounts/profile/get_user_data/${search_username}`,
     })
       .then((res) => {
-        console.log(res.data);
         user_data.value = res.data;
       })
-      .catch((err) => {
+      .catch(() => {
         alert("없는 사용자입니다.");
         errorCallback();
       });
@@ -211,5 +209,6 @@ export const useArticleStore = defineStore("article", () => {
     user_data,
     setFinances,
     editProfile,
+    changePassword,
   };
 });
