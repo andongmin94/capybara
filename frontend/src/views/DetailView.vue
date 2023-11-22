@@ -46,6 +46,7 @@
       <p v-for="comment in article.comments">
         작성자 : {{ comment.user.username }}
         내용 : {{ comment.content }}
+        <button @click="deleteComment(comment)" >댓글 삭제</button>
       </p>
     </div>
   </div>
@@ -62,7 +63,6 @@ const store = useArticleStore();
 const route = useRoute();
 const router = useRouter();
 const article = ref();
-const comments = ref();
 const newComment = ref("");
 
 onMounted(() => {
@@ -109,23 +109,46 @@ const submitComment = (parent_pk: any) => {
     alert("댓글 내용을 입력해주세요.");
     return;
   }
-  const newCommentObject = {
-    article_pk: route.params.id,
-    content: newComment.value,
-    parent_pk: parent_pk,
-    parent_comment: parent_pk === 0 ? null : parent_pk,
-    user: { username: store.search_username },
-    created_at: "now",
-    id: "temp",
-  };
-
   store.createComments({
     article_pk: route.params.id,
     content: newComment.value,
     parent_pk: parent_pk,
   });
-  comments.value.push(newCommentObject);
+  router.push({ name: "article" });
   newComment.value = "";
+};
+
+const deleteComment = (comment:any) => {
+  if (confirm("댓글을 삭제하시겠습니까?")) {
+    const payload = {
+      article_pk: article.value.article.id, // 현재 게시글의 ID
+      comment_pk: comment.id       // 삭제할 댓글의 ID
+    };
+
+    store.deleteComment(payload)
+      .then(() => {
+        // 성공적으로 삭제된 댓글을 목록에서 제거
+        console.log("댓글 삭제 성공");
+      })
+      .catch(err => {
+        console.error("댓글 삭제 실패:", err);
+      });
+  }
+  // router.push({ name: "article" });
+  axios({
+    method: "get",
+    url: `${store.API_URL}/articles/${route.params.id}/`,
+    headers: {
+      Authorization: `Token ${store.token}`,
+    },
+  })
+    .then((res) => {
+      console.log(res.data);
+      article.value = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 </script>
 
