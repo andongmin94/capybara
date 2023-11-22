@@ -68,7 +68,7 @@ const newComment = ref("");
 onMounted(() => {
   axios({
     method: "get",
-    url: `${store.API_URL}/api/v1/articles/${route.params.id}/`,
+    url: `${store.API_URL}/articles/${route.params.id}/`,
     headers: {
       Authorization: `Token ${store.token}`,
     },
@@ -89,7 +89,7 @@ const goBack = function () {
 const deleteArticle = function () {
   axios({
     method: "delete",
-    url: `${store.API_URL}/api/v1/articles/${route.params.id}/`,
+    url: `${store.API_URL}/articles/${route.params.id}/`,
     headers: { Authorization: `Token ${store.token}` },
   })
     .then((res) => {

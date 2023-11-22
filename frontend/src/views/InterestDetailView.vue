@@ -13,8 +13,8 @@
               <v-col>
                 <v-chip>가입 방법</v-chip>
               </v-col>
-              <v-col class="card-desc">
-                {{ store.selectedItem?.value?.join_way }}
+              <v-col>
+                {{ store.selectedItem?.value?.etc_note }}
               </v-col>
             </v-col>
             <!--  -->
@@ -22,7 +22,7 @@
               <v-col>
                 <v-chip>가입 대상</v-chip>
               </v-col>
-              <v-col class="card-desc">
+              <v-col>
                 {{ store.selectedItem?.value?.join_member }}
               </v-col>
             </v-col>
@@ -34,8 +34,8 @@
               <v-col>
                 <v-chip>상품 설명</v-chip>
               </v-col>
-              <v-col class="card-desc">
-                {{ store.selectedItem?.value?.etc_note }}
+              <v-col>
+                {{ store.selectedItem?.value?.join_way }}
               </v-col>
             </v-col>
             <!--  -->
@@ -43,7 +43,7 @@
               <v-col>
                 <v-chip>특이 사항</v-chip>
               </v-col>
-              <v-col class="card-desc">
+              <v-col>
                 {{ store.selectedItem?.value?.spcl_cnd }}
               </v-col>
             </v-col>
