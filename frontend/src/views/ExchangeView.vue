@@ -11,7 +11,8 @@
         <p v-if="rate == -1">현재 통화 선택이 유효하지 않습니다.</p>
         <p v-else-if="rate">
           현재 환율은
-          <strong>{{ (currencyUnit / rate).toFixed(2) }}</strong> 입니다.
+          <strong>{{ (currencyUnit / rate).toFixed(2) }}</strong>
+          입니다.
         </p>
         <p v-else>환전할 통화를 선택하세요.</p>
       </div>

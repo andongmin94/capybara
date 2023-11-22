@@ -3,6 +3,9 @@ import { RouterLink, RouterView } from "vue-router";
 import { useArticleStore } from "@/stores/article";
 
 const store = useArticleStore();
+
+const existingData = localStorage.getItem("mbtiData");
+const mbtiElements = JSON.parse(existingData);
 </script>
 
 <template>
@@ -16,11 +19,28 @@ const store = useArticleStore();
       </v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }}님 환영합니다.</div>
 
-      <RouterLink :to="{ name: 'algorithm' }" class="nav-item mx-1"
-        ><v-btn class="nav-item-text text-black"
-          >✨MBTI로 추천받기✨</v-btn
-        ></RouterLink
-      >
+      <div>
+        <RouterLink
+          :to="{ name: 'algorithmresult' }"
+          class="nav-item mx-1"
+          v-if="Array.isArray(mbtiElements) && mbtiElements.length !== 0"
+          ><v-btn class="nav-item-text text-black"
+            >✨MBTI 다시보기✨</v-btn
+          ></RouterLink
+        >
+
+        <RouterLink
+          :to="{ name: 'algorithm' }"
+          class="nav-item mx-1"
+          v-else-if="
+            (Array.isArray(mbtiElements) && mbtiElements.length === 0) ||
+            !mbtiElements
+          "
+          ><v-btn class="nav-item-text text-black"
+            >✨MBTI로 추천받기✨</v-btn
+          ></RouterLink
+        >
+      </div>
 
       <RouterLink
         :to="{ name: 'article' }"

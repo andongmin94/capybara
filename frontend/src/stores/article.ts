@@ -44,7 +44,7 @@ export const useArticleStore = defineStore("article", () => {
       },
     })
       .then((res) => {
-        console.log("articles: " + res.data);
+        // console.log("articles: " + res.data);
         articles.value = res.data;
       })
       .catch((err) => {

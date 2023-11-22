@@ -3,8 +3,14 @@
   <v-card flat>
     <v-card-text>
       <v-container fluid>
-        <v-card loading text="MBTI로 당신의 금융상품을 골라보세요." variant="outlined" class="mx-auto" style="width: 260px; background-color: azure;"></v-card>
-        <br><br><br><br><br>
+        <v-card
+          loading
+          text="MBTI로 당신의 금융상품을 골라보세요."
+          variant="outlined"
+          class="mx-auto"
+          style="width: 260px; background-color: azure"
+        ></v-card>
+        <br /><br /><br /><br /><br />
         <v-row align="center" justify="center" class="algorithm-mbti">
           <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.M" column>
@@ -43,6 +49,7 @@
                 store.M != '' && store.B != '' && store.T != '' && store.I != ''
               "
               class="algorithm-result-btn"
+              @click="changeNavRoute"
               >결과보기</v-btn
             ></RouterLink
           ></v-row
@@ -73,6 +80,7 @@ onMounted(() => {
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+const changeNavRoute = () => {};
 </script>
 
 <style lang="scss" scoped>

@@ -1,12 +1,33 @@
 <template>
   <div>
     <h1 class="algo-title mt-4">
-      {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}
+      <span
+        v-if="
+          !storedMbtiType || (Array.isArray(mbtiType) && mbtiType.length === 0)
+        "
+      >
+        {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}
+      </span>
+      <span v-else>
+        {{ storedMbtiType.substr(1, 4) }}
+      </span>
     </h1>
     <div class="algo-title mb-4">
-      {{store2.search_username}}님께 추천하는 상품은
-      {{ store.pickNumber }}가지입니다.
+      {{ store2.search_username }}님께 추천하는 상품은
+      <span
+        v-if="
+          !storedMbtiNum || (Array.isArray(mbtiNum) && mbtiNum.length === 0)
+        "
+      >
+        {{ store.pickNumber }}가지입니다.
+      </span>
+      <span v-else> {{ storedMbtiNum }}가지입니다. </span>
     </div>
+    <RouterLink :to="{ name: 'algorithm' }" class="algorithm-test-link"
+      ><v-chip class="algorithm-test-btn" @click="resetMbtiData"
+        >다시 추천받기</v-chip
+      ></RouterLink
+    >
     <v-card class="algo-result-container" align="center">
       <v-window v-model="tab">
         <v-window-item>
@@ -17,7 +38,7 @@
                 cols="12"
                 md="6"
                 lg="4"
-                v-for="finance in randomElements"
+                v-for="finance in mbtiElements"
                 :key="finance"
               >
                 <v-card
@@ -75,6 +96,7 @@ const selectedItem = store.selectedItem;
 const selectItem = (finance: any) => {
   selectedItem.value = finance;
 };
+
 function getRandomElements(arr, numElements) {
   // 배열의 복사본을 만들어 사용하여 기존 배열을 수정하지 않습니다.
   const shuffledArray = arr.slice();
@@ -88,8 +110,50 @@ function getRandomElements(arr, numElements) {
   // 배열에서 처음 numElements 개의 요소를 반환합니다.
   return shuffledArray.slice(0, numElements);
 }
+
 let a = 3;
-const randomElements = getRandomElements(store.finances, store.pickNumber);
+
+//  결과배열
+let mbtiElements;
+let mbtiType;
+let mbtiNum;
+
+//  const mbtiElements = getRandomElements(store.finances, store.pickNumber);
+
+////////////////
+const storedMbtiData = localStorage.getItem("mbtiData");
+const storedMbtiType = localStorage.getItem("mbtiType");
+const storedMbtiNum = localStorage.getItem("mbtiNum");
+
+if (storedMbtiData) {
+  mbtiElements = JSON.parse(storedMbtiData);
+  mbtiType = JSON.parse(storedMbtiType);
+  mbtiNum = JSON.parse(storedMbtiNum);
+
+  if (Array.isArray(mbtiElements) && mbtiElements.length === 0) {
+    mbtiElements = getRandomElements(store.finances, store.pickNumber);
+    localStorage.setItem("mbtiData", JSON.stringify(mbtiElements));
+    localStorage.setItem(
+      "mbtiType",
+      JSON.stringify(`${store.M}${store.B}${store.T}${store.I}`)
+    );
+    localStorage.setItem("mbtiNum", JSON.stringify(store.pickNumber));
+  }
+} else {
+  mbtiElements = getRandomElements(store.finances, store.pickNumber);
+  localStorage.setItem("mbtiData", JSON.stringify(mbtiElements));
+  localStorage.setItem(
+    "mbtiType",
+    JSON.stringify(`${store.M}${store.B}${store.T}${store.I}`)
+  );
+  localStorage.setItem("mbtiNum", JSON.stringify(store.pickNumber));
+}
+
+const resetMbtiData = function () {
+  localStorage.setItem("mbtiData", JSON.stringify([]));
+  localStorage.setItem("mbtiType", JSON.stringify([]));
+  localStorage.setItem("mbtiNum", JSON.stringify([]));
+};
 </script>
 
 <style lang="scss">

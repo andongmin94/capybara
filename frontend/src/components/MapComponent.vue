@@ -142,7 +142,7 @@ $colors: (
 .map-search-btn {
   width: fit-content;
 
-  background-color: map-get($map: $colors, $key: first);
+  background-color: map-get($map: $colors, $key: second);
   color: map-get($map: $colors, $key: fifth);
 }
 </style>
