@@ -3,7 +3,7 @@
   <v-card flat>
     <v-card-text>
       <v-container fluid>
-        <v-row align="center" justify="center" class="row">
+        <v-row align="center" justify="center" class="algorithm-mbti">
           <v-col cols="12" sm="2" md="1">
             <v-radio-group v-model="store.M" column>
               <v-radio label="E" color="red-darken-3" value="E"></v-radio>
@@ -33,12 +33,14 @@
           </v-col>
         </v-row>
         <v-row align="center" justify="center">
-          <RouterLink :to="{ name: 'algorithmresult' }"
+          <RouterLink
+            :to="{ name: 'algorithmresult' }"
+            class="algorithm-result-link"
             ><v-btn
-              class="resultBtn"
               v-if="
                 store.M != '' && store.B != '' && store.T != '' && store.I != ''
               "
+              class="algorithm-result-btn"
               >결과보기</v-btn
             ></RouterLink
           ></v-row
@@ -80,18 +82,22 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.row {
+.algorithm-mbti {
   margin-left: 30px;
   transform: scale(1.2);
 }
 
-.resultBtn {
+.algorithm-result-link {
   color: black;
+  :hover {
+    color: white;
+    background-color: map-get($map: $colors, $key: second);
+    transform: scale(1.1);
+  }
 }
-
-.resultBtn:hover {
-  color: white;
-  background-color: map-get($map: $colors, $key: second);
-  transform: scale(1.2);
+.algorithm-result-btn {
+  :hover {
+    all: unset;
+  }
 }
 </style>

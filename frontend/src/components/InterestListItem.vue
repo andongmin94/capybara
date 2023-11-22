@@ -1,14 +1,14 @@
 <template>
-  <v-card class="container">
+  <v-card class="interest-list-item-container">
     <v-tabs v-model="tab" color="black" align-tabs="center">
       <v-tab :value="1">예금</v-tab>
       <v-tab :value="2">적금</v-tab>
     </v-tabs>
-    <v-window v-model="tab">
+    <v-window v-model="tab" align="center">
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
-          <RouterLink :to="{ name: 'cart' }" class="custom"
-            ><v-chip class="nav-item text-black mt-4 custom2"
+          <RouterLink :to="{ name: 'cart' }" class="cart-view-link"
+            ><v-chip class="nav-item text-black mt-4 cart-view-chip"
               >내가 찜한 목록 🎁</v-chip
             ></RouterLink
           >
@@ -23,12 +23,14 @@
                 :key="finance"
               >
                 <v-card
-                  class="card mx-auto mb-6"
+                  class="interest-list-item-card mx-auto mb-6"
                   height="380"
                   width="525"
                   elevation="16"
                 >
-                  <v-card-item class="mx-2 mb-4 card-item">
+                  <v-card-item
+                    class="mx-2 mb-4 interest-list-item-card-content"
+                  >
                     <div class="text-overline mt-2 mb-3">
                       <v-chip>{{ finance!.kor_co_nm }}</v-chip>
                     </div>
@@ -43,21 +45,26 @@
                     </div>
                   </v-card-item>
 
-                  <v-btn block @click="selectItem(finance)" class="btn-wrapper"
-                    ><RouterLink
-                      :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
-                      class="text-decoration-none detailbtn"
-                      >상품 보기
-                    </RouterLink></v-btn
-                  >
+                  <RouterLink
+                    :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
+                    class="text-decoration-none"
+                    ><v-btn
+                      block
+                      @click="selectItem(finance)"
+                      class="interest-list-item-detail-text py-6"
+                      >상품 보기</v-btn
+                    >
+                  </RouterLink>
                 </v-card>
               </v-col>
             </v-row>
           </v-container>
         </div>
-        <div v-else class="wrapper-none">
+        <div v-else class="interest-list-item-detail-wrapper-none">
           <div><img src="@/assets/workingon.png" alt="" /></div>
-          <div class="content"><strong>서비스 준비 중입니다. </strong></div>
+          <div class="interest-list-item-detail-wrapper-none-content">
+            <strong>서비스 준비 중입니다. </strong>
+          </div>
         </div>
       </v-window-item>
     </v-window>
@@ -93,49 +100,46 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-.container {
+.interest-list-item-container {
   background-color: map-get($map: $colors, $key: third);
 }
-.card {
+.interest-list-item-card {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
   display: flex;
   flex-direction: column;
 }
 
-.card-item {
+.interest-list-item-card-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.btn-wrapper {
+.interest-list-item-detail-text {
   background-color: map-get($map: $colors, $key: second);
-  max-height: 50px;
-}
-.detailbtn {
   color: map-get($colors, fifth);
 }
 
-.wrapper-none {
+.interest-list-item-detail-wrapper-none {
   height: 1000px;
   img {
-    width: 200px;
+    width: 300px;
   }
 }
 
-.content {
+.interest-list-item-detail-wrapper-none-content {
   font-size: larger;
 }
 
-.custom {
+.cart-view-link {
   :hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 }
 
-.custom2 {
+.cart-view-chip {
   :hover {
     transform: none;
   }

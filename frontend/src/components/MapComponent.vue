@@ -1,6 +1,8 @@
 <template>
-  <div class="wrapper">
-    <v-chip class="mb-5 searchbtn" @click="searchOnMap">검색하기</v-chip>
+  <div class="map-component-under">
+    <v-chip elevation="2" class="mb-5 map-search-btn" @click="searchOnMap"
+      >검색하기</v-chip
+    >
     <!-- 지도를 표시할 컨테이너 -->
     <div ref="mapContainer" style="width: 100%; height: 350px"></div>
   </div>
@@ -124,13 +126,22 @@ export default {
 };
 </script>
 
-<style>
-.wrapper {
+<style scoped lang="scss">
+$colors: (
+  first: #59452c,
+  second: #8c704f,
+  third: #d9bb96,
+  forth: #402a17,
+  fifth: #f2f2f2,
+);
+.map-component-under {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.searchbtn {
+.map-search-btn {
   width: fit-content;
+  background-color: map-get($map: $colors, $key: first);
+  color: map-get($map: $colors, $key: fifth);
 }
 </style>
