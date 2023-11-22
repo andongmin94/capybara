@@ -11,7 +11,7 @@ export const useExchangeStore = defineStore("exchange", () => {
   const getExChange = function () {
     axios({
       method: "get",
-      url: `${API_URL}/api/v1/exchange/`,
+      url: `${API_URL}/articles/exchange/`,
     })
       .then((res) => {
         exchange_data.value = res.data.data;

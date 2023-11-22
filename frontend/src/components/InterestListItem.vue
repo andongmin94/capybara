@@ -71,10 +71,9 @@ import { ref } from "vue";
 
 const tab = ref(null);
 const store = useCounterStore();
-const selectedItem = store.selectedItem;
 
 const selectItem = (finance: any) => {
-  selectedItem.value = finance;
+  store.selectedItem.value = finance;
 };
 </script>
 

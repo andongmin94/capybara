@@ -7,21 +7,24 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col align="center">
-          <select v-model="province" @change="updateCities">
+        <v-col align="center" class="custom-mapSelect ">
+          <select v-model="province" @change="updateCities" class="form-select custom-mapSelect2">
             <option value="">도/시</option>
             <option v-for="info in infos" :key="info.id">
               {{ info.prov }}
             </option>
           </select>
-          <select v-model="city">
+          <br>
+          <select v-model="city" class="form-select custom-mapSelect2">
             <option value="">시/군/구</option>
             <option v-for="c in cities" :key="c">{{ c }}</option>
           </select>
-          <select v-model="bank">
+          <br>
+          <select v-model="bank" class="form-select custom-mapSelect2">
             <option value="">은행명</option>
             <option v-for="b in banks" :key="b">{{ b }}</option>
           </select>
+          <br>
         </v-col>
       </v-row>
 
@@ -60,3 +63,16 @@ watch(province, () => {
 });
 
 </script>
+
+<style scoped lang="scss">
+.custom-mapSelect {
+  :hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+}
+
+.custom-mapSelect2 {
+  width: 200px;
+}
+</style>
