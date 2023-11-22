@@ -32,7 +32,7 @@
                 <div>{{ store.user_data.data.email }}</div>
               </p>
               <p class="mb-3">
-                <strong>가입일자</strong>
+                <strong>가입일시</strong>
                 <div>{{ store.user_data.data.date_joined.slice(0, 4) }}년
                 {{ store.user_data.data.date_joined.slice(5, 7) }}월
                 {{ store.user_data.data.date_joined.slice(8, 10) }}일
@@ -41,7 +41,7 @@
               </div>
               </p>
               <p class="mb-3">
-                <strong>최근 접속일자</strong>
+                <strong>마지막 접속일시</strong>
                 <div>
                 {{ store.user_data.data.last_login.slice(0, 4) }}년
                 {{ store.user_data.data.last_login.slice(5, 7) }}월

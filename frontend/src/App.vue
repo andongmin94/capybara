@@ -7,7 +7,11 @@ const store = useArticleStore();
 
 <template>
   <header>
-    <v-toolbar>
+    <v-toolbar class="hidden-lg">
+      <template v-slot:append>
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      </template>
+
       <!--화면 가장 작을때 사라지는거 수정하기 -->
       <v-toolbar-title>
         <RouterLink :to="{ name: 'home' }">
@@ -98,5 +102,4 @@ $colors: (
     transform: none;
   }
 }
-
 </style>

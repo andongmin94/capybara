@@ -2,57 +2,55 @@
   <div>
     <v-container>
       <v-chip @click="goBack">상품 목록으로 돌아가기</v-chip>
-      <!-- <v-chip @click="addCart(store.selectedItem.value)">
-        장바구니에 추가
-      </v-chip> -->
 
       <v-row>
         <v-col align="center" justify="center">
           <h1 class="mb-5">{{ store.selectedItem?.value?.fin_prdt_nm }}</h1>
           <h2 class="mb-10">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
           <v-row>
-            <v-col cols="6">
-              <v-col>
-                <v-chip>상품 설명</v-chip>
-              </v-col>
-              <v-col>
-                {{ store.selectedItem.value.etc_note }}
-              </v-col>
-            </v-col>
-            <v-col cols="6">
-              <v-col>
-                <v-chip>가입 대상</v-chip>
-              </v-col>
-              <v-col>
-                {{ store.selectedItem.value.join_member }}
-              </v-col>
-            </v-col>
-          </v-row>
-          <v-row>
+            <!--  -->
             <v-col cols="6">
               <v-col>
                 <v-chip>가입 방법</v-chip>
               </v-col>
-              <v-col>
-                {{ store.selectedItem.value.join_way }}
+              <v-col class="card-desc">
+                {{ store.selectedItem?.value?.join_way }}
               </v-col>
             </v-col>
+            <!--  -->
+            <v-col cols="6">
+              <v-col>
+                <v-chip>가입 대상</v-chip>
+              </v-col>
+              <v-col class="card-desc">
+                {{ store.selectedItem?.value?.join_member }}
+              </v-col>
+            </v-col>
+          </v-row>
 
+          <v-row>
+            <!--  -->
+            <v-col cols="6">
+              <v-col>
+                <v-chip>상품 설명</v-chip>
+              </v-col>
+              <v-col class="card-desc">
+                {{ store.selectedItem?.value?.etc_note }}
+              </v-col>
+            </v-col>
+            <!--  -->
             <v-col cols="6">
               <v-col>
                 <v-chip>특이 사항</v-chip>
               </v-col>
-              <v-col>
-                {{ store.selectedItem.value.spcl_cnd }}
+              <v-col class="card-desc">
+                {{ store.selectedItem?.value?.spcl_cnd }}
               </v-col>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
-      <!-- <hr /> -->
-      <!-- <v-row>
-        <img src="@/assets/hr.svg" alt="" />
-      </v-row> -->
+
       <v-row align="center" justify="center">
         <v-chip>가입기간</v-chip>
       </v-row>
@@ -168,5 +166,8 @@ $colors: (
 
 .description {
   background-color: map-get($colors, third);
+}
+
+.card-desc {
 }
 </style>
