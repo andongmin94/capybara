@@ -4,7 +4,7 @@
       {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}
     </h1>
     <div class="algo-title mb-4">
-      님께 추천하는 상품은
+      {{store2.search_username}}님께 추천하는 상품은
       {{ store.pickNumber }}가지입니다.
     </div>
     <v-card class="algo-result-container" align="center">
@@ -64,10 +64,12 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { useCounterStore } from "@/stores/counter";
+import { useArticleStore } from "@/stores/article";
 import { ref } from "vue";
 
 const tab = ref(null);
 const store = useCounterStore();
+const store2 = useArticleStore();
 const selectedItem = store.selectedItem;
 
 const selectItem = (finance: any) => {

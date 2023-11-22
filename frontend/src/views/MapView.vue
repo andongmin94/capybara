@@ -14,11 +14,11 @@
               <option v-for="info in infos" :key="info.id">
                 {{ info.prov }}
               </option>
-            </select> </v-btn
-          >　
-          <v-btn>
+            </select>
+          </v-btn>　
+          <v-btn> 
             <select v-model="city">
-              <option value="" name="시">시/군/구</option>
+              <option value="">시/군/구</option>
               <option v-for="c in cities" :key="c">{{ c }}</option>
             </select> </v-btn
           >　<v-btn>
