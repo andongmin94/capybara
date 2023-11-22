@@ -1,58 +1,64 @@
 <template>
-  <br>
-  <h1 style="text-align: center;">
-    {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}에게 추천하는 상품은
-    {{ store.pickNumber }}가지입니다.
-  </h1>
-  <br>
-  <v-card class="container">
-    <v-window v-model="tab">
-      <v-window-item>
-        <v-container>
-          <v-row align="center" justify="center">
-            <v-col
-              class="d-flex align-self-start"
-              cols="12"
-              md="6"
-              lg="4"
-              v-for="finance in randomElements"
-              :key="finance"
-            >
-              <v-card
-                class="card mx-auto mb-6"
-                height="380"
-                width="525"
-                elevation="16"
+  <div>
+    <h1 class="algo-title mt-4">
+      {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}
+    </h1>
+    <div class="algo-title mb-4">
+      님께 추천하는 상품은
+      {{ store.pickNumber }}가지입니다.
+    </div>
+    <v-card class="algo-result-container" align="center">
+      <v-window v-model="tab">
+        <v-window-item>
+          <v-container>
+            <v-row align="center" justify="center">
+              <v-col
+                class="d-flex align-self-start"
+                cols="12"
+                md="6"
+                lg="4"
+                v-for="finance in randomElements"
+                :key="finance"
               >
-                <v-card-item class="mx-2 mb-4 card-item">
-                  <div class="text-overline mt-2 mb-3">
-                    <v-chip>{{ finance!.kor_co_nm }}</v-chip>
-                  </div>
-                  <div class="text-h5 mb-4">
-                    {{ finance!.fin_prdt_nm }}
-                  </div>
-                  <div class="text-caption">
-                    <p>{{ finance!.etc_note }}</p>
-                    <p>- 대상 : {{ finance!.join_member }}</p>
-                    <p>- 가입 방법 : {{ finance.join_way }}</p>
-                    <p>- 특이 사항 : {{ finance.spcl_cnd }}</p>
-                  </div>
-                </v-card-item>
-
-                <v-btn block @click="selectItem(finance)" class="btn-wrapper"
-                  ><RouterLink
-                    :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
-                    class="text-decoration-none detailbtn"
-                    >상품 보기
-                  </RouterLink></v-btn
+                <v-card
+                  class="algo-result-card mx-auto mb-6"
+                  height="380"
+                  width="525"
+                  elevation="16"
                 >
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-window-item>
-    </v-window>
-  </v-card>
+                  <v-card-item class="mx-2 mb-4 algo-result-card-item">
+                    <div class="text-overline mt-2 mb-3">
+                      <v-chip>{{ finance!.kor_co_nm }}</v-chip>
+                    </div>
+                    <div class="text-h5 mb-4">
+                      {{ finance!.fin_prdt_nm }}
+                    </div>
+                    <div class="algo-result-card-text">
+                      <p>{{ finance!.etc_note }}</p>
+                      <p>- 대상 : {{ finance!.join_member }}</p>
+                      <p>- 가입 방법 : {{ finance.join_way }}</p>
+                      <p>- 특이 사항 : {{ finance.spcl_cnd }}</p>
+                    </div>
+                  </v-card-item>
+
+                  <v-btn
+                    block
+                    @click="selectItem(finance)"
+                    class="algo-result-btn"
+                    ><RouterLink
+                      :to="{ name: 'interestDetail', params: { id: finance!.fin_prdt_cd }}"
+                      class="text-decoration-none algo-result-link"
+                      >상품 보기
+                    </RouterLink></v-btn
+                  >
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-window-item>
+      </v-window>
+    </v-card>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -92,28 +98,34 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-.container {
+
+.algo-title {
+  text-align: center;
+}
+.algo-result-container {
   background-color: map-get($map: $colors, $key: third);
 }
-.card {
+.algo-result-card {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
   display: flex;
   flex-direction: column;
 }
 
-.card-item {
+.algo-result-card-item {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: small;
+  font-weight: 100;
 }
 
-.btn-wrapper {
+.algo-result-btn {
   background-color: map-get($map: $colors, $key: second);
   max-height: 50px;
 }
-.detailbtn {
+.algo-result-link {
   color: map-get($colors, fifth);
 }
 </style>

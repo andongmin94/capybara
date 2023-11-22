@@ -11,7 +11,7 @@
         </v-row>
 
         <div v-for="product in cartItems" :key="product.id">
-          <v-card class="eachcard mb-5">
+          <v-card class="cart-view-card mb-5">
             <v-card-item>
               <div v-for="mom in momProducts">
                 <div v-if="mom.fin_prdt_cd === product.fin_prdt_cd">
@@ -21,10 +21,10 @@
                         class="d-flex flex-column justify-space-around"
                         cols="5"
                       >
-                        <v-chip class="product-bank align-self-center">
+                        <v-chip class="align-self-center">
                           {{ mom.kor_co_nm }}
                         </v-chip>
-                        <div class="product-name align-self-center">
+                        <div class="cart-view-card-name align-self-center">
                           {{ mom.fin_prdt_nm }}
                         </div>
                       </v-col>
@@ -44,11 +44,18 @@
                         </div>
                       </v-col>
 
-                      <v-col class="align-self-center custom5" cols="2">
+                      <v-col
+                        class="align-self-center cart-view-delete"
+                        cols="2"
+                      >
                         <div>
                           <!-- <v-chip @click="goDetail(mom)">상세페이지로 이동</v-chip> -->
-                          <v-chip class="px-1 custom5" @click="removeCart(product)"
-                            >　가입 상품 삭제　</v-chip>
+                          <v-chip
+                            class="px-1 cart-view-delete"
+                            color="red"
+                            @click="removeCart(product)"
+                            >　가입 상품 삭제　</v-chip
+                          >
                         </div>
                       </v-col>
                     </v-row>
@@ -62,10 +69,14 @@
 
       <div v-else align="center">
         <div><img src="@/assets/empty.png" alt="" /></div>
-        <div><strong class="content">찜한 상품이 없습니다.</strong></div>
+        <div>
+          <strong class="cart-no-content">찜한 상품이 없습니다.</strong>
+        </div>
         <div class="mt-5">
-          <RouterLink :to="{ name: 'interest' }" class="nav-item mx-2">
-            <v-chip class="text-black">모든 상품 보러가기</v-chip></RouterLink
+          <RouterLink :to="{ name: 'interest' }" class="mx-2">
+            <v-chip class="text-black" elevation="2"
+              >모든 상품 보러가기</v-chip
+            ></RouterLink
           >
         </div>
       </div>
@@ -135,22 +146,24 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.eachcard {
+.cart-view-card {
   background-color: map-get($map: $colors, $key: first);
   color: map-get($map: $colors, $key: fifth);
   max-width: 1100px;
+  font-family: Pretendard-Regular;
+  font-size: small;
 }
-.product-name {
+.cart-view-card-name {
   font-size: larger;
 }
 
-.content {
+.cart-no-content {
   font-family: Pretendard-Regular;
   font-size: larger;
 }
 
-.custom5 {
-  transform: scale(1.2);
+.cart-view-delete {
+  font-size: x-small;
+  transform: scale(1.1);
 }
-
 </style>

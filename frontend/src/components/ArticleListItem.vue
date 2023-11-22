@@ -7,10 +7,10 @@
         </v-col>
         <v-col cols="10">
           <div>
-            <div class="title">
+            <div class="article-list-title">
               <RouterLink
                 :to="{ name: 'articleDetail', params: { id: article!.id } }"
-                class="title"
+                class="article-list-title"
               >
                 {{ article!.title }}
               </RouterLink>
@@ -34,7 +34,7 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
-.title {
+.article-list-title {
   font-family: Pretendard-Regular;
   font-weight: 900;
   font-size: x-large;
