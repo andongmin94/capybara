@@ -34,13 +34,13 @@ import { useArticleStore } from "@/stores/article";
 import ArticleListItem from "@/components/ArticleListItem.vue";
 
 const store = useArticleStore();
+
 const articles = store.articles;
 
 onMounted(() => {
   store.getArticles();
+  console.log("list: " + articles);
 });
-
-console.log(articles);
 </script>
 
 <style scoped lang="scss">

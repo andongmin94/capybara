@@ -44,7 +44,7 @@ export const useArticleStore = defineStore("article", () => {
       },
     })
       .then((res) => {
-        console.log(res.data)
+        console.log("articles: " + res.data);
         articles.value = res.data;
       })
       .catch((err) => {
@@ -197,25 +197,25 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const deleteComment = function (payload:any) {
+  const deleteComment = function (payload: any) {
     const article_pk = payload.article_pk;
     return new Promise((resolve, reject) => {
       axios({
-        method: 'delete',
+        method: "delete",
         url: `${API_URL}/articles/comment/${payload.article_pk}/${payload.comment_pk}/delete/`,
         headers: {
-          Authorization: `Token ${token.value}`
-        }
+          Authorization: `Token ${token.value}`,
+        },
       })
-      .then(() => {
-        alert("댓글이 삭제되었습니다.");
-        router.go(-1);
-      })
-      .catch(err => {
-        console.error(err);
-        alert("댓글 삭제에 실패했습니다.");
-        reject(err);
-      });
+        .then(() => {
+          alert("댓글이 삭제되었습니다.");
+          router.go(-1);
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("댓글 삭제에 실패했습니다.");
+          reject(err);
+        });
     });
   };
 
