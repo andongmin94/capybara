@@ -14,15 +14,10 @@ from rest_framework.decorators import permission_classes
 @api_view(['GET'])
 def detail(request, search_name):
     if request.method == 'GET':
-        # try:
-            # print(request)
-            user = get_user_model().objects.get(username=search_name)
-            # serializer = UserDetailSerializer(user)
-            serializer = ProfileSerializer(user)   
-            return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
-        # except:
-        #     return Response({'message':'error임 왜안대노'}, status=status.HTTP_404_NOT_FOUND)
-    
+        user = get_user_model().objects.get(username=search_name)
+        serializer = ProfileSerializer(user)   
+        return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
