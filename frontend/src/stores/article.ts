@@ -53,13 +53,14 @@ export const useArticleStore = defineStore("article", () => {
   };
 
   const signUp = function (payload: any) {
-    const { username, email, password1, password2 } = payload;
+    const { username, nickname, email, password1, password2 } = payload;
 
     axios({
       method: "post",
       url: `${API_URL}/accounts/signup/`,
       data: {
         username,
+        nickname,
         email,
         password1,
         password2,
@@ -117,7 +118,7 @@ export const useArticleStore = defineStore("article", () => {
     const { nickname, email } = payload;
     axios({
       method: "put",
-      url: `${API_URL}/accounts/profile/`,
+      url: `${API_URL}/accounts/profile/edit/`,
       headers: {
         Authorization: `Token ${token.value}`,
       },
@@ -128,6 +129,8 @@ export const useArticleStore = defineStore("article", () => {
     })
       .then((res) => {
         console.log(res.data);
+        alert("프로필이 수정되었습니다.");
+        router.go(-1);
       })
       .catch((err) => {
         console.log(err);

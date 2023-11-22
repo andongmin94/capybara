@@ -14,6 +14,16 @@
         ></v-text-field>
 
         <v-text-field
+          v-model.trim="nickname"
+          :readonly="loading"
+          :rules="[required]"
+          class="mb-2 inputform"
+          clearable
+          label="닉네임"
+          variant="solo-filled"
+        ></v-text-field>
+
+        <v-text-field
           v-model.trim="email"
           :readonly="loading"
           :rules="[required]"
@@ -81,14 +91,14 @@
 import { ref } from "vue";
 import { useArticleStore } from "@/stores/article";
 import { RouterLink } from "vue-router";
-import axios from "axios";
 
 const form = ref(false);
-const email = ref(null);
 const loading = ref(false);
 
 const store = useArticleStore();
 const username = ref(null);
+const nickname = ref(null);
+const email = ref(null);
 const password1 = ref(null);
 const password2 = ref(null);
 
@@ -111,6 +121,7 @@ function required(v: any) {
 const signUp = function () {
   const payload = {
     username: username.value,
+    nickname: nickname.value,
     email: email.value,
     password1: password1.value,
     password2: password2.value,

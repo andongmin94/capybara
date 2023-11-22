@@ -32,7 +32,7 @@ def edit(request):
         
     elif request.method =='PUT':
         try:
-            user=User.objects.get(id=user_id)
+            user=User.objects.get(username=request.user)
             user.nickname=request.data['nickname']
             user.email=request.data['email']
             user.save()
