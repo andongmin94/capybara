@@ -8,7 +8,7 @@
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
           <RouterLink :to="{ name: 'cart' }" class="custom"
-            ><v-chip class="nav-item text-black mt-4 custom2"
+            ><v-chip class="nav-item text-black mt-4 custom2" elevation="2"
               >내가 찜한 목록 🎁</v-chip
             ></RouterLink
           >
@@ -96,6 +96,7 @@ $colors: (
 .container {
   background-color: map-get($map: $colors, $key: third);
 }
+
 .card {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);

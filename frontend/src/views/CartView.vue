@@ -47,8 +47,11 @@
                       <v-col class="align-self-center custom5" cols="2">
                         <div>
                           <!-- <v-chip @click="goDetail(mom)">상세페이지로 이동</v-chip> -->
-                          <v-chip class="px-1 custom5" @click="removeCart(product)"
-                            >　가입 상품 삭제　</v-chip>
+                          <v-chip
+                            class="px-1 custom5"
+                            @click="removeCart(product)"
+                            >　가입 상품 삭제　</v-chip
+                          >
                         </div>
                       </v-col>
                     </v-row>
@@ -61,11 +64,13 @@
       </div>
 
       <div v-else align="center">
-        <div><img src="@/assets/empty.png" alt="" /></div>
+        <div><img class="emptyimg" src="@/assets/empty.png" alt="" /></div>
         <div><strong class="content">찜한 상품이 없습니다.</strong></div>
         <div class="mt-5">
           <RouterLink :to="{ name: 'interest' }" class="nav-item mx-2">
-            <v-chip class="text-black">모든 상품 보러가기</v-chip></RouterLink
+            <v-chip elevation="2" class="text-black"
+              >모든 상품 보러가기</v-chip
+            ></RouterLink
           >
         </div>
       </div>
@@ -153,4 +158,7 @@ $colors: (
   transform: scale(1.2);
 }
 
+.emptyimg {
+  width: 300px;
+}
 </style>
