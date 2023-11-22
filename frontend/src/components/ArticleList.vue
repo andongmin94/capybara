@@ -29,12 +29,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useArticleStore } from "@/stores/article";
 import ArticleListItem from "@/components/ArticleListItem.vue";
 
 const store = useArticleStore();
 const articles = store.articles;
+
+onMounted(() => {
+  store.getArticles();
+});
 
 console.log(articles);
 </script>
