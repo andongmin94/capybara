@@ -6,6 +6,8 @@
       <v-text-field v-model="title" label="제목" variant="solo-filled"/>
       <v-textarea v-model="content" label="내용" variant="solo-filled"/>
       <v-file-input v-model="img" label="파일 첨부하기" variant="solo-filled" class="file" />
+      <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
+      <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
 
       <v-btn @click="goBack">취소하기</v-btn>
       <v-btn @click="createArticle">게시하기</v-btn>
@@ -15,8 +17,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+// import { QuillEditor } from "@vueup/vue-quill";
 import { useArticleStore } from "@/stores/article";
-import { useRouter } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import axios from "axios";
 
 const title = ref<string>("");
@@ -40,12 +43,14 @@ const createArticle = function () {
     data: {
       title: title.value,
       content: content.value,
+      // image: img.value,
     },
     headers: {
       Authorization: `Token ${store.token}`,
     },
   })
-    .then(() => {
+    .then((res) => {
+      // console.log(res)
       store.getArticles()
     })
     .then(() => {

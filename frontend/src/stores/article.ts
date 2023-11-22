@@ -113,8 +113,8 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const editProfile = function (binding:any) {
-    const { nickname, email } = binding;
+  const editProfile = function () {
+    const { name, nickname, email, age, money, salary } = payload;
     axios({
       method: "put",
       url: `${API_URL}/accounts/profile/`,
@@ -122,8 +122,12 @@ export const useArticleStore = defineStore("article", () => {
         Authorization: `Token ${token.value}`,
       },
       data: {
+        name,
         nickname,
         email,
+        age,
+        money,
+        salary,
       },
     })
       .then((res) => {
@@ -134,8 +138,8 @@ export const useArticleStore = defineStore("article", () => {
       });
   };
 
-  const changePassword = function (binding:any) {
-    const { old_password, new_password1, new_password2, } = binding;
+  const changePassword = function () {
+    const { name, nickname, email, age, money, salary } = payload;
     axios({
       method: "post",
       url: `${API_URL}/accounts/password/change/`,
@@ -148,7 +152,7 @@ export const useArticleStore = defineStore("article", () => {
         new_password2,
       },
     })
-      .then(() => {
+      .then((res) => {
         console.log("비밀번호 변경 성공");
       })
       .catch((err) => {
@@ -169,6 +173,7 @@ export const useArticleStore = defineStore("article", () => {
       },
     })
       .then((res) => {
+        // console.log(res)
         console.log(res.data.message);
       })
       .catch((err) => {
@@ -185,7 +190,7 @@ export const useArticleStore = defineStore("article", () => {
         console.log(res.data);
         user_data.value = res.data;
       })
-      .catch(() => {
+      .catch((err) => {
         alert("없는 사용자입니다.");
         errorCallback();
       });

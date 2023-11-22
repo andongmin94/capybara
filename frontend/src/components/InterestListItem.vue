@@ -7,13 +7,11 @@
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
-          <div style="text-align: center">
-            <RouterLink :to="{ name: 'cart' }" class="custom"
-              ><v-chip class="nav-item text-black mt-4 custom2" elevation="2"
-                >내가 찜한 목록 🎁</v-chip
-              ></RouterLink
-            >
-          </div>
+          <RouterLink :to="{ name: 'cart' }" class="custom"
+            ><v-chip class="nav-item text-black mt-4 custom2"
+              >내가 찜한 목록 🎁</v-chip
+            ></RouterLink
+          >
           <v-container>
             <v-row align="center" justify="center">
               <v-col
@@ -87,7 +85,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $colors: (
   first: #59452c,
   second: #8c704f,
@@ -98,7 +96,6 @@ $colors: (
 .container {
   background-color: map-get($map: $colors, $key: third);
 }
-
 .card {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
@@ -134,7 +131,7 @@ $colors: (
 
 .custom {
   :hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 }
 
@@ -143,6 +140,4 @@ $colors: (
     transform: none;
   }
 }
-
-
 </style>

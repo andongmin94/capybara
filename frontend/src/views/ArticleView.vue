@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <h1 class="title my-4">게시판 글 목록 페이지</h1>
+    <h1 class="title">게시판 글 목록 페이지</h1>
+    <RouterLink :to="{ name: 'create' }"><v-btn>글쓰기</v-btn></RouterLink>
     <ArticleList />
   </div>
 </template>
