@@ -1,21 +1,31 @@
 <template>
-  <div class="wrapper">
+  <div>
     <v-container>
-      <h1 class="header">새 글 작성</h1>
+      <v-row>
+        <v-col class="mx-auto" cols="8">
+          <v-sheet class="article-create-wrapper pa-10">
+            <h1 class="article-create-header mb-5">새 글 작성</h1>
 
-      <v-text-field v-model="title" label="제목" variant="solo-filled" />
-      <v-textarea v-model="content" label="내용" variant="solo-filled" />
-      <v-file-input
-        v-model="img"
-        label="파일 첨부하기"
-        variant="solo-filled"
-        class="file"
-      />
-      <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
-      <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
-
-      <v-btn @click="goBack">취소하기</v-btn>
-      <v-btn @click="createArticle">게시하기</v-btn>
+            <v-text-field v-model="title" label="제목" variant="solo-filled" />
+            <v-textarea v-model="content" label="내용" variant="solo-filled" />
+            <v-file-input
+              v-model="img"
+              label="파일 첨부하기"
+              variant="solo-filled"
+            />
+            <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
+            <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
+            <div class="d-flex flex-row-reverse">
+              <v-chip elevation="1" color="primary" @click="createArticle"
+                >게시하기</v-chip
+              >
+              <v-chip elevation="1" class="mr-2" color="red" @click="goBack"
+                >취소하기</v-chip
+              >
+            </div>
+          </v-sheet>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -35,7 +45,9 @@ const router = useRouter();
 
 const goBack = function () {
   if (title.value || content.value) {
-    confirm("작성 중인 글이 저장되지 않습니다. 정말 떠나시겠습니까?");
+    if (confirm("작성 중인 글이 저장되지 않습니다. 정말 떠나시겠습니까?")) {
+      router.go(-1);
+    }
   } else {
     router.go(-1);
   }
@@ -77,15 +89,12 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
-.header {
-  background-color: map-get($colors, third);
-  font-family: Pretendard-Regular;
+.article-create-wrapper {
+  min-width: 344px;
 }
 
-.file {
-  :hover {
-    transform: translateY(-1px);
-  }
+.article-create-header {
+  font-family: Pretendard-Regular;
+  text-align: center;
 }
 </style>

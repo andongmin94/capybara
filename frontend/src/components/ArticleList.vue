@@ -1,15 +1,21 @@
 <template>
   <div>
     <v-sheet elevation="3" class="pa-10">
-      <v-row>
-        <v-col cols="10">
-          <h3>게시글 목록</h3>
+      <v-row class="mb-3">
+        <v-col cols="2">
+          <div>글 번호</div>
+        </v-col>
+        <v-col cols="8">
+          <div>글 내용</div>
         </v-col>
         <v-col cols="2">
           <RouterLink :to="{ name: 'create' }"
-            ><v-chip class="write-btn" elevation="1">글쓰기</v-chip></RouterLink
+            ><v-chip class="article-create-btn mb-1" elevation="1"
+              >글쓰기</v-chip
+            ></RouterLink
           >
         </v-col>
+        <v-divider class="article-divider"></v-divider>
       </v-row>
       <ArticleListItem
         v-for="article in articles"
@@ -31,4 +37,8 @@ const articles = store.articles;
 console.log(articles);
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.article-divider {
+  opacity: 100%;
+}
+</style>

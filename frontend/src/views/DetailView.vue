@@ -1,6 +1,5 @@
 <template>
-
-  <div class="wrapper">
+  <div class="article-detail-wrapper">
     <v-btn @click="goBack">목록</v-btn>
     <div v-if="article">
       <p>제목 : {{ article.article.title }}</p>
@@ -20,9 +19,7 @@
         {{ article.article.updated_at.slice(11, 13) }}시
         {{ article.article.updated_at.slice(14, 16) }}분
       </p>
-      <v-btn @click="deleteArticle">
-        삭제
-      </v-btn>
+      <v-btn @click="deleteArticle"> 삭제 </v-btn>
     </div>
     <!-- 댓글 작성 폼 -->
     <div class="mt-6">
@@ -38,14 +35,12 @@
       >
         댓글 작성
       </v-btn>
-
     </div>
 
     <p>댓글 목록</p>
     <div v-if="article">
       <p v-for="comment in article.comments">
-        작성자 : {{ comment.user.username }}
-        내용 : {{ comment.content }}
+        작성자 : {{ comment.user.username }} 내용 : {{ comment.content }}
       </p>
     </div>
   </div>
@@ -103,7 +98,6 @@ const deleteArticle = function () {
     });
 };
 
-
 const submitComment = (parent_pk: any) => {
   if (!newComment.value.trim()) {
     alert("댓글 내용을 입력해주세요.");
@@ -138,7 +132,7 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.wrapper {
+.article-detail-wrapper {
   background-color: map-get($colors, third);
 }
 </style>

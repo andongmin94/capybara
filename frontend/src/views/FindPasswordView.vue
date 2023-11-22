@@ -10,7 +10,7 @@
           v-model.trim="username"
           :readonly="loading"
           :rules="[required]"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="아이디"
           variant="solo-filled"
@@ -20,7 +20,7 @@
           v-model.trim="email"
           :readonly="loading"
           :rules="[required]"
-          class="mb-2 inputform"
+          class="mb-2"
           clearable
           label="이메일 주소"
           variant="solo-filled"
@@ -32,7 +32,7 @@
           :disabled="!form"
           :loading="loading"
           block
-          class="inputform btn"
+          class="find-password-btn"
           color="white"
           size="large"
           type="submit"
@@ -96,7 +96,7 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.btn {
+.find-password-btn {
   background-color: map-get($colors, second) !important;
   color: white !important;
 }

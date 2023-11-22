@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-chip @click="goBack">상품 목록으로 돌아가기</v-chip>
+      <v-chip @click="goBack">상품 목록 전체보기</v-chip>
       <!-- <v-chip @click="addCart(store.selectedItem.value)">
         장바구니에 추가
       </v-chip> -->
@@ -10,49 +10,50 @@
         <v-col align="center" justify="center">
           <h1 class="mb-5">{{ store.selectedItem?.value?.fin_prdt_nm }}</h1>
           <h2 class="mb-10">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
-          <v-row>
-            <v-col cols="6">
-              <v-col>
-                <v-chip>상품 설명</v-chip>
+          <v-col cols="10" lg="8">
+            <v-row>
+              <v-col cols="6">
+                <v-col>
+                  <v-chip>상품 설명</v-chip>
+                </v-col>
+                <v-col>
+                  {{ store.selectedItem?.value?.etc_note }}
+                </v-col>
               </v-col>
-              <v-col>
-                {{ store.selectedItem?.value?.etc_note }}
-              </v-col>
-            </v-col>
-            <v-col cols="6">
-              <v-col>
-                <v-chip>가입 대상</v-chip>
-              </v-col>
-              <v-col>
-                {{ store.selectedItem?.value?.join_member }}
-              </v-col>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="6">
-              <v-col>
-                <v-chip>가입 방법</v-chip>
-              </v-col>
-              <v-col>
-                {{ store.selectedItem?.value?.join_way }}
-              </v-col>
-            </v-col>
 
-            <v-col cols="6">
-              <v-col>
-                <v-chip>특이 사항</v-chip>
+              <v-col cols="6">
+                <v-col>
+                  <v-chip>가입 대상</v-chip>
+                </v-col>
+                <v-col>
+                  {{ store.selectedItem?.value?.join_member }}
+                </v-col>
               </v-col>
-              <v-col>
-                {{ store.selectedItem?.value?.spcl_cnd }}
+            </v-row>
+
+            <v-row>
+              <v-col cols="6">
+                <v-col>
+                  <v-chip>가입 방법</v-chip>
+                </v-col>
+                <v-col>
+                  {{ store.selectedItem?.value?.join_way }}
+                </v-col>
               </v-col>
-            </v-col>
-          </v-row>
+
+              <v-col cols="6">
+                <v-col>
+                  <v-chip>특이 사항</v-chip>
+                </v-col>
+                <v-col>
+                  {{ store.selectedItem?.value?.spcl_cnd }}
+                </v-col>
+              </v-col>
+            </v-row>
+          </v-col>
         </v-col>
       </v-row>
-      <!-- <hr /> -->
-      <!-- <v-row>
-        <img src="@/assets/hr.svg" alt="" />
-      </v-row> -->
+
       <v-row align="center" justify="center">
         <v-chip>가입기간</v-chip>
       </v-row>
@@ -124,11 +125,7 @@ onMounted(() => {
 
 const addCart = (detail) => {
   console.log(detail.id);
-  // 하나의 데이터만 저장하기
-  // 문제점 : 덮어쓰기 된다.
-  // localStorage.setItem('cart', JSON.stringify(product))
 
-  // 여러 데이터 저장하기
   // 현재 localStorage 에 저장된 데이터 가져오기
   // 만약 없다면 비어있는 리스트로 초기화
   const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -164,9 +161,5 @@ $colors: (
 * {
   font-family: Pretendard-Regular;
   font-weight: 600;
-}
-
-.description {
-  background-color: map-get($colors, third);
 }
 </style>
