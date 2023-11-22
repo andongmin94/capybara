@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row>
-        <v-col cols="2" class="align-self-center">
+        <v-col cols="2" class="d-flex justify-center align-center">
           {{ article.id }}
         </v-col>
         <v-col cols="10">
