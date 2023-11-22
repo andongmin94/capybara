@@ -8,20 +8,25 @@
       </v-row>
       <v-row>
         <v-col align="center">
-          <select v-model="province" @change="updateCities">
-            <option value="">도/시</option>
-            <option v-for="info in infos" :key="info.id">
-              {{ info.prov }}
-            </option>
-          </select>
-          <select v-model="city">
-            <option value="">시/군/구</option>
-            <option v-for="c in cities" :key="c">{{ c }}</option>
-          </select>
-          <select v-model="bank">
-            <option value="">은행명</option>
-            <option v-for="b in banks" :key="b">{{ b }}</option>
-          </select>
+          <v-btn
+            ><select v-model="province" @change="updateCities">
+              <option value="">도/시</option>
+              <option v-for="info in infos" :key="info.id">
+                {{ info.prov }}
+              </option>
+            </select> </v-btn
+          >　
+          <v-btn>
+            <select v-model="city">
+              <option value="" name="시">시/군/구</option>
+              <option v-for="c in cities" :key="c">{{ c }}</option>
+            </select> </v-btn
+          >　<v-btn>
+            <select v-model="bank">
+              <option value="">은행명</option>
+              <option v-for="b in banks" :key="b">{{ b }}</option>
+            </select>
+          </v-btn>
         </v-col>
       </v-row>
 
@@ -58,5 +63,4 @@ const updateCities = () => {
 watch(province, () => {
   updateCities();
 });
-
 </script>
