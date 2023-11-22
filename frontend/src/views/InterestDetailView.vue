@@ -167,7 +167,4 @@ $colors: (
 .description {
   background-color: map-get($colors, third);
 }
-
-.card-desc {
-}
 </style>
