@@ -15,7 +15,6 @@
                 {{ article!.title }}
               </RouterLink>
             </div>
-            <div>{{ article!.content }}</div>
             <div>작성자 : {{ article!.user.username }}</div>
             <div>게시일 : {{ article!.created_at.substr(0, 10) }}</div>
           </div>
