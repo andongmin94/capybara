@@ -16,7 +16,7 @@
                 <v-chip>상품 설명</v-chip>
               </v-col>
               <v-col>
-                {{ store.selectedItem.value.etc_note }}
+                {{ store.selectedItem?.value?.etc_note }}
               </v-col>
             </v-col>
             <v-col cols="6">
@@ -24,7 +24,7 @@
                 <v-chip>가입 대상</v-chip>
               </v-col>
               <v-col>
-                {{ store.selectedItem.value.join_member }}
+                {{ store.selectedItem?.value?.join_member }}
               </v-col>
             </v-col>
           </v-row>
@@ -34,7 +34,7 @@
                 <v-chip>가입 방법</v-chip>
               </v-col>
               <v-col>
-                {{ store.selectedItem.value.join_way }}
+                {{ store.selectedItem?.value?.join_way }}
               </v-col>
             </v-col>
 
@@ -43,7 +43,7 @@
                 <v-chip>특이 사항</v-chip>
               </v-col>
               <v-col>
-                {{ store.selectedItem.value.spcl_cnd }}
+                {{ store.selectedItem?.value?.spcl_cnd }}
               </v-col>
             </v-col>
           </v-row>
