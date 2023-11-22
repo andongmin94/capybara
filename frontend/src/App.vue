@@ -4,6 +4,7 @@ import { useArticleStore } from "@/stores/article";
 import NavBar from "@/components/NavBar.vue";
 
 const store = useArticleStore();
+
 </script>
 
 <template>
@@ -12,6 +13,7 @@ const store = useArticleStore();
   </header>
 
   <RouterView />
+  
 </template>
 
 <style lang="scss" scoped>
