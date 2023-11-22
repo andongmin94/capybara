@@ -19,12 +19,12 @@
               :key="finance"
             >
               <v-card
-                class="card mx-auto mb-6"
+                class="card2 mx-auto mb-6"
                 height="380"
                 width="525"
                 elevation="16"
               >
-                <v-card-item class="mx-2 mb-4 card-item">
+                <v-card-item class="mx-2 mb-4 card-item2">
                   <div class="text-overline mt-2 mb-3">
                     <v-chip>{{ finance!.kor_co_nm }}</v-chip>
                   </div>
@@ -53,6 +53,7 @@
       </v-window-item>
     </v-window>
   </v-card>
+  
 </template>
 
 <script setup lang="ts">
@@ -92,17 +93,17 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-.container {
+.container2 {
   background-color: map-get($map: $colors, $key: third);
 }
-.card {
+.card2 {
   background-color: map-get($colors, first);
   color: map-get($colors, fifth);
   display: flex;
   flex-direction: column;
 }
 
-.card-item {
+.card-item2 {
   flex: 1;
   display: flex;
   flex-direction: column;

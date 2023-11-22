@@ -57,8 +57,7 @@
             </v-row>
           </v-container>
         </div>
-        <div v-else class="wrapper-none custom3">
-          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div v-else class="wrapper-none">
           <div><img src="@/assets/workingon.png" alt="" /></div>
           <div class="content"><strong>서비스 준비 중입니다. </strong></div>
         </div>
@@ -88,7 +87,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $colors: (
   first: #59452c,
   second: #8c704f,
@@ -145,7 +144,5 @@ $colors: (
   }
 }
 
-.custom3 {
-  transform: scale(2);
-}
+
 </style>
