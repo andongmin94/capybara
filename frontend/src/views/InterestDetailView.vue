@@ -2,9 +2,6 @@
   <div>
     <v-container>
       <v-chip @click="goBack">상품 목록 전체보기</v-chip>
-      <!-- <v-chip @click="addCart(store.selectedItem.value)">
-        장바구니에 추가
-      </v-chip> -->
 
       <v-row>
         <v-col align="center" justify="center">

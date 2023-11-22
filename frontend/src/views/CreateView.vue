@@ -1,14 +1,11 @@
 <template>
   <div>
     <v-container>
-      <v-row>
-        <v-col class="mx-auto mt-5" cols="8">
-          <v-sheet
-            elevation="2"
-            class="article-create-wrapper pt-5 pb-10 px-10"
-          >
-            <h1 class="article-create-header mb-5">새 글 작성</h1>
+      <h1 class="article-create-header mb-7 mt-1">새 글 작성</h1>
 
+      <v-row>
+        <v-col cols="10" offset="1">
+          <v-sheet elevation="2" class="article-create-wrapper py-10 px-10">
             <v-text-field v-model="title" label="제목" variant="solo-filled" />
             <v-textarea v-model="content" label="내용" variant="solo-filled" />
             <v-file-input
