@@ -7,11 +7,12 @@
     <v-window v-model="tab">
       <v-window-item v-for="n in 2" :key="n" :value="n">
         <div v-if="n === 1">
-          <RouterLink :to="{ name: 'cart' }" class="custom"
+          <div style="text-align: center;">
+          <RouterLink :to="{ name: 'cart' }" class="custom" 
             ><v-chip class="nav-item text-black mt-4 custom2" elevation="2"
               >내가 찜한 목록 🎁</v-chip
             ></RouterLink
-          >
+          ></div>
           <v-container>
             <v-row align="center" justify="center">
               <v-col
