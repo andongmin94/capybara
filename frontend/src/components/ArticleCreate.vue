@@ -23,6 +23,7 @@ $colors: (
   right: 20px;
   :hover {
     transform: scale(1.2);
+    cursor: pointer;
   }
 }
 
