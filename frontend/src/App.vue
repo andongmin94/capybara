@@ -7,7 +7,7 @@ const store = useArticleStore();
 
 <template>
   <header>
-    <v-toolbar>
+    <v-toolbar elevation="1">
       <!--화면 가장 작을때 사라지는거 수정하기 -->
       <v-toolbar-title>
         <RouterLink :to="{ name: 'home' }">
@@ -98,5 +98,4 @@ $colors: (
     transform: none;
   }
 }
-
 </style>

@@ -20,7 +20,7 @@
         clearable
         :items="payments"
         v-model="select1"
-        class="selectbox"
+        class="exchange-select-box"
         label="환전 출발"
         variant="solo-filled"
       >
@@ -29,7 +29,7 @@
         clearable
         :items="payments"
         v-model="select2"
-        class="selectbox"
+        class="exchange-select-box"
         label="환전 도착"
         variant="solo-filled"
       >
@@ -39,17 +39,17 @@
 
       <v-text-field
         v-model.number="input_money"
-        class="selectbox"
+        class="exchange-select-box"
         label="금액"
         variant="solo-filled"
       />
 
-      <v-chip @click="calculate" class="calbtn" elevation="4"
+      <v-chip @click="calculate" class="exchange-cal-btn" elevation="4"
         >환율 계산하기</v-chip
       >
       <div class="d-flex flex-column align-center justify-center">
         <p class="mt-5">계산 결과</p>
-        <div class="output">
+        <div class="exchange-output">
           {{ output_money.toFixed(2) }} {{ country[select2] }}
         </div>
         <p>입니다.</p>
@@ -207,16 +207,16 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.selectbox {
+.exchange-select-box {
   width: 300px;
 }
 
-.calbtn {
+.exchange-cal-btn {
   background-color: map-get($map: $colors, $key: second);
   color: map-get($map: $colors, $key: fifth);
 }
 
-.output {
+.exchange-output {
   font-size: larger;
   font-weight: 900;
 }

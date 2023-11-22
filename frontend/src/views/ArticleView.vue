@@ -1,7 +1,9 @@
 <template>
-  <div class="article-view-wrapper d-flex flex-column align-center">
-    <h1 class="article-view-title my-4">게시판 글 목록 페이지</h1>
-    <ArticleList />
+  <div class="article-view-wrapper d-flex flex-column">
+    <h1 class="my-5">자유 게시판</h1>
+    <v-container>
+      <ArticleList />
+    </v-container>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ $colors: (
 
 .article-view-wrapper {
   background-color: map-get($colors, third);
+  align-items: center;
 }
 .article-view-title {
   font-family: Pretendard-Regular;

@@ -1,8 +1,8 @@
 <template>
-  <div class="wrapper">
+  <div class="home-wrapper">
     <v-carousel show-arrows="hover" hide-delimiters height="auto" cycle>
       <v-carousel-item
-        class="c-image"
+        class="home-car-image"
         v-for="(item, i) in items"
         :key="i"
         :src="item.src"
@@ -13,7 +13,7 @@
           variant="elevated"
           size="x-large"
           v-if="i === 2 || i === 0"
-          class="chip-left"
+          class="home-chip-left"
           @click="goThere(item)"
         >
           {{ item.content }}↗</v-chip
@@ -23,7 +23,7 @@
           variant="elevated"
           size="x-large"
           v-else
-          class="chip-right"
+          class="home-chip-right"
           @click="goThere(item)"
           ><strong>{{ item.content }}↗</strong></v-chip
         >
@@ -83,7 +83,7 @@ $colors: (
   fifth: #f2f2f2,
 );
 
-.wrapper {
+.home-wrapper {
   background-color: map-get($colors, third);
 }
 
@@ -91,10 +91,10 @@ $colors: (
   width: 300px;
   max-width: fit-content;
 }
-.c-image {
+.home-car-image {
   position: relative;
 }
-.chip-left {
+.home-chip-left {
   position: absolute;
   left: 50px;
   bottom: 50px;
@@ -102,7 +102,7 @@ $colors: (
   color: map-get($map: $colors, $key: fifth);
 }
 
-.chip-right {
+.home-chip-right {
   position: absolute;
   right: 50px;
   bottom: 50px;
