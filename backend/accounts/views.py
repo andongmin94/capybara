@@ -17,24 +17,6 @@ def detail(request, search_name):
         return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def follow(request):
-    print('도달',request.data['from_user_id'])
-    from_user=get_object_or_404(get_user_model(),pk=request.data['from_user_id'])
-    to_user=get_object_or_404(get_user_model(),pk=request.data['to_user_id'])
-    message=''
-    if to_user.followers.filter(pk=request.data['from_user_id']).exists():
-        to_user.followers.remove(from_user)
-        message='unfollowed'
-    else:
-        to_user.followers.add(from_user)
-        message='followed'
-        
-    print('성공')
-    return Response({'message':message}, status=status.HTTP_200_OK)
-
-
 @api_view(['DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
 def edit(request):
