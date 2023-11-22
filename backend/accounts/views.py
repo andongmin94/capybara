@@ -1,12 +1,10 @@
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated,IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import UserDetailSerializer, ProfileSerializer, CustomPasswordResetSerializer
+from .serializers import ProfileSerializer, CustomPasswordResetSerializer
 from .models import User
 from rest_framework.decorators import permission_classes
 
@@ -14,15 +12,10 @@ from rest_framework.decorators import permission_classes
 @api_view(['GET'])
 def detail(request, search_name):
     if request.method == 'GET':
-        # try:
-            # print(request)
-            user = get_user_model().objects.get(username=search_name)
-            # serializer = UserDetailSerializer(user)
-            serializer = ProfileSerializer(user)   
-            return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
-        # except:
-        #     return Response({'message':'error임 왜안대노'}, status=status.HTTP_404_NOT_FOUND)
-    
+        user = get_user_model().objects.get(username=search_name)
+        serializer = ProfileSerializer(user)   
+        return Response({'data':serializer.data,'message':'success'}, status=status.HTTP_200_OK)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -58,13 +51,8 @@ def edit(request):
     elif request.method =='PUT':
         try:
             user=User.objects.get(id=user_id)
-            user.name=request.data['name']
             user.nickname=request.data['nickname']
             user.email=request.data['email']
-            user.age=request.data['age']
-            user.money=request.data['money']
-            user.salary=request.data['salary']
-            user.financial_products=request.data['financial_products']
             user.save()
             print('수정 완료')
             return Response({'message':'success'},status=status.HTTP_200_OK)  # 추후 스테이터스 변경 필요
