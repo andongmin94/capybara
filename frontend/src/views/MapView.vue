@@ -7,24 +7,21 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col align="center" class="custom-mapSelect ">
-          <select v-model="province" @change="updateCities" class="form-select custom-mapSelect2">
+        <v-col align="center">
+          <select v-model="province" @change="updateCities">
             <option value="">도/시</option>
             <option v-for="info in infos" :key="info.id">
               {{ info.prov }}
             </option>
           </select>
-          <br>
-          <select v-model="city" class="form-select custom-mapSelect2">
+          <select v-model="city">
             <option value="">시/군/구</option>
             <option v-for="c in cities" :key="c">{{ c }}</option>
           </select>
-          <br>
-          <select v-model="bank" class="form-select custom-mapSelect2">
+          <select v-model="bank">
             <option value="">은행명</option>
             <option v-for="b in banks" :key="b">{{ b }}</option>
           </select>
-          <br>
         </v-col>
       </v-row>
 
@@ -35,7 +32,6 @@
       </v-row>
     </v-container>
   </div>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </template>
 
 <script setup lang="ts">
@@ -64,17 +60,3 @@ watch(province, () => {
 });
 
 </script>
-
-<style scoped lang="scss">
-
-.custom-mapSelect {
-  :hover {
-    cursor: pointer;
-    transform: scale(1.02);
-  }
-}
-
-.custom-mapSelect2 {
-  width: 200px;
-}
-</style>

@@ -1,13 +1,14 @@
 <template>
-  <br>
-  <h1 style="text-align: center;">
-    {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}에게 추천하는 상품은
-    {{ store.pickNumber }}가지입니다.
-  </h1>
-  <br>
+  <h1>{{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}에게 추천하는 상품은 {{store.pickNumber}}가지입니다.</h1>
+  
   <v-card class="container">
+    <v-tabs v-model="tab" color="black" align-tabs="center">
+      <v-tab :value="1">예금</v-tab>
+      <v-tab :value="2">적금</v-tab>
+    </v-tabs>
     <v-window v-model="tab">
-      <v-window-item>
+      <v-window-item v-for="n in 2" :key="n" :value="n">
+        <div v-if="n===1">
         <v-container>
           <v-row align="center" justify="center">
             <v-col
@@ -50,6 +51,10 @@
             </v-col>
           </v-row>
         </v-container>
+      </div>
+      <div v-else>
+
+      </div>
       </v-window-item>
     </v-window>
   </v-card>
@@ -82,7 +87,9 @@ function getRandomElements(arr, numElements) {
 }
 let a = 3;
 const randomElements = getRandomElements(store.finances, store.pickNumber);
+
 </script>
+
 
 <style lang="scss">
 $colors: (
