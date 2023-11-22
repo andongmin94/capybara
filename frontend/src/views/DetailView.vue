@@ -103,6 +103,7 @@ const deleteArticle = function () {
     });
 };
 
+
 const submitComment = (parent_pk: any) => {
   if (!newComment.value.trim()) {
     alert("댓글 내용을 입력해주세요.");

@@ -28,6 +28,9 @@
         <v-row class="d-flex flex-column align-center">
           <v-col>
             <v-card-text>
+              <p class="mb-3"><strong>닉네임</strong>
+                <div>{{ store.user_data.data.nickname }}</div>
+              </p>
               <p class="mb-3"><strong>이메일</strong>
                 <div>{{ store.user_data.data.email }}</div>
               </p>
