@@ -1,18 +1,16 @@
 <template>
   <div>
-    <h1 class="algo-title mt-4">
+    <h1 class="algo-title mt-5">
       <span
         v-if="
           !storedMbtiType || (Array.isArray(mbtiType) && mbtiType.length === 0)
         "
       >
-        {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }}
+        ✨ {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }} ✨
       </span>
-      <span v-else>
-        {{ storedMbtiType.substr(1, 4) }}
-      </span>
+      <span v-else> ✨{{ storedMbtiType.substr(1, 4) }} ✨ </span>
     </h1>
-    <div class="algo-title mb-4">
+    <div class="algo-title mt-4 mb-5">
       {{ store2.search_username }}님께 추천하는 상품은
       <span
         v-if="
@@ -23,11 +21,16 @@
       </span>
       <span v-else> {{ storedMbtiNum }}가지입니다. </span>
     </div>
-    <RouterLink :to="{ name: 'algorithm' }" class="algorithm-test-link"
-      ><v-chip class="algorithm-test-btn" @click="resetMbtiData"
-        >다시 추천받기</v-chip
-      ></RouterLink
-    >
+    <div align="center">
+      <RouterLink :to="{ name: 'algorithm' }" class="algorithm-test-link"
+        ><v-chip
+          class="algorithm-test-btn mb-5"
+          @click="resetMbtiData"
+          elevation="2"
+          >다시 추천받기</v-chip
+        ></RouterLink
+      >
+    </div>
     <v-card class="algo-result-container" align="center">
       <v-window v-model="tab">
         <v-window-item>
@@ -193,5 +196,13 @@ $colors: (
 }
 .algo-result-link {
   color: map-get($colors, fifth);
+}
+
+.algorithm-test-link {
+  color: map-get($map: $colors, $key: fifth);
+}
+
+.algorithm-test-btn {
+  background-color: map-get($map: $colors, $key: second);
 }
 </style>

@@ -7,7 +7,7 @@
       class="scroll-btn"
       @click="scrollToTop"
     >
-      <div>⬆</div>
+      <div>↑</div>
     </v-chip>
   </div>
 </template>
