@@ -113,10 +113,6 @@ onMounted(() => {
   });
 });
 
-// 한 상품으로만 들어가는 문제. 반응형으로 받아와야 할듯 근데 어떻게하지
-// const goDetail = (mom) => {
-//   router.push(`interestDetail/${mom.fin_prdt_cd}`);
-// };
 
 const removeCart = (product) => {
   console.log(product.id);
