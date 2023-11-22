@@ -5,7 +5,7 @@
         <h1>찜한 상품 모아보기</h1>
       </v-row>
 
-      <div v-if="cartItems.length !== 0">
+      <div v-if="cartItems && cartItems.length !== 0">
         <v-row align="center" justify="center" class="mb-5">
           <UserChart :mom-products="momProducts" :cart-items="cartItems" />
         </v-row>
@@ -100,19 +100,20 @@ cartItems.value = JSON.parse(localStorage.getItem("cart"));
 
 // 옵션에 해당하는 상품 찾기
 onMounted(() => {
-  cartItems.value.map((iteminCart) => {
-    const isDuplicate = momProducts.value.find((iteminMoms) => {
-      return iteminMoms.fin_prdt_cd === iteminCart.fin_prdt_cd;
-    });
+  if (cartItems.value !== null) {
+    cartItems.value.map((iteminCart) => {
+      const isDuplicate = momProducts.value.find((iteminMoms) => {
+        return iteminMoms.fin_prdt_cd === iteminCart.fin_prdt_cd;
+      });
 
-    moms.value.forEach((mom) => {
-      if (iteminCart.fin_prdt_cd === mom.fin_prdt_cd && !isDuplicate) {
-        momProducts.value.push(mom);
-      }
+      moms.value.forEach((mom) => {
+        if (iteminCart.fin_prdt_cd === mom.fin_prdt_cd && !isDuplicate) {
+          momProducts.value.push(mom);
+        }
+      });
     });
-  });
+  }
 });
-
 
 const removeCart = (product) => {
   console.log(product.id);

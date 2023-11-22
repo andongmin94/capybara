@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-chip @click="goBack">상품 목록 전체보기</v-chip>
+      <v-chip @click="goBack">뒤로 가기</v-chip>
 
       <v-row>
         <v-col align="center" justify="center">
@@ -87,6 +87,12 @@
         </v-col>
       </v-row>
     </v-container>
+    <RouterLink :to="{ name: 'cart' }" class="go-cart-link">
+      <v-tooltip activator="parent" location="start">찜한 목록 보기</v-tooltip>
+      <v-chip size="x-large" class="go-cart-btn mb-1" elevation="3"
+        ><strong>🎁</strong>
+      </v-chip></RouterLink
+    >
   </div>
 </template>
 
@@ -103,7 +109,7 @@ const route = useRoute();
 const finance = ref();
 
 const goBack = function () {
-  router.push("/interest");
+  router.go(-1);
 };
 
 // 해당 상품에 걸린 옵션들 가져오기
@@ -148,7 +154,6 @@ const addCart = (detail) => {
   if (!isDuplicate) {
     alert("찜 목록에 추가합니다.");
     existingCart.push(detail);
-    router.go(-1);
   } else {
     alert("이미 찜한 상품입니다.");
   }
@@ -175,5 +180,22 @@ $colors: (
 .interest-detail-divider {
   opacity: 100%;
   width: 200px;
+}
+
+.go-cart-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  :hover {
+    transform: scale(1.2);
+  }
+}
+
+.go-cart-btn {
+  background-color: map-get($map: $colors, $key: second);
+  color: map-get($map: $colors, $key: fifth);
+  :hover {
+    transform: scale(1);
+  }
 }
 </style>
