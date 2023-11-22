@@ -28,5 +28,4 @@ urlpatterns = [
     path('accounts/signup/', include('dj_rest_auth.registration.urls')),
     path('accounts/', include('dj_rest_auth.urls')),
     path('finlife/', include('finlife.urls')),
-    # path('api/user/profile/', UserProfileDetailAPIView.as_view())
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
