@@ -1,6 +1,6 @@
 <template>
   <div class="article-view-wrapper d-flex flex-column">
-    <h1 class="my-5">자유 게시판</h1>
+    <h1 class="mt-5">자유 게시판</h1>
     <v-container>
       <ArticleList />
     </v-container>
@@ -24,6 +24,7 @@ $colors: (
 .article-view-wrapper {
   background-color: map-get($colors, third);
   align-items: center;
+  border-radius: 5px;
 }
 .article-view-title {
   font-family: Pretendard-Regular;

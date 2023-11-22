@@ -2,8 +2,11 @@
   <div>
     <v-container>
       <v-row>
-        <v-col class="mx-auto" cols="8">
-          <v-sheet class="article-create-wrapper pa-10">
+        <v-col class="mx-auto mt-5" cols="8">
+          <v-sheet
+            elevation="2"
+            class="article-create-wrapper pt-5 pb-10 px-10"
+          >
             <h1 class="article-create-header mb-5">새 글 작성</h1>
 
             <v-text-field v-model="title" label="제목" variant="solo-filled" />
@@ -91,6 +94,7 @@ $colors: (
 );
 .article-create-wrapper {
   min-width: 344px;
+  border-radius: 5px;
 }
 
 .article-create-header {
