@@ -55,7 +55,7 @@
             </v-row>
           </v-container>
         </div>
-        <div v-else class="wrapper-none">
+        <div v-else class="wrapper-none custom3"><br><br><br><br><br><br><br><br><br><br><br>
           <div><img src="@/assets/workingon.png" alt="" /></div>
           <div class="content"><strong>서비스 준비 중입니다. </strong></div>
         </div>
@@ -140,5 +140,9 @@ $colors: (
   :hover {
     transform: none;
   }
+}
+
+.custom3 {
+  transform: scale(2);
 }
 </style>
