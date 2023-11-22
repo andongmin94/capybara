@@ -8,8 +8,15 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { RouterLink } from "vue-router";
 import ArticleList from "@/components/ArticleList.vue";
+import { useArticleStore } from "@/stores/article";
+
+const store = useArticleStore();
+onMounted(() => {
+  store.getArticles();
+});
 </script>
 
 <style lang="scss" scoped>
