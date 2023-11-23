@@ -55,7 +55,8 @@ import { onMounted } from "vue";
 const loadKakaoMap = function () {
   // Kakao 지도 API 스크립트 동적으로 추가
   const script = document.createElement("script");
-  script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=49d9fdc65f1121f75aa647ca6d396313&autoload=false&libraries=services`;
+  const KAKAO_KEY = import.meta.env.KAKAO_KEY;
+  script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false&libraries=services`;
   script.async = true;
   script.onload = () => {
     // Kakao 지도 API 로드 완료 후 실행할 콜백 함수
