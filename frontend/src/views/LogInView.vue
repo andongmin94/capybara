@@ -66,13 +66,16 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 import { RouterLink } from "vue-router";
 
+
+const store = useCommunityStore();
 const form = ref(false);
 const loading = ref(false);
 
-const store = useArticleStore();
+
+
 const username = ref(null);
 const password = ref(null);
 

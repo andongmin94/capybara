@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 
-const store = useArticleStore();
+const store = useCommunityStore();
 
 const existingData = localStorage.getItem("mbtiData");
 const mbtiElements = JSON.parse(existingData);

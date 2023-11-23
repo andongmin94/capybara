@@ -76,22 +76,3 @@ def deposit_product_options(request, fin_prdt_cd):
     depositoptions = DepositOptions.objects.filter(fin_prdt_cd=fin_prdt_cd)
     serializer = DepositOptionsSerializer(depositoptions, many=True)
     return Response(serializer.data)
-
-
-# top_rate 가입 기간에 상관없이 금리가 가장 높은 상품과 해당 상품의 옵션 리스트
-# 출력 GET
-@api_view(['GET'])
-def top_rate(request):
-    depositoptions = DepositOptions.objects.all()
-    top_rate = 0
-    top_pk = 0
-    for depositoption in depositoptions:
-        if top_rate <= depositoption.intr_rate2:
-            top_rate = depositoption.intr_rate2
-            top_pk = depositoption.pk
-    top_option = DepositOptions.objects.get(pk=top_pk)
-    serializer2 = DepositOptionsSerializer(top_option)
-    serializer1 = DepositProductsSerializer(top_option.product)
-    serializer2 = DepositOptionsSerializer(top_option.product.depositoptions_set.all(), many=True)
-    return Response({'deposit_product': serializer1.data, 'options': serializer2.data,})
-    

@@ -89,13 +89,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 import { RouterLink } from "vue-router";
 
 const form = ref(false);
 const loading = ref(false);
+const store = useCommunityStore();
 
-const store = useArticleStore();
 const username = ref(null);
 const nickname = ref(null);
 const email = ref(null);
@@ -107,7 +107,6 @@ const visible = ref(false);
 function onSubmit() {
   console.log("가입시도중");
 
-  // if (!form.value) return;
   loading.value = true;
   setTimeout(() => (loading.value = false), 2000);
 

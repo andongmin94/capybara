@@ -6,9 +6,9 @@
       <v-row>
         <v-col align="center" justify="center">
           <h1 class="mb-5 interest-detail-product">
-            {{ store.selectedItem?.value?.fin_prdt_nm }}
+            {{ finStore.selectedItem?.value?.fin_prdt_nm }}
           </h1>
-          <h2 class="mb-6">{{ store.selectedItem?.value?.kor_co_nm }}</h2>
+          <h2 class="mb-6">{{ finStore.selectedItem?.value?.kor_co_nm }}</h2>
           <v-divider
             class="interest-detail-divider mb-5"
             :thickness="3"
@@ -20,7 +20,7 @@
                   <v-chip>상품 설명</v-chip>
                 </v-col>
                 <v-col>
-                  {{ store.selectedItem?.value?.etc_note }}
+                  {{ finStore.selectedItem?.value?.etc_note }}
                 </v-col>
               </v-col>
 
@@ -29,7 +29,7 @@
                   <v-chip>가입 대상</v-chip>
                 </v-col>
                 <v-col>
-                  {{ store.selectedItem?.value?.join_member }}
+                  {{ finStore.selectedItem?.value?.join_member }}
                 </v-col>
               </v-col>
             </v-row>
@@ -40,7 +40,7 @@
                   <v-chip>가입 방법</v-chip>
                 </v-col>
                 <v-col>
-                  {{ store.selectedItem?.value?.join_way }}
+                  {{ finStore.selectedItem?.value?.join_way }}
                 </v-col>
               </v-col>
 
@@ -49,7 +49,7 @@
                   <v-chip>특이 사항</v-chip>
                 </v-col>
                 <v-col>
-                  {{ store.selectedItem?.value?.spcl_cnd }}
+                  {{ finStore.selectedItem?.value?.spcl_cnd }}
                 </v-col>
               </v-col>
             </v-row>
@@ -99,12 +99,12 @@
 <script setup lang="ts">
 import axios from "axios";
 import { onMounted, ref } from "vue";
-import { useCounterStore } from "@/stores/counter";
 import { useRouter, useRoute } from "vue-router";
-import { defineProps } from "vue";
+import { useFinanceStore } from "@/stores/finance";
+
+const finStore = useFinanceStore();
 
 const router = useRouter();
-const store = useCounterStore();
 const route = useRoute();
 const finance = ref();
 
@@ -116,7 +116,7 @@ const goBack = function () {
 onMounted(() => {
   axios({
     method: "get",
-    url: `${store.API_URL}/finlife/deposit-product-options/${route.params.id}/`,
+    url: `${finStore.API_URL}/finlife/deposit-product-options/${route.params.id}/`,
   })
     .then((res) => {
       finance.value = res.data;

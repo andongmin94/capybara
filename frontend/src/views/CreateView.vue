@@ -32,16 +32,18 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-// import { QuillEditor } from "@vueup/vue-quill";
-import { useArticleStore } from "@/stores/article";
-import { RouterLink, useRouter } from "vue-router";
+import { useCommunityStore } from "@/stores/community";
+import { useRouter } from "vue-router";
 import axios from "axios";
 
+const store = useCommunityStore();
+
+const router = useRouter();
 const title = ref<string>("");
 const content = ref<string>("");
 const img = ref<[]>([]);
-const store = useArticleStore();
-const router = useRouter();
+
+
 
 const goBack = function () {
   if (title.value || content.value) {
@@ -71,6 +73,7 @@ const createArticle = function () {
       store.getArticles();
     })
     .then(() => {
+      console.log("게시글 작성 완료");
       setTimeout(() => {
         router.push({ name: "article" });
       }, 500);

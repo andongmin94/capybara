@@ -88,11 +88,13 @@
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import UserChart from "@/components/UserChart.vue";
-import { useCounterStore } from "@/stores/counter.ts";
+import { useFinanceStore } from "@/stores/finance";
+import axios from "axios";
+
+const finStore = useFinanceStore();
 
 const router = useRouter();
-const store = useCounterStore();
-const moms = ref(store.finances);
+const moms = ref(finStore.finances);
 const cartItems = ref([]);
 const momProducts = ref([]);
 
