@@ -58,11 +58,10 @@
     </v-card-text>
   </v-card>
 </template>
-<script setup>
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import { onMounted } from "vue";
 import { useAlgorithmStore } from "@/stores/algorithm";
 import { useFinanceStore } from "@/stores/finance";
-import axios from "axios";
 
 const algoStore = useAlgorithmStore();
 const finStore = useFinanceStore();

@@ -73,13 +73,12 @@
   <div v-else class="text-center">로딩중...</div>
 </template>
 
-<script setup>
-import { computed, ref, watch, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+<script setup lang="ts">
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
 import { useCommunityStore } from "@/stores/community";
 
-const route = useRoute();
 const router = useRouter();
 const store = useCommunityStore();
 
@@ -97,7 +96,7 @@ const checkDelete = () => {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .profile-container {
   text-align: center;
 }

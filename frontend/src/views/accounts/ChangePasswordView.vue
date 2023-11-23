@@ -61,15 +61,12 @@
   </v-sheet>
 </template>
 
-<script setup>
-import axios from "axios";
-import { useRouter } from "vue-router";
+<script setup lang="ts">
+
 import { ref } from "vue";
 import { useCommunityStore } from "@/stores/community";
 
 const store = useCommunityStore();
-const router = useRouter();
-
 
 const old_password = ref(null);
 const new_password1 = ref(null);
