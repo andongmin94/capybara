@@ -165,8 +165,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-# 추후 해제
-# .env
+
+.env
 .venv
 env/
 venv/
