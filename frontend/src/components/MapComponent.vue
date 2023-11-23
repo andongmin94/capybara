@@ -55,7 +55,7 @@ import { onMounted } from "vue";
 const loadKakaoMap = function () {
   // Kakao 지도 API 스크립트 동적으로 추가
   const script = document.createElement("script");
-  const KAKAO_KEY = import.meta.env.KAKAO_KEY;
+  const KAKAO_KEY = "REMOVED_SECRET";
   script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false&libraries=services`;
   script.async = true;
   script.onload = () => {

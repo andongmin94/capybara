@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useCommunityStore = defineStore("community", () => {
-  const API_URL = import.meta.env.API_KEY;
+  const API_URL = "http://127.0.0.1:8000";
   const router = useRouter();
   const articles = ref([]);
   const token = ref(null);
