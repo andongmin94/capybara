@@ -8,8 +8,7 @@
   <hr />
 </template>
 
-<script setup>
-import { RouterLink } from "vue-router";
+<script setup lang="ts">
 defineProps({
   data: Object,
 });

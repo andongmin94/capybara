@@ -84,16 +84,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import UserChart from "@/components/UserChart.vue";
 import { useFinanceStore } from "@/stores/finance";
-import axios from "axios";
 
 const finStore = useFinanceStore();
 
-const router = useRouter();
 const moms = ref(finStore.finances);
 const cartItems = ref([]);
 const momProducts = ref([]);

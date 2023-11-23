@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="pa-12" align="center">
-    <v-card class="px-6 py-8 form-card" max-width="344">
+    <v-card class="px-6 py-8 form-card" max-width="360">
       <v-form v-model="form" @submit.prevent="editProfile">
         <h1 class="text-center mb-5">회원정보 수정 페이지</h1>
 
@@ -37,14 +37,11 @@
   </v-sheet>
 </template>
 
-<script setup>
-import axios from "axios";
-import { useRouter } from "vue-router";
+<script setup lang="ts">
 import { ref } from "vue";
 import { useCommunityStore } from "@/stores/community";
 
 const store = useCommunityStore();
-const router = useRouter();
 
 const nickname = ref(null);
 const email = ref(null);

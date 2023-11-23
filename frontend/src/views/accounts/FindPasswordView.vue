@@ -60,9 +60,8 @@
   </v-sheet>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import axios from "axios";
-import { useRouter } from "vue-router";
 import { ref } from "vue";
 
 const username = ref(null);

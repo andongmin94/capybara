@@ -23,7 +23,7 @@ onMounted(async () => {
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
 * {
   font-family: Pretendard-regular;
 }
