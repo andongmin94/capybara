@@ -8,8 +8,6 @@
         </div>
         <v-text-field
           v-model.trim="username"
-          :readonly="loading"
-          :rules="[required]"
           class="mb-2"
           clearable
           label="아이디"
@@ -18,8 +16,6 @@
 
         <v-text-field
           v-model.trim="email"
-          :readonly="loading"
-          :rules="[required]"
           class="mb-2"
           clearable
           label="이메일 주소"
@@ -30,7 +26,6 @@
 
         <v-btn
           :disabled="!form"
-          :loading="loading"
           block
           class="find-password-btn"
           color="white"
@@ -63,9 +58,12 @@
 <script setup lang="ts">
 import axios from "axios";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const username = ref(null);
 const email = ref(null);
+const form = ref(null);
 
 function onSubmit() {
   axios({

@@ -4,7 +4,7 @@ import { useCommunityStore } from "@/stores/community";
 
 const store = useCommunityStore();
 
-const existingData = localStorage.getItem("mbtiData");
+const existingData: any = localStorage.getItem("mbtiData");
 const mbtiElements = JSON.parse(existingData);
 </script>
 
@@ -14,7 +14,7 @@ const mbtiElements = JSON.parse(existingData);
       <!--화면 가장 작을때 사라지는거 수정하기 -->
       <v-toolbar-title>
         <RouterLink :to="{ name: 'home' }">
-          <v-img class="title" src="../src/assets/appbarlogo.svg" alt="" />
+          <v-img class="title" src="/appbarlogo.svg" alt="" />
         </RouterLink>
       </v-toolbar-title>
       <div v-if="store.isLogin">{{ store.search_username }}님 환영합니다.</div>

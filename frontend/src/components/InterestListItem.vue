@@ -61,7 +61,7 @@
           </v-container>
         </div>
         <div v-else class="interest-list-item-detail-wrapper-none">
-          <div><img src="@/assets/workingon.png" alt="" /></div>
+          <div><img src="/workingon.png" alt="" /></div>
           <div class="interest-list-item-detail-wrapper-none-content">
             <strong>서비스 준비 중입니다. </strong>
           </div>

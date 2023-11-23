@@ -68,7 +68,7 @@
       </div>
 
       <div v-else align="center">
-        <div><img src="@/assets/empty.png" alt="" /></div>
+        <div><img src="/empty.png" alt="" /></div>
         <div>
           <strong class="cart-no-content">찜한 상품이 없습니다.</strong>
         </div>
@@ -84,6 +84,12 @@
   </div>
 </template>
 
+<!-- <script lang="ts">
+type localStorage = {
+  getItem:string
+}
+</script> -->
+
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import UserChart from "@/components/UserChart.vue";
@@ -92,20 +98,20 @@ import { useFinanceStore } from "@/stores/finance";
 const finStore = useFinanceStore();
 
 const moms = ref(finStore.finances);
-const cartItems = ref([]);
-const momProducts = ref([]);
+const cartItems: any = ref([]);
+const momProducts: any = ref([]);
 
-cartItems.value = JSON.parse(localStorage.getItem("cart"));
+cartItems.value = JSON.parse(localStorage.getItem("cart") || "") || [];
 
 // 옵션에 해당하는 상품 찾기
 onMounted(() => {
   if (cartItems.value !== null) {
-    cartItems.value.map((iteminCart) => {
-      const isDuplicate = momProducts.value.find((iteminMoms) => {
+    cartItems.value.map((iteminCart: any) => {
+      const isDuplicate = momProducts.value.find((iteminMoms: any) => {
         return iteminMoms.fin_prdt_cd === iteminCart.fin_prdt_cd;
       });
 
-      moms.value.forEach((mom) => {
+      moms.value.forEach((mom: any) => {
         if (iteminCart.fin_prdt_cd === mom.fin_prdt_cd && !isDuplicate) {
           momProducts.value.push(mom);
         }
@@ -114,7 +120,7 @@ onMounted(() => {
   }
 });
 
-const removeCart = (product) => {
+const removeCart = (product: any) => {
   console.log(product.id);
   // localStoage 에서 삭제
   // 현재 cartItems.value 에서 삭제
@@ -123,7 +129,9 @@ const removeCart = (product) => {
   // const existingCart = JSON.parse(localStorage.getItem('cart'))
 
   // 2. 삭제할 아이템 index 검색
-  const itemIdx = cartItems.value.findIndex((item) => item.id === product.id);
+  const itemIdx = cartItems.value.findIndex(
+    (item: any) => item.id === product.id
+  );
 
   // 3. 데이터 삭제
   cartItems.value.splice(itemIdx, 1);

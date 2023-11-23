@@ -123,8 +123,10 @@ onMounted(() => {
     })
     .then((res) => {
       // save_trm 필터링
-      finance.value = finance.value.reduce((unique, item) => {
-        const existing = unique.find((el) => el.save_trm === item.save_trm);
+      finance.value = finance.value.reduce((unique: any, item: any) => {
+        const existing = unique.find(
+          (el: any) => el.save_trm === item.save_trm
+        );
         if (!existing) {
           unique.push(item);
         }
@@ -138,17 +140,17 @@ onMounted(() => {
     });
 });
 
-const addCart = (detail) => {
+const addCart = (detail: any) => {
   console.log(detail.id);
 
   // 현재 localStorage 에 저장된 데이터 가져오기
   // 만약 없다면 비어있는 리스트로 초기화
-  const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingCart = JSON.parse(localStorage.getItem("cart") || "") || [];
 
   // 중복된 제품이 있는지 확인
   const isDuplicate =
     existingCart.length > 0 &&
-    existingCart.find((item) => item.id === detail.id);
+    existingCart.find((item: any) => item.id === detail.id);
 
   // 중복이 아니라면 추가
   if (!isDuplicate) {

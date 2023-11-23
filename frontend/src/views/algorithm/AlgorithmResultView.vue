@@ -102,7 +102,7 @@ const selectItem = (finance: any) => {
   selectedItem.value = finance;
 };
 
-function getRandomElements(arr, numElements) {
+function getRandomElements(arr: Array<Number>, numElements: number) {
   // 배열의 복사본을 만들어 사용하여 기존 배열을 수정하지 않습니다.
   const shuffledArray = arr.slice();
 
@@ -123,8 +123,8 @@ let mbtiNum: any;
 
 ////////////////
 const storedMbtiData = localStorage.getItem("mbtiData");
-const storedMbtiType = localStorage.getItem("mbtiType");
-const storedMbtiNum = localStorage.getItem("mbtiNum");
+const storedMbtiType: any = localStorage.getItem("mbtiType");
+const storedMbtiNum: any = localStorage.getItem("mbtiNum");
 
 if (storedMbtiData) {
   mbtiElements = JSON.parse(storedMbtiData);

@@ -13,7 +13,7 @@ import LogInView from "@/views/accounts/LogInView.vue";
 import ProfileView from "@/views/accounts/ProfileView.vue";
 import FindPasswordView from "@/views/accounts/FindPasswordView.vue";
 import ModifyView from "@/views/accounts/ModifyView.vue";
-import changePasswordView from "@/views/accounts/changePasswordView.vue";
+import changePasswordView from "@/views/accounts/ChangePasswordView.vue";
 import AlgorithmView from "@/views/algorithm/AlgorithmView.vue";
 import AlgorithmResultView from "@/views/algorithm/AlgorithmResultView.vue";
 import NotFoundView from "@/views/etc/NotFoundView.vue";

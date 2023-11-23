@@ -67,7 +67,7 @@ import axios from "axios";
 const payments = ref(["KRW", "USD","JPY","CNY", "EUR", "TWD", "VND", "GBP","CHF","CAD","AUD","HKD","SEK","NZD", "SGD","NOK","MXN","INR","RUB","ZAR","TRY","BRL","AED","BHD","BND","CNH","CZK","DKK","IDR","ILS","MYR","QAR","SAR","THB","CLP","COP","EGP","HUF","KWD","OMR","PHP","PLN","PKR","RON", "BDT","DZD","ETB","FJD","JOD","KES","KHR","KZT","LKR","LYD","MMK","MNT","MOP","NPR","TZS","UZS",
 ]);
 
-const country = ref({
+const country: any = ref({
   KRW: "원",
   USD: "US 달러",
   JPY: "엔",
@@ -131,7 +131,7 @@ const country = ref({
 });
 
 const select1 = ref(null);
-const select2 = ref(null);
+const select2 = ref();
 
 // 두 환율 옵션이 선택되었을 때에 환율 금액 정보 가져오기
 watch([select1, select2], ([newOption1, newOption2]) => {
@@ -190,9 +190,9 @@ watch([select1, select2], ([newOption1, newOption2]) => {
 
 const input_money = ref(0);
 const output_money = ref(0);
-const rate = ref(null);
-const currencyUnit = ref(null);
-const modifiedAt = ref(null);
+const rate: any = ref(null);
+const currencyUnit: any = ref(null);
+const modifiedAt: any = ref(null);
 
 const calculate = function () {
   output_money.value = (input_money.value / rate.value) * currencyUnit.value;

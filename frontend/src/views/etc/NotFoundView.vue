@@ -3,7 +3,7 @@
     <v-container class="d-flex flex-column align-center">
       <h1 class="half-highlight">404 NOT FOUND</h1>
       <p>잘못된 접근입니다</p>
-      <img class="not-found-image" src="@/assets/404.png" />
+      <img class="not-found-image" src="/404.png" />
       <v-chip @click="goHome">돌아가기</v-chip>
     </v-container>
   </div>

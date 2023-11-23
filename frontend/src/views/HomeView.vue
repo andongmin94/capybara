@@ -51,22 +51,22 @@ const goThere = function (item: any) {
 };
 const items = [
   {
-    src: "./src/assets/main1.svg",
+    src: "/main1.svg",
     name: "interest",
     content: "예금 상품 비교하러 가기 ",
   },
   {
-    src: "./src/assets/main2.svg",
+    src: "/main2.svg",
     name: "exchange",
     content: "환율 계산하러 가기 ",
   },
   {
-    src: "./src/assets/main3.svg",
+    src: "/main3.svg",
     name: "map",
     content: "가까운 은행 지점 찾기 ",
   },
   {
-    src: "./src/assets/main4.svg",
+    src: "/main4.svg",
     name: "algorithm",
     content: "테스트하고 추천받기 ",
   },
