@@ -135,7 +135,7 @@ const displayMarker = function (place: any) {
     infowindow.value.setContent(
       '<div style="padding:5px;font-size:12px;">' + place.place_name + "</div>"
     );
-    infowindow.value.open(map, marker);
+    infowindow.value.open(map.value, marker);
   });
 
   // 생성된 마커를 배열에 추가
