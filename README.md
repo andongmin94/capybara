@@ -65,7 +65,7 @@
 ## 개발 환경
 
 🔧 **Backend**
-
+- django 4.2.4
 
 🔧 **Frontend**
 
@@ -110,7 +110,6 @@ backend
 ## 🖨 ERD
 
 ![ERD](https://github.com/jiyeon2536/project-capybara/assets/125720796/1f3f670c-b463-43d9-b341-36e96627f95d)
-
 
 
 ### 🖱 코드 컨벤션
@@ -169,14 +168,20 @@ backend
 - 로그인한 사용자만 조회와 게시가 가능하여 exclusive한 경험 제공
   
 ### 환율계산기
+![exchange](https://github.com/jiyeon2536/project-capybara/assets/125720796/456d929c-a453-40ac-9e02-b244a519b208)
+
 - 출발 통화와 도착 통화를 선택하면 실시간 환율 정보 제공
 - 사용자가 환전하고자하는 금액 입력 시 예상 환전 금액 제공
 
 ### 주변 은행 지도
+![map](https://github.com/jiyeon2536/project-capybara/assets/125720796/81d37ab2-3055-42ef-916a-ae72ca229c23)
+
 - 지역과 은행 선택시 해당 지역 및 인근 지역의 은행 지점 정보 제공
 - 찾고자 하는 은행만 선택시 전국의 은행 지점 표출
 
 ### 회원 페이지
+![login](https://github.com/jiyeon2536/project-capybara/assets/125720796/66a184a1-4c75-4951-9089-44304969edb0)
+
 - 회원 가입을 통해 닉네임을 설정하고 커뮤니티 게시판 사용이 가능
 - 회원정보 조회 및 수정, 비밀번호 변경, 로그아웃 기능 포함
 
