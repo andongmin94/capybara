@@ -5,19 +5,6 @@
     >
     <!-- 지도를 표시할 컨테이너 -->
     <div id="mapContainer" style="width: 100%; height: 350px"></div>
-    <v-container>
-      <v-row>
-        <v-col cols="4" offset="4">
-          <v-card variant="tonal" class="mt-6">
-            <v-card-text class="d-flex flex-column align-center">
-              <h4 class="ch-password-tip mb-2">❓ 화면이 바뀌지 않아요!</h4>
-              <p>검색결과가 없기 때문입니다.</p>
-              <p>다른 은행을 선택해주세요.</p>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
   </div>
 </template>
 
@@ -103,6 +90,7 @@ const searchOnMap = function () {
 
 const searchPlaces = function (keyword: any) {
   const ps = new window.kakao.maps.services.Places();
+
   ps.keywordSearch(keyword, placesSearchCB);
 };
 
@@ -122,6 +110,8 @@ const placesSearchCB = function (data: any, status: any, pagination: any) {
     map.value.setBounds(bounds);
     // 이전에 열린 인포윈도우 닫기
     infowindow.value.close();
+  } else {
+    alert("선택한 지역에 해당 은행이 없습니다. 다른 은행을 선택해주세요.");
   }
 };
 
