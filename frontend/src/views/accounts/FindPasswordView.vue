@@ -64,7 +64,7 @@ const router = useRouter();
 const username = ref(null);
 const email = ref(null);
 const form = ref(null);
-const API_URL =  import.meta.env.API_KEY;
+const API_URL = "http://127.0.0.1:8000";
 function onSubmit() {
   axios({
     method: "get",

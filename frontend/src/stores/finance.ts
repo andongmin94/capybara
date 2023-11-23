@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useFinanceStore = defineStore("finance", () => {
-  const API_URL = import.meta.env.API_KEY;
+  const API_URL = "http://127.0.0.1:8000";
   const selectedItem: any = ref({});
 
   // 금융 데이터를 저장하는 반응형 배열
