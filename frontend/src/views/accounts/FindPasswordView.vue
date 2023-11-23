@@ -64,11 +64,11 @@ const router = useRouter();
 const username = ref(null);
 const email = ref(null);
 const form = ref(null);
-
+const API_URL =  import.meta.env.API_KEY;
 function onSubmit() {
   axios({
     method: "get",
-    url: `http://127.0.0.1:8000/accounts/password/reset/`,
+    url: `${API_URL}/accounts/password/reset/`,
     data: {
       username: username.value,
       email: email.value,
