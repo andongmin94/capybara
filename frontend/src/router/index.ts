@@ -1,23 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import ArticleView from "@/views/ArticleView.vue";
-
-import DetailView from "@/views/DetailView.vue";
-import CreateView from "@/views/CreateView.vue";
-import ExchangeView from "@/views/ExchangeView.vue";
-import InterestView from "@/views/InterestView.vue";
-import InterestDetailView from "@/views/InterestDetailView.vue";
-import CartView from "@/views/CartView.vue";
-import MapView from "@/views/MapView.vue";
-import SignUpView from "@/views/SignUpView.vue";
-import LogInView from "@/views/LogInView.vue";
-import ProfileView from "@/views/ProfileView.vue";
-import FindPasswordView from "@/views/FindPasswordView.vue";
-import ModifyView from "@/views/ModifyView.vue";
-import changePasswordView from "@/views/changePasswordView.vue";
-import AlgorithmView from "@/views/AlgorithmView.vue";
-import AlgorithmResultView from "@/views/AlgorithmResultView.vue";
-import NotFoundView from "@/views/NotFoundView.vue";
+import ArticleView from "@/views/articles/ArticleView.vue";
+import DetailView from "@/views/articles/DetailView.vue";
+import CreateView from "@/views/articles/CreateView.vue";
+import ExchangeView from "@/views/etc/ExchangeView.vue";
+import InterestView from "@/views/finances/InterestView.vue";
+import InterestDetailView from "@/views/finances/InterestDetailView.vue";
+import CartView from "@/views/finances/CartView.vue";
+import MapView from "@/views/etc/MapView.vue";
+import SignUpView from "@/views/accounts/SignUpView.vue";
+import LogInView from "@/views/accounts/LogInView.vue";
+import ProfileView from "@/views/accounts/ProfileView.vue";
+import FindPasswordView from "@/views/accounts/FindPasswordView.vue";
+import ModifyView from "@/views/accounts/ModifyView.vue";
+import changePasswordView from "@/views/accounts/changePasswordView.vue";
+import AlgorithmView from "@/views/algorithm/AlgorithmView.vue";
+import AlgorithmResultView from "@/views/algorithm/AlgorithmResultView.vue";
+import NotFoundView from "@/views/etc/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +27,7 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
-    // 커뮤니티
+    // 게시글
     {
       path: "/article",
       name: "article",

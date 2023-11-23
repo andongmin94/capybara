@@ -45,8 +45,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
-import { Chart, Grid, Line, Tooltip, Marker, Bar } from "vue3-charts";
+import { ref, watch } from "vue";
+import { Chart, Grid, Tooltip, Marker, Bar } from "vue3-charts";
 
 const props = defineProps({
   momProducts: Array,
