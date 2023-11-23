@@ -145,7 +145,8 @@ const addCart = (detail: any) => {
 
   // 현재 localStorage 에 저장된 데이터 가져오기
   // 만약 없다면 비어있는 리스트로 초기화
-  const existingCart = JSON.parse(localStorage.getItem("cart") || "") || [];
+  const existingCart =
+    JSON.parse("" || (localStorage as any).getItem("cart")) || [];
 
   // 중복된 제품이 있는지 확인
   const isDuplicate =
