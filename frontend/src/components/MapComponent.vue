@@ -5,6 +5,19 @@
     >
     <!-- 지도를 표시할 컨테이너 -->
     <div ref="mapContainer" style="width: 100%; height: 350px"></div>
+    <v-container>
+      <v-row>
+        <v-col cols="4" offset="4">
+          <v-card variant="tonal" class="mt-6">
+            <v-card-text class="d-flex flex-column align-center">
+              <h4 class="ch-password-tip mb-2">❓ 화면이 바뀌지 않아요!</h4>
+              <p>검색결과가 없기 때문입니다.</p>
+              <p>다른 은행을 선택해주세요.</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -134,6 +147,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+* {
+  font-family: Pretendard-regular;
+}
 .map-component-under {
   display: flex;
   flex-direction: column;

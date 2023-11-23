@@ -93,6 +93,7 @@ $colors: (
 
 * {
   background-color: map-get($colors, third);
+  font-family: Pretendard-regular;
 }
 
 .title {

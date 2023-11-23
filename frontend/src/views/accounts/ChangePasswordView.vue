@@ -62,7 +62,6 @@
 </template>
 
 <script setup lang="ts">
-
 import { ref } from "vue";
 import { useCommunityStore } from "@/stores/community";
 
@@ -92,7 +91,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .ch-password-btn {
   background-color: map-get($map: $colors, $key: second);
   color: map-get($map: $colors, $key: fifth);

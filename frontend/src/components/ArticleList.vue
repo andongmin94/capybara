@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row>
-        <v-col cols="10" offset="1">
+        <v-col cols="8" offset="2">
           <v-sheet elevation="3" class="pa-5 article-list-sheet">
             <v-row class="mb-1 article-list-header">
               <v-col cols="2" align="center">
@@ -57,6 +57,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+* {
+  font-family: Pretendard-regular;
+}
 .article-list-header {
   background-color: #f2f2f2;
 }

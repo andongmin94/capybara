@@ -69,12 +69,9 @@ import { ref } from "vue";
 import { useCommunityStore } from "@/stores/community";
 import { RouterLink } from "vue-router";
 
-
 const store = useCommunityStore();
 const form = ref(false);
 const loading = ref(false);
-
-
 
 const username = ref(null);
 const password = ref(null);
@@ -110,7 +107,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .login-wrapper {
   background-color: map-get($colors, third);
 }

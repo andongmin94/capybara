@@ -151,6 +151,9 @@ $colors: (
   fifth: #f2f2f2,
 );
 
+* {
+  font-family: Pretendard-regular;
+}
 .wrapper {
   background-color: map-get($colors, third);
 }
