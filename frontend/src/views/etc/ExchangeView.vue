@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column align-center">
-    <h1 class="my-6">환율 계산기</h1>
+    <h1 class="my-6 half-highlight">환율 계산기</h1>
     <v-card elevation="10" class="d-flex flex-column align-center pa-10">
       <div>
         <strong v-if="modifiedAt">{{ modifiedAt.substr(0, 10) }}</strong>
@@ -207,7 +207,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .exchange-select-box {
   width: 300px;
 }
@@ -220,5 +222,13 @@ $colors: (
 .exchange-output {
   font-size: larger;
   font-weight: 900;
+}
+
+.half-highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 55%,
+    lighten(#59452c, 35%) 50%
+  );
 }
 </style>

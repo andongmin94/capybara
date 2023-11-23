@@ -192,7 +192,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .article-detail-wrapper {
   background-color: map-get($colors, third);
 }

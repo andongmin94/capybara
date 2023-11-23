@@ -6,12 +6,13 @@
           !storedMbtiType || (Array.isArray(mbtiType) && mbtiType.length === 0)
         "
       >
-        ✨ {{ algoStore.M }}{{ algoStore.B }}{{ algoStore.T }}{{ algoStore.I }} ✨
+        ✨ {{ algoStore.M }}{{ algoStore.B }}{{ algoStore.T
+        }}{{ algoStore.I }} ✨
       </span>
       <span v-else> ✨{{ storedMbtiType.substr(1, 4) }} ✨ </span>
     </h1>
     <div class="algo-title mt-4 mb-5">
-     추천하는 상품은
+      추천하는 상품은
       <span
         v-if="
           !storedMbtiNum || (Array.isArray(mbtiNum) && mbtiNum.length === 0)
@@ -116,9 +117,9 @@ function getRandomElements(arr, numElements) {
 }
 
 //  결과배열
-let mbtiElements:any;
-let mbtiType:any;
-let mbtiNum:any;
+let mbtiElements: any;
+let mbtiType: any;
+let mbtiNum: any;
 
 ////////////////
 const storedMbtiData = localStorage.getItem("mbtiData");
@@ -164,7 +165,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .algo-title {
   text-align: center;
 }

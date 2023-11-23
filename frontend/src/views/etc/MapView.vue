@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col align="center">
-          <h1>내 주변 은행 찾기</h1>
+          <h1 class="half-highlight">내 주변 은행 찾기</h1>
         </v-col>
       </v-row>
       <v-row>
@@ -14,9 +14,9 @@
               <option v-for="info in infos" :key="info.id">
                 {{ info.prov }}
               </option>
-            </select>
-          </v-btn>　
-          <v-btn> 
+            </select> </v-btn
+          >　
+          <v-btn>
             <select v-model="city">
               <option value="">시/군/구</option>
               <option v-for="c in cities" :key="c">{{ c }}</option>
@@ -64,3 +64,17 @@ watch(province, () => {
   updateCities();
 });
 </script>
+
+<style lang="scss" scoped>
+* {
+  font-family: Pretendard-regular;
+}
+.half-highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 55%,
+    lighten(#59452c, 35%) 50%
+  );
+  width: fit-content;
+}
+</style>

@@ -94,7 +94,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
-
+* {
+  font-family: Pretendard-regular;
+}
 .find-password-btn {
   background-color: map-get($colors, second) !important;
   color: white !important;

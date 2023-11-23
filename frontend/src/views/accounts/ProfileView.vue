@@ -97,6 +97,9 @@ const checkDelete = () => {
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-family: Pretendard-regular;
+}
 .profile-container {
   text-align: center;
 }

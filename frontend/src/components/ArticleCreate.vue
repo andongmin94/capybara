@@ -17,6 +17,10 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+
+* {
+  font-family: Pretendard-regular;
+}
 .article-create-link {
   position: fixed;
   bottom: 20px;

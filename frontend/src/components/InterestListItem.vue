@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  font-family: Pretendard-regular;
+}
 $colors: (
   first: #59452c,
   second: #8c704f,

@@ -46,7 +46,10 @@
             class="algorithm-result-link"
             ><v-btn
               v-if="
-                algoStore.M != '' && algoStore.B != '' && algoStore.T != '' && algoStore.I != ''
+                algoStore.M != '' &&
+                algoStore.B != '' &&
+                algoStore.T != '' &&
+                algoStore.I != ''
               "
               class="algorithm-result-btn"
               @click="changeNavRoute"
@@ -93,6 +96,9 @@ $colors: (
   fifth: #f2f2f2,
 );
 
+* {
+  font-family: Pretendard-regular;
+}
 .algorithm-mbti {
   margin-left: 30px;
   transform: scale(1.2);

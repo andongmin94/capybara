@@ -1,10 +1,13 @@
 <template>
   <div>
     <v-container>
-      <h1 class="article-create-header mb-7 mt-1">새 글 작성</h1>
-
+      <v-row class="d-flex justify-center mt-4">
+        <h1 class="article-create-header mb-7 mt-1 half-highlight">
+          새 글 작성
+        </h1>
+      </v-row>
       <v-row>
-        <v-col cols="10" offset="1">
+        <v-col cols="8" offset="2">
           <v-sheet elevation="2" class="article-create-wrapper py-10 px-10">
             <v-text-field v-model="title" label="제목" variant="solo-filled" />
             <v-textarea v-model="content" label="내용" variant="solo-filled" />
@@ -42,8 +45,6 @@ const router = useRouter();
 const title = ref<string>("");
 const content = ref<string>("");
 const img = ref<[]>([]);
-
-
 
 const goBack = function () {
   if (title.value || content.value) {
@@ -92,6 +93,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+* {
+  font-family: Pretendard-regular;
+}
 .article-create-wrapper {
   min-width: 344px;
   border-radius: 5px;
@@ -100,5 +104,14 @@ $colors: (
 .article-create-header {
   font-family: Pretendard-Regular;
   text-align: center;
+}
+
+.half-highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 55%,
+    lighten(#59452c, 35%) 50%
+  );
+  width: fit-content;
 }
 </style>

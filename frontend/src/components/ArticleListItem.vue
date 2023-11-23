@@ -36,6 +36,9 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+* {
+  font-family: Pretendard-regular;
+}
 .article-list-title {
   font-family: Pretendard-Regular;
   font-weight: 900;

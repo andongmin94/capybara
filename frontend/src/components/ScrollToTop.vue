@@ -46,6 +46,9 @@ $colors: (
   forth: #402a17,
   fifth: #f2f2f2,
 );
+* {
+  font-family: Pretendard-regular;
+}
 .scroll-btn {
   background-color: map-get($map: $colors, $key: second);
   color: map-get($map: $colors, $key: fifth);
