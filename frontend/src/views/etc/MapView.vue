@@ -43,11 +43,10 @@
 import MapComponent from "@/components/MapComponent.vue";
 import { ref, watch } from "vue";
 import { useMapStore } from "@/stores/map";
-import type { Infos } from "@/types/CityInfo";
 
 const store = useMapStore();
 
-const infos: Infos[] = store.infos;
+const infos = store.infos;
 const banks = store.banks;
 const cities = ref<string[]>([]);
 

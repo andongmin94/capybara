@@ -31,6 +31,12 @@
   </div>
 </template>
 
+<script lang="ts">
+type Object = {
+  id: any;
+};
+</script>
+
 <script setup lang="ts">
 import ArticleListItem from "@/components/ArticleListItem.vue";
 import ArticleCreate from "@/components/ArticleCreate.vue";
@@ -40,8 +46,8 @@ import { useCommunityStore } from "@/stores/community";
 const store = useCommunityStore();
 const page = ref(1);
 
-const articles = store.articles;
-const sortedArticles = articles.sort((a, b) => b.id - a.id);
+const articles: Object[] = store.articles;
+const sortedArticles: Object[] = articles.sort((a: any, b: any) => b.id - a.id);
 
 onMounted(() => {
   store.getArticles();

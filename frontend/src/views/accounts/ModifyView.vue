@@ -45,6 +45,8 @@ const store = useCommunityStore();
 
 const nickname = ref(null);
 const email = ref(null);
+const form = ref(null);
+const loading = ref(false);
 
 const editProfile = function () {
   const payload = {

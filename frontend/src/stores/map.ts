@@ -1,9 +1,8 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { Infos } from "@/types/CityInfo";
 
 export const useMapStore = defineStore("map", () => {
-  const infos = ref<Infos[]>([
+  const infos = ref([
     {
       id: 1,
       prov: "서울특별시",

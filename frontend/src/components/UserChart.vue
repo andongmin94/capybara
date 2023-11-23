@@ -3,8 +3,8 @@
     :size="{ width: 700, height: 500 }"
     :data="data"
     :margin="margin"
-    :direction="direction"
-    :axis="axis"
+    :direction:any="direction"
+    :axis:any="axis"
   >
     <template #layers>
       <Grid strokeDasharray="2, 2" />
@@ -53,15 +53,15 @@ const props = defineProps({
   cartItems: Array,
 });
 
-const cartItems = props.cartItems;
-const momProducts = props.momProducts;
-const data = ref([]);
+const cartItems: any = props.cartItems;
+const momProducts: any = props.momProducts;
+const data: any = ref([]);
 watch(
   [cartItems, momProducts],
   ([items, products]) => {
-    items.forEach((item) => {
+    items?.forEach((item: any) => {
       let momProd = null;
-      products.forEach((product) => {
+      products.forEach((product: any) => {
         if (item.fin_prdt_cd === product.fin_prdt_cd) {
           momProd = product.fin_prdt_nm;
         }

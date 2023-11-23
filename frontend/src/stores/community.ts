@@ -9,7 +9,7 @@ export const useCommunityStore = defineStore("community", () => {
   const articles = ref([]);
   const token = ref(null);
   const search_username = ref(null);
-  const user_data = ref(null);
+  const user_data: any = ref(null);
 
   const isLogin = computed(() => {
     if (token.value === null) {

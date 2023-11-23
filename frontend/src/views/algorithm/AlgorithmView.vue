@@ -81,7 +81,7 @@ onMounted(() => {
   algoStore.pickNumber = getRandomNumber(3, 6);
 });
 
-function getRandomNumber(min, max) {
+function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 const changeNavRoute = () => {};
