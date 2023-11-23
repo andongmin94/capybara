@@ -101,7 +101,7 @@ const moms = ref(finStore.finances);
 const cartItems: any = ref([]);
 const momProducts: any = ref([]);
 
-cartItems.value = JSON.parse(localStorage.getItem("cart") || "") || [];
+cartItems.value = JSON.parse("" || (localStorage as any).getItem("cart")) || [];
 
 // 옵션에 해당하는 상품 찾기
 onMounted(() => {

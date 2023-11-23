@@ -38,6 +38,7 @@
           lowRate: { label: '옵션 저축 금리', color: '#59452c' },
           highRate: { label: '최고 우대 금리', color: '#8c704f' },
           name: { label: '상품 이름', color: '#59452c' },
+          caption: { label: '참고', color: '#402a17' },
         }"
       />
     </template>
@@ -67,15 +68,19 @@ watch(
         }
       });
 
-      data.value.push({
-        saveTerm: item.save_trm,
-        // 옵션저축 금리
-        lowRate: item.intr_rate,
-        // 최고 우대 금리
-        highRate: item.intr_rate2,
-        // 엄마 상품 이름
-        name: `[${item.save_trm}개월] ${momProd}`,
-      });
+      if (momProd !== null) {
+        data.value.push({
+          saveTerm: item.save_trm,
+          // 옵션저축 금리
+          lowRate: item.intr_rate * 100,
+          // 최고 우대 금리
+          highRate: item.intr_rate2 * 100,
+          // 엄마 상품 이름
+          name: `[${item.save_trm}개월] ${momProd}`,
+          // 설명
+          caption: "금리는 100이 곱해진 값입니다. 예) 405 인 경우 4.05",
+        });
+      }
     });
   },
   { immediate: true }
@@ -94,7 +99,7 @@ const axis = ref({
     type: "band",
   },
   secondary: {
-    domain: ["dataMin", "dataMax+2"],
+    domain: ["dataMin", "dataMax"],
     type: "linear",
     ticks: 8,
   },
