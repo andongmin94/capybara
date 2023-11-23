@@ -83,11 +83,11 @@
 <script setup lang="ts">
 import axios from "axios";
 import { onMounted, ref } from "vue";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 import { useRoute, useRouter } from "vue-router";
-import type { Article } from "@/types/Article";
 
-const store = useArticleStore();
+const store = useCommunityStore();
+
 const route = useRoute();
 const router = useRouter();
 const article = ref();

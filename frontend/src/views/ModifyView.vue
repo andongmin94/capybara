@@ -41,10 +41,10 @@
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 
+const store = useCommunityStore();
 const router = useRouter();
-const store = useArticleStore();
 
 const nickname = ref(null);
 const email = ref(null);

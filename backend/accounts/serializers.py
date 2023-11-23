@@ -13,8 +13,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 class CustomRegisterSerializer(RegisterSerializer):
     # 추가할 필드들을 정의합니다.
-    # first_name = serializers.CharField(required=False)
-    # last_name = serializers.CharField(required=False)
     nickname = serializers.CharField(
     required=False,
     allow_blank=True,

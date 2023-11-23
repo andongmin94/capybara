@@ -9,11 +9,10 @@
 
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { RouterLink } from "vue-router";
 import ArticleList from "@/components/ArticleList.vue";
-import { useArticleStore } from "@/stores/article";
+import { useCommunityStore } from "@/stores/community";
 
-const store = useArticleStore();
+const store = useCommunityStore();
 onMounted(() => {
   store.getArticles();
 });

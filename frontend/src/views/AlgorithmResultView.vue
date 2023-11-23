@@ -6,18 +6,18 @@
           !storedMbtiType || (Array.isArray(mbtiType) && mbtiType.length === 0)
         "
       >
-        ✨ {{ store.M }}{{ store.B }}{{ store.T }}{{ store.I }} ✨
+        ✨ {{ algoStore.M }}{{ algoStore.B }}{{ algoStore.T }}{{ algoStore.I }} ✨
       </span>
       <span v-else> ✨{{ storedMbtiType.substr(1, 4) }} ✨ </span>
     </h1>
     <div class="algo-title mt-4 mb-5">
-      {{ store2.search_username }}님께 추천하는 상품은
+     추천하는 상품은
       <span
         v-if="
           !storedMbtiNum || (Array.isArray(mbtiNum) && mbtiNum.length === 0)
         "
       >
-        {{ store.pickNumber }}가지입니다.
+        {{ algoStore.pickNumber }}가지입니다.
       </span>
       <span v-else> {{ storedMbtiNum }}가지입니다. </span>
     </div>
@@ -87,14 +87,15 @@
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { useCounterStore } from "@/stores/counter";
-import { useArticleStore } from "@/stores/article";
+import { useAlgorithmStore } from "@/stores/algorithm";
+import { useFinanceStore } from "@/stores/finance";
 import { ref } from "vue";
 
+const algoStore = useAlgorithmStore();
+const finStore = useFinanceStore();
+
 const tab = ref(null);
-const store = useCounterStore();
-const store2 = useArticleStore();
-const selectedItem = store.selectedItem;
+const selectedItem = finStore.selectedItem;
 
 const selectItem = (finance: any) => {
   selectedItem.value = finance;
@@ -114,14 +115,10 @@ function getRandomElements(arr, numElements) {
   return shuffledArray.slice(0, numElements);
 }
 
-let a = 3;
-
 //  결과배열
-let mbtiElements;
-let mbtiType;
-let mbtiNum;
-
-//  const mbtiElements = getRandomElements(store.finances, store.pickNumber);
+let mbtiElements:any;
+let mbtiType:any;
+let mbtiNum:any;
 
 ////////////////
 const storedMbtiData = localStorage.getItem("mbtiData");
@@ -134,22 +131,22 @@ if (storedMbtiData) {
   mbtiNum = JSON.parse(storedMbtiNum);
 
   if (Array.isArray(mbtiElements) && mbtiElements.length === 0) {
-    mbtiElements = getRandomElements(store.finances, store.pickNumber);
+    mbtiElements = getRandomElements(finStore.finances, algoStore.pickNumber);
     localStorage.setItem("mbtiData", JSON.stringify(mbtiElements));
     localStorage.setItem(
       "mbtiType",
-      JSON.stringify(`${store.M}${store.B}${store.T}${store.I}`)
+      JSON.stringify(`${algoStore.M}${algoStore.B}${algoStore.T}${algoStore.I}`)
     );
-    localStorage.setItem("mbtiNum", JSON.stringify(store.pickNumber));
+    localStorage.setItem("mbtiNum", JSON.stringify(algoStore.pickNumber));
   }
 } else {
-  mbtiElements = getRandomElements(store.finances, store.pickNumber);
+  mbtiElements = getRandomElements(finStore.finances, algoStore.pickNumber);
   localStorage.setItem("mbtiData", JSON.stringify(mbtiElements));
   localStorage.setItem(
     "mbtiType",
-    JSON.stringify(`${store.M}${store.B}${store.T}${store.I}`)
+    JSON.stringify(`${algoStore.M}${algoStore.B}${algoStore.T}${algoStore.I}`)
   );
-  localStorage.setItem("mbtiNum", JSON.stringify(store.pickNumber));
+  localStorage.setItem("mbtiNum", JSON.stringify(algoStore.pickNumber));
 }
 
 const resetMbtiData = function () {

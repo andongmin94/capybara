@@ -75,13 +75,13 @@
 
 <script setup>
 import { computed, ref, watch, onMounted } from "vue";
-import { useArticleStore } from "@/stores/article";
 import { useRoute, useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
+import { useCommunityStore } from "@/stores/community";
 
 const route = useRoute();
 const router = useRouter();
-const store = useArticleStore();
+const store = useCommunityStore();
 
 onMounted(() => {
   store.get_user_data(store.search_username, () => router.push("/"));

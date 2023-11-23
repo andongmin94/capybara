@@ -32,12 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useArticleStore } from "@/stores/article";
 import ArticleListItem from "@/components/ArticleListItem.vue";
 import ArticleCreate from "@/components/ArticleCreate.vue";
+import { ref, onMounted } from "vue";
+import { useCommunityStore } from "@/stores/community";
 
-const store = useArticleStore();
+const store = useCommunityStore();
 const page = ref(1);
 
 const articles = store.articles;

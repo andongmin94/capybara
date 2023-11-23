@@ -13,28 +13,28 @@
         <br /><br /><br /><br /><br />
         <v-row align="center" justify="center" class="algorithm-mbti">
           <v-col cols="12" sm="2" md="1">
-            <v-radio-group v-model="store.M" column>
+            <v-radio-group v-model="algoStore.M" column>
               <v-radio label="E" color="red-darken-3" value="E"></v-radio>
               <v-radio label="I" color="primary" value="I"></v-radio>
             </v-radio-group>
           </v-col>
 
           <v-col cols="12" sm="2" md="1">
-            <v-radio-group v-model="store.B" column>
+            <v-radio-group v-model="algoStore.B" column>
               <v-radio label="S" color="red" value="S"></v-radio>
               <v-radio label="N" color="secondary" value="N"></v-radio>
             </v-radio-group>
           </v-col>
 
           <v-col cols="12" sm="2" md="1">
-            <v-radio-group v-model="store.T" column>
+            <v-radio-group v-model="algoStore.T" column>
               <v-radio label="T" color="orange-darken-3" value="T"></v-radio>
               <v-radio label="F" color="info" value="F"></v-radio>
             </v-radio-group>
           </v-col>
 
           <v-col cols="12" sm="2" md="1">
-            <v-radio-group v-model="store.I" column>
+            <v-radio-group v-model="algoStore.I" column>
               <v-radio label="J" color="indigo" value="J"></v-radio>
               <v-radio label="P" color="success" value="P"></v-radio>
             </v-radio-group>
@@ -46,7 +46,7 @@
             class="algorithm-result-link"
             ><v-btn
               v-if="
-                store.M != '' && store.B != '' && store.T != '' && store.I != ''
+                algoStore.M != '' && algoStore.B != '' && algoStore.T != '' && algoStore.I != ''
               "
               class="algorithm-result-btn"
               @click="changeNavRoute"
@@ -60,21 +60,23 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
-import { useCounterStore } from "@/stores/counter";
+import { useAlgorithmStore } from "@/stores/algorithm";
+import { useFinanceStore } from "@/stores/finance";
 import axios from "axios";
 
-const store = useCounterStore();
+const algoStore = useAlgorithmStore();
+const finStore = useFinanceStore();
 
 onMounted(() => {
   console.log("MBTI 초기화");
-  store.getFinances();
-  store.M = "";
-  store.B = "";
-  store.T = "";
-  store.I = "";
+  finStore.getFinances();
+  algoStore.M = "";
+  algoStore.B = "";
+  algoStore.T = "";
+  algoStore.I = "";
 
   // 3부터 6까지의 랜덤한 정수를 선택
-  store.pickNumber = getRandomNumber(3, 6);
+  algoStore.pickNumber = getRandomNumber(3, 6);
 });
 
 function getRandomNumber(min, max) {

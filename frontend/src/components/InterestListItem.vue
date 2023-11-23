@@ -19,7 +19,7 @@
                 cols="12"
                 md="6"
                 lg="4"
-                v-for="finance in store.finances"
+                v-for="finance in finStore.finances"
                 :key="finance"
               >
                 <v-card
@@ -73,14 +73,14 @@
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import { useCounterStore } from "@/stores/counter";
 import { ref } from "vue";
+import { useFinanceStore } from "@/stores/finance";
 
+const finStore = useFinanceStore();
 const tab = ref(null);
-const store = useCounterStore();
 
 const selectItem = (finance: any) => {
-  store.selectedItem.value = finance;
+  finStore.selectedItem.value = finance;
 };
 </script>
 

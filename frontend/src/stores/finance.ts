@@ -1,20 +1,30 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 
-export const useCounterStore = defineStore("counter", () => {
-  const count = ref(0);
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
-  }
-  const selectedItem = ref({});
-  const pickNumber = ref(3);
-  // DRF에 fin 조회 요청을 보내는 action
+export const useFinanceStore = defineStore("finance", () => {
   const API_URL = "http://127.0.0.1:8000";
-
+  const selectedItem = ref({});
+  
   // 금융 데이터를 저장하는 반응형 배열
   const finances = ref([]);
+
+  // DRF에 fin 조회 요청을 보내는 action
+
+    // 금융 데이터 초기 세팅하는 메서드
+    const setFinances = function () {
+      axios({
+        method: "get",
+        url: `${API_URL}/finlife/save-deposit-products/`,
+      })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
 
   // 금융 데이터를 조회하는 메서드
   const getFinances = function () {
@@ -31,20 +41,12 @@ export const useCounterStore = defineStore("counter", () => {
       });
   };
 
-  const M = ref("");
-  const B = ref("");
-  const T = ref("");
-  const I = ref("");
 
   return {
-    count,
-    doubleCount,
-    increment,
     API_URL,
     finances,
+    setFinances,
     getFinances,
     selectedItem,
-    M, B, T, I,
-    pickNumber,
   };
 });

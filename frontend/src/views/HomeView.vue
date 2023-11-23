@@ -34,13 +34,16 @@
 
 <script setup lang="ts">
 import router from "@/router";
-import { ref, onMounted } from "vue";
-import { useArticleStore } from "@/stores/article";
+import { onMounted } from "vue";
+import { useFinanceStore } from "@/stores/finance";
+import { useCommunityStore } from "@/stores/community";
 
-const store = useArticleStore();
+const coStore = useCommunityStore();
+const finStore = useFinanceStore();
+
 onMounted(() => {
-  store.getArticles();
-  store.setFinances();
+  coStore.getArticles();
+  finStore.setFinances();
 });
 
 const goThere = function (item: any) {
