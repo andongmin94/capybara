@@ -29,19 +29,6 @@ declare global {
 }
 export default {
   name: "KakaoMap",
-  props: {
-    province: String,
-    city: String,
-    bank: String,
-  },
-  data() {
-    return {
-      map: null,
-      infowindow: null,
-      markers: [], // 마커를 저장할 배열 추가
-      searchKeyword: "", // 검색어를 저장할 변수 추가
-    };
-  },
   beforeDestroy() {
     // 컴포넌트가 파괴될 때 이벤트 리스너 제거
     window.removeEventListener("resize", handleWindowResize);
@@ -50,17 +37,28 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+
+const props = defineProps({
+  province: String,
+  city: String,
+  bank: String,
+});
+
+const map = ref();
+const infowindow = ref();
+const markers = ref<any[]>([]); // 마커를 저장할 배열 추가
+const searchKeyword = ref(""); // 검색어를 저장할 변수 추가
 
 const loadKakaoMap = function () {
   // Kakao 지도 API 스크립트 동적으로 추가
   const script = document.createElement("script");
-  const KAKAO_KEY = "2d49c44ef06bff45b8438e3fd6d4b4e0";
+  const KAKAO_KEY = "49d9fdc65f1121f75aa647ca6d396313";
   script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false&libraries=services`;
   script.async = true;
   script.onload = () => {
     // Kakao 지도 API 로드 완료 후 실행할 콜백 함수
-    window.kakao.maps.load(function (this: any) {
+    window.kakao.maps.load(function () {
       initializeKakaoMap();
     });
   };
@@ -68,7 +66,7 @@ const loadKakaoMap = function () {
   document.head.appendChild(script);
 };
 
-const initializeKakaoMap = function (this: any) {
+const initializeKakaoMap = function () {
   // Kakao 지도 API 초기화
   console.log("Initializing Kakao Map");
   const mapContainer = document.querySelector("#mapContainer");
@@ -77,14 +75,14 @@ const initializeKakaoMap = function (this: any) {
     level: 3,
   };
 
-  this.map = new window.kakao.maps.Map(mapContainer, mapOption);
-  this.infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+  map.value = new window.kakao.maps.Map(mapContainer, mapOption);
+  infowindow.value = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 };
 
-const handleWindowResize = function (this: any) {
+const handleWindowResize = function () {
   // 창 크기가 변경될 때 지도 크기 업데이트
-  if (this.map) {
-    this.map.relayout();
+  if (map) {
+    map.value.relayout();
   }
 };
 
@@ -95,66 +93,62 @@ onMounted(() => {
   window.addEventListener("resize", handleWindowResize);
 });
 
-const searchOnMap = function (this: any) {
+const searchOnMap = function () {
   console.log("Button clicked");
-  this.isLoading = true;
-  const searchKeyword = `${this.province} ${this.city} ${this.bank}`;
+  map.value.isLoading = true;
+  searchKeyword.value = `${props.province} ${props.city} ${props.bank}`;
   console.log("Search Keyword:", searchKeyword);
-  searchPlaces(searchKeyword);
+  searchPlaces(searchKeyword.value);
 };
 
-const searchPlaces = function (this: any, keyword: any) {
+const searchPlaces = function (keyword: any) {
   const ps = new window.kakao.maps.services.Places();
   ps.keywordSearch(keyword, placesSearchCB);
 };
-const placesSearchCB = function (
-  this: any,
-  data: any,
-  status: any,
-  pagination: any
-) {
+
+const placesSearchCB = function (data: any, status: any, pagination: any) {
   if (status === window.kakao.maps.services.Status.OK) {
     // 검색 결과가 OK일 때 기존 마커들을 모두 제거
-    this.removeAllMarkers();
+    removeAllMarkers();
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
     // LatLngBounds 객체에 좌표를 추가
     var bounds = new window.kakao.maps.LatLngBounds();
 
     for (var i = 0; i < data.length; i++) {
-      this.displayMarker(data[i]);
+      displayMarker(data[i]);
       bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
     }
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정
-    this.map.setBounds(bounds);
+    map.value.setBounds(bounds);
     // 이전에 열린 인포윈도우 닫기
-    this.infowindow.close();
+    infowindow.value.close();
   }
 };
 
-const displayMarker = function (this: any, place: any) {
+const displayMarker = function (place: any) {
   const marker = new window.kakao.maps.Marker({
-    map: this.map,
+    map: map.value,
     position: new window.kakao.maps.LatLng(place.y, place.x),
   });
 
   window.kakao.maps.event.addListener(marker, "click", () => {
-    this.infowindow.setContent(
+    infowindow.value.setContent(
       '<div style="padding:5px;font-size:12px;">' + place.place_name + "</div>"
     );
-    this.infowindow.open(this.map, marker);
+    infowindow.value.open(map, marker);
   });
 
   // 생성된 마커를 배열에 추가
-  this.markers.push(marker);
+  markers.value.push(marker);
 };
 
-const removeAllMarkers = function (this: any) {
+const removeAllMarkers = function () {
   // 배열에 저장된 모든 마커를 제거
-  for (let i = 0; i < this.markers.length; i++) {
-    this.markers[i].setMap(null);
+  for (let i = 0; i < markers.value.length; i++) {
+    markers.value[i].setMap(null);
   }
   // 배열 비우기
-  this.markers = [];
+  markers.value = [];
 };
 </script>
 
