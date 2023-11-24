@@ -104,7 +104,7 @@ backend
 
 ## 🖨 ERD
 
-![ERD](https://github.com/jiyeon2536/project-capybara/assets/125720796/1f3f670c-b463-43d9-b341-36e96627f95d)
+![ERD](https://github.com/jiyeon2536/project-capybara/assets/125720796/519e0c6e-f309-4e0d-941b-69cdde793288)
 
 
 ### 🖱 코드 컨벤션
