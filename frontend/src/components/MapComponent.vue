@@ -40,7 +40,7 @@ const searchKeyword = ref(""); // 검색어를 저장할 변수 추가
 const loadKakaoMap = function () {
   // Kakao 지도 API 스크립트 동적으로 추가
   const script = document.createElement("script");
-  const KAKAO_KEY = "49d9fdc65f1121f75aa647ca6d396313";
+  const KAKAO_KEY = "";
   script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false&libraries=services`;
   script.async = true;
   script.onload = () => {
