@@ -185,3 +185,13 @@ backend
 
 ## 📃 문서
 [💻 Notion](https://bustling-trade-bc8.notion.site/project-edee400fdbb84c5ebda96cba3ada5c77?pvs=4)
+
+## API 입력 위치
+
+카카오맵 : frontend\src\components\MapComponent.vue의 const KAKAO_KEY
+api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide/ JavaScript  키
+
+금융감독원 : backend\api\settings.py
+api 레퍼런스 주소
+- 예금 : https://finlife.fss.or.kr/finlife/api/fdrmDpstApi/list.do?menuNo=700052
+- 적금 : https://finlife.fss.or.kr/finlife/api/fdrmDpstApi/list.do?menuNo=700052

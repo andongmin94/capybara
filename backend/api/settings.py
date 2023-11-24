@@ -25,25 +25,8 @@ SECRET_KEY = (
 )
 
 
-# 한국수출입은행 환율정보 API
-
-KOREAEXIM_KEY='iq3XNTqjCICLmQay7SmvTR37pDuZQgIr'
-
-# 카카오맵 API
-# 네이티브 앱 키
-# KEY='7f81914973952f37bc7e7c07d3c355c2'
-
-# REST API 키
-# KEY='22447c8b17d2cda7af5360d51958788f'
-
-# JavaScript 키
-# KEY='a2804ef4ab032a17fb5d9d5814076bac'
-
-# Admin 키
-# KEY='37d9d46b89159b604c3b257ac78166a8'
-
 # 금융감독원 API
-# KEY='73488150037f4c385bd4b53f926a10ef'
+API_KEY=''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
