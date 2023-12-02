@@ -1,6 +1,6 @@
 ![logo](https://github.com/jiyeon2536/project-capybara/assets/125720796/f3ceadc1-6028-47bd-82d7-5de2d295fe87)
 
-!(reward.jpg)
+![Alt text](reward.jpg)
 
 ### 📓 프로젝트 개요
 - 설명 : 예금 상품 조회 및 추천 서비스
