@@ -68,7 +68,7 @@
 
 🔧 **Frontend**
 - vite 4.4.11
-- typescript 5.2.0
+- vue.js 3.3.4
 
 <br/>
 
