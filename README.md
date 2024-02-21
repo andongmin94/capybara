@@ -58,7 +58,6 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)&nbsp;
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)&nbsp;
 
-
 <br />
 
 ## 개발 환경
@@ -105,7 +104,6 @@ backend
 
 ![ERD](/frontend/public/readme-image/ERD.png)
 
-
 ### 🖱 코드 컨벤션
 
 <details>
@@ -135,6 +133,8 @@ backend
 ![mainpage](/frontend/public/readme-image/main-page.gif)
 - carousel slide 이미지를 통해 사용자 니즈에 따른 서비스 내용을 직관적으로 설명
 - 주요 기능 링크를 내비게이션 바 및 이미지 위 버튼으로 제공
+
+<br />
    
 ### MBTI 상품추천 페이지
 ![algorithm](/frontend/public/readme-image/algorithm-page.gif)
@@ -144,7 +144,7 @@ backend
 - 추천 결과를 브라우저 단에 저장하여 페이지 이탈 후에도 다시 조회가 가능
 - 로그인하지 않아도 참여가 가능하게 만들어 서비스 유입량 향상
 
-
+<br />
 
 ### 예적금 상품 조회
 ![cart](/frontend/public/readme-image/cart-page.gif)
@@ -157,34 +157,44 @@ backend
 - 관심 상품 목록은 브라우저단에 저장하여 페이지 이탈 후에도 유지됨
 - 로그인하지 않은 사용자도 이용 가능하여 사용자 편의성 증대
 
+<br />
+
 ### 커뮤니티 게시판
 ![comm](/frontend/public/readme-image/community-page.gif)
 - 카피바라 회원들 간의 금융 지식 공유가 가능한 공간
 - 댓글 기능을 통해 의견을 나눌 수 있음
 - 로그인한 사용자만 조회와 게시가 가능하여 exclusive한 경험 제공
   
+<br />
+
 ### 환율계산기
-![exchange](/frontend/public/exchange-page.gif)
+![exchange](/frontend/public/readme-image/cexchange-page.gif)
 
 - 출발 통화와 도착 통화를 선택하면 실시간 환율 정보 제공
 - 사용자가 환전하고자하는 금액 입력 시 예상 환전 금액 제공
 
+<br />
+
 ### 주변 은행 지도
-![map](/frontend/public/map-page.gif)
+![map](/frontend/public/readme-image/cmap-page.gif)
 
 - 지역과 은행 선택시 해당 지역 및 인근 지역의 은행 지점 정보 제공
 - 찾고자 하는 은행만 선택시 전국의 은행 지점 표출
 
+<br />
+
 ### 회원 페이지
-![login](/frontend/public/login-page.gif)
+![login](/frontend/public/readme-image/clogin-page.gif)
 
 - 회원 가입을 통해 닉네임을 설정하고 커뮤니티 게시판 사용이 가능
 - 회원정보 조회 및 수정, 비밀번호 변경, 로그아웃 기능 포함
 
+<br />
 
 ## 📃 문서
 [💻 Notion](https://andongmin.notion.site/ssafy-pjt-capybara-1a48ea41003644538eaea42fcf2f0c8b?pvs=25)
 
+<br />
 
 ## API 입력 위치
 ```
