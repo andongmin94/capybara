@@ -168,7 +168,7 @@ backend
 <br />
 
 ### 환율계산기
-![exchange](/frontend/public/readme-image/cexchange-page.gif)
+![exchange](/frontend/public/readme-image/exchange-page.gif)
 
 - 출발 통화와 도착 통화를 선택하면 실시간 환율 정보 제공
 - 사용자가 환전하고자하는 금액 입력 시 예상 환전 금액 제공
@@ -176,7 +176,7 @@ backend
 <br />
 
 ### 주변 은행 지도
-![map](/frontend/public/readme-image/cmap-page.gif)
+![map](/frontend/public/readme-image/map-page.gif)
 
 - 지역과 은행 선택시 해당 지역 및 인근 지역의 은행 지점 정보 제공
 - 찾고자 하는 은행만 선택시 전국의 은행 지점 표출
@@ -184,7 +184,7 @@ backend
 <br />
 
 ### 회원 페이지
-![login](/frontend/public/readme-image/clogin-page.gif)
+![login](/frontend/public/readme-image/login-page.gif)
 
 - 회원 가입을 통해 닉네임을 설정하고 커뮤니티 게시판 사용이 가능
 - 회원정보 조회 및 수정, 비밀번호 변경, 로그아웃 기능 포함
