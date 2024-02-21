@@ -1,6 +1,6 @@
-![logo](/frontend/public/logo.png)
+![logo](/frontend/public/readme-image/logo.png)
 
-![Alt text](reward.jpg)
+![Alt text](/frontend/public/readme-image/reward.png)
 
 ### 📓 프로젝트 개요
 - 설명 : 예금 상품 조회 및 추천 서비스
@@ -103,7 +103,7 @@ backend
 
 ## 🖨 ERD
 
-![ERD](/frontend/public/ERD.png)
+![ERD](/frontend/public/readme-image/ERD.png)
 
 
 ### 🖱 코드 컨벤션
@@ -132,12 +132,12 @@ backend
 
 ## 🔈 기능 상세 설명
 ### 메인페이지
-![mainpage](/frontend/public/main-page.gif)
+![mainpage](/frontend/public/readme-image/main-page.gif)
 - carousel slide 이미지를 통해 사용자 니즈에 따른 서비스 내용을 직관적으로 설명
 - 주요 기능 링크를 내비게이션 바 및 이미지 위 버튼으로 제공
    
 ### MBTI 상품추천 페이지
-![algorithm](/frontend/public/algorithm-page.gif)
+![algorithm](/frontend/public/readme-image/algorithm-page.gif)
 
 - 사용자의 MBTI 입력 값에 따라 서로 다른 예금 상품 추천
 - 상품 상세 페이지로 이동해 옵션 찜하기 기능까지 연결
@@ -147,7 +147,7 @@ backend
 
 
 ### 예적금 상품 조회
-![cart](https://github.com/jiyeon2536/project-capybara/assets/125720796/ed44cc99-1dc4-4de3-937a-449be3c18996)
+![cart](/frontend/public/readme-image/cart-page.gif)
 
 - 시중 은행의 예금 상품과 그에 따른 옵션 정보 제공
 - 예금 상품에 대한 자세한 설명 제공하여 사용자가 한 페이지 내에서 비교 가능하게 함
@@ -158,7 +158,7 @@ backend
 - 로그인하지 않은 사용자도 이용 가능하여 사용자 편의성 증대
 
 ### 커뮤니티 게시판
-![comm](/frontend/public/cart-page.gif)
+![comm](/frontend/public/readme-image/community-page.gif)
 - 카피바라 회원들 간의 금융 지식 공유가 가능한 공간
 - 댓글 기능을 통해 의견을 나눌 수 있음
 - 로그인한 사용자만 조회와 게시가 가능하여 exclusive한 경험 제공
@@ -188,13 +188,13 @@ backend
 
 ## API 입력 위치
 ```
-Backend
+Frontend
 카카오맵 : frontend\src\components\MapComponent.vue
 변수명 const KAKAO_KEY에 할당
 API키를 .env에서 찾아서 입력
 api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide/ JavaScript  키
 
-Frontend
+Backend
 금융감독원 : backend\api\settings.py
 변수명 API_KEY에 할당
 API키를 .env에서 찾아서 입력
