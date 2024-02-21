@@ -183,7 +183,7 @@ backend
 
 
 ## 📃 문서
-[💻 Notion](https://bustling-trade-bc8.notion.site/project-edee400fdbb84c5ebda96cba3ada5c77?pvs=4)
+[💻 Notion](https://andongmin.notion.site/ssafy-pjt-capybara-1a48ea41003644538eaea42fcf2f0c8b?pvs=25)
 
 
 ## API 입력 위치
