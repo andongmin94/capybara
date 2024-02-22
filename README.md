@@ -1,6 +1,6 @@
-![logo](/frontend/public/readme-image/logo.png)
+![mainimage](/frontend/public/readme-image/main-image.png)
 
-![Alt text](/frontend/public/readme-image/reward.png)
+![reward](/frontend/public/readme-image/reward.png)
 
 ### 📓 프로젝트 개요
 - 설명 : 예금 상품 조회 및 추천 서비스
