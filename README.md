@@ -102,7 +102,7 @@ backend
 
 ## 🖨 ERD
 
-![ERD](/frontend/public/readme-image/ERD.png)
+![ERD](/frontend/public/readme-image/ERD.psd)
 
 ### 🖱 코드 컨벤션
 
