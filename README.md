@@ -1,18 +1,14 @@
 ![mainimage](/frontend/public/readme-image/main-image.png)
 
-![reward](/frontend/public/readme-image/reward.png)
-
 ### 📓 프로젝트 개요
 - 설명 : 예금 상품 조회 및 추천 서비스
 - 기간 : 2023.11.15(수) ~ 2023.11.24(금)
-
 
 ### 🦝 서비스 특징
 
 - MBTI 성격 유형에 기반하여 알맞은 상품을 추천함
 - 유저 경험(UX)을 우선하여 로그인없이 대부분의 서비스 제공
  
-
 ### ⚙ 주요 기능
 
 - 실시간 환율 계산기
@@ -22,25 +18,22 @@
 - 관심있는 상품과 옵션 모아보기 및 비교 차트 제공
 - 다른 사용자와 금융 이야기를 나눌 수 있는 커뮤니티 게시판
 
-
 ### 🦾 팀 소개 
 - **김상훈** : 팀장, Django를 활용한 BackEnd 개발, ERD 설계, 코드 품질 관리 및 리팩토링, 환율 계산, 추천 알고리즘 개발, BackEnd 배포
 
 - **김지연** : Vue.js를 활용한 FrontEnd 개발, UI 디자인, 지도 검색, FrontEnd 배포, 서비스 테스트 및 디버깅
 
-<br/>
+### 🦿 성과
+- 삼성청년SW아카데미 1학기 관통 프로젝트 우수상 (23.11.28)
+<img src="/frontend/public/readme-image/reward.png" width=430px />
 
 ## 🛒 기술 스택
 
 ### Frontend
-![Vite](https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)&nbsp;
 ![Vue.js](https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)&nbsp;
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)&nbsp;
-![Html5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)&nbsp;
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)&nbsp;
-![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=white)&nbsp;
 ![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)&nbsp;
-
+![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=white)&nbsp;
 
 ### Backend
 ![Django](https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=django&logoColor=white)&nbsp;
@@ -66,7 +59,6 @@
 - django 4.2.4
 
 🔧 **Frontend**
-- vite 4.4.11
 - vue.js 3.3.4
 
 <br/>
