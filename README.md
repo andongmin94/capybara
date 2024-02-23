@@ -19,9 +19,9 @@
 - 다른 사용자와 금융 이야기를 나눌 수 있는 커뮤니티 게시판
 
 ### 🦾 팀 소개 
-- **김상훈** : 팀장, Django를 활용한 BackEnd 개발, ERD 설계, 코드 품질 관리 및 리팩토링, 환율 계산, 추천 알고리즘 개발
+- **김상훈** : 팀장, Django 기반 BackEnd 개발, ERD 설계, 코드 품질 관리 및 리팩토링, 환율 계산, 추천 알고리즘
 
-- **김지연** : Vue.js를 활용한 FrontEnd 개발, UI 디자인, 지도 검색, FrontEnd 배포, 디버깅
+- **김지연** : Vue.js 기반 FrontEnd 개발, UI 디자인, 지도 검색, FrontEnd 배포, 디버깅
 
 ### 🦿 성과
 - 삼성청년SW아카데미 1학기 관통 프로젝트 우수상 (23.11.28)
@@ -29,16 +29,16 @@
 
 ## 🛒 기술 스택
 
+### Backend
+![Django](https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=django&logoColor=white)&nbsp;
+![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)&nbsp;
+![sqlite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=nodedotjs&logoColor=white)&nbsp;
+
 ### Frontend
 ![Vue.js](https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)&nbsp;
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)&nbsp;
 ![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)&nbsp;
 ![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=vuetify&logoColor=white)&nbsp;
-
-### Backend
-![Django](https://img.shields.io/badge/Django-092E20.svg?style=for-the-badge&logo=django&logoColor=white)&nbsp;
-![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=python&logoColor=white)&nbsp;
-![sqlite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=nodedotjs&logoColor=white)&nbsp;
 
 ### DevOps
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)&nbsp;
@@ -53,17 +53,26 @@
 
 <br />
 
-## 개발 환경
+## 🔧 개발 환경
 
-🔧 **Backend**
+**Backend**
 - django 4.2.4
 
-🔧 **Frontend**
+**Frontend**
 - vue.js 3.3.4
 
 <br/>
 
 ## 💿 프로젝트 폴더 구조
+
+- Backend - Django
+```
+backend
+├─accounts
+├─api
+├─articles
+└─finlife
+```
 
 - Frontend - Vue.js
 ```
@@ -81,20 +90,14 @@ frontend
         ├─etc
         └─finances
 ```
-- Backend - Django
-```
-backend
-├─accounts
-├─api
-├─articles
-└─finlife
-```
 
 <br/>
 
 ## 🖨 ERD
 
 ![ERD](/frontend/public/readme-image/ERD.png)
+
+<br/>
 
 ### 🖱 코드 컨벤션
 
@@ -190,12 +193,6 @@ backend
 
 ## API 입력 위치
 ```
-Frontend
-카카오맵 : frontend\src\components\MapComponent.vue
-변수명 const KAKAO_KEY에 할당
-API키를 .env에서 찾아서 입력
-api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide/ JavaScript  키
-
 Backend
 금융감독원 : backend\api\settings.py
 변수명 API_KEY에 할당
@@ -203,4 +200,10 @@ API키를 .env에서 찾아서 입력
 api 레퍼런스 주소
 - 예금 : https://finlife.fss.or.kr/finlife/api/fdrmDpstApi/list.do?menuNo=700052
 - 적금 : https://finlife.fss.or.kr/finlife/api/fdrmDpstApi/list.do?menuNo=700052
+
+Frontend
+카카오맵 : frontend\src\components\MapComponent.vue
+변수명 const KAKAO_KEY에 할당
+API키를 .env에서 찾아서 입력
+api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide/ JavaScript  키
 ```
