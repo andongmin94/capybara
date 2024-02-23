@@ -207,5 +207,5 @@ Frontend
 카카오맵 : frontend\src\components\MapComponent.vue
 변수명 const KAKAO_KEY에 할당
 API키를 .env에서 찾아서 입력
-api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide/ JavaScript  키
+api 레퍼런스 주소 : https://apis.map.kakao.com/web/guide JavaScript 키
 ```
