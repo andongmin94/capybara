@@ -19,9 +19,10 @@
 - 다른 사용자와 금융 이야기를 나눌 수 있는 커뮤니티 게시판
 
 ### 🦾 팀 소개 
-- **김상훈** : 팀장, Django 기반 BackEnd 개발, ERD 설계, 코드 품질 관리 및 리팩토링, 환율 계산, 추천 알고리즘
-
-- **김지연** : Vue.js 기반 FrontEnd 개발, UI 디자인, 지도 검색, FrontEnd 배포, 디버깅
+| 김상훈 | 김지연 |
+| ------ | ------ |
+| <a href="https://github.com/andongmin94"><img src="https://avatars.githubusercontent.com/u/110483588?v=4" alt="andongmin94" width="100" height="100"></a> | <a href="https://github.com/jiyeon2536"><img src="https://avatars.githubusercontent.com/u/125720796?v=4" alt="jiyeon2536" width="100" height="100"></a> |
+| 팀장, Backend | 팀원, Frontend |
 
 ### 🦿 성과
 - 삼성청년SW아카데미 1학기 관통 프로젝트 우수상 (23.11.28)
