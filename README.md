@@ -26,7 +26,7 @@
 
 ### 🦿 성과
 - 삼성청년SW아카데미 1학기 관통 프로젝트 우수상 (23.11.28)
-<img src="/frontend/public/readme-image/reward.png" width=430px />
+<img src="/frontend/public/readme-image/award.png" width=430px />
 
 <br />
 
