@@ -2,85 +2,117 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 
-# permission Decorators
 from rest_framework.decorators import permission_classes
-from rest_framework.permissions import IsAuthenticated
-from django.shortcuts import get_object_or_404, get_list_or_404
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from django.shortcuts import get_object_or_404
 
-from .serializers import ArticleSerializer,CommentSerializer
-from .models import Article,Comment
+from .serializers import ArticleSerializer, CommentSerializer
+from .models import Article, Comment
 
 
-@api_view(['GET', 'POST'])
+@api_view(["GET", "POST"])
 @permission_classes([IsAuthenticated])
 def article_list(request):
-    print('!!!!')
-    if request.method == 'GET':
-        articles = get_list_or_404(Article)
-        print('게시글들',articles)
-        for data in articles:
-            print(data.user)
+    """인증된 사용자의 게시글 목록 조회와 새 게시글 작성을 처리한다."""
+
+    if request.method == "GET":
+        articles = Article.objects.select_related("user").all()
         serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':
-        print('!!!!',request.data,request.user) # 여기서 지금 request.user는 username 
-        serializer = ArticleSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    serializer = ArticleSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    serializer.save(user=request.user)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(["GET", "PUT", "DELETE"])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def article_detail(request, article_pk):
-    article = get_object_or_404(Article, pk=article_pk)
-    comment= Comment.objects.filter(article=article).order_by('created_at')
-    if request.method == 'GET':
+    """게시글 상세를 제공하고 수정·삭제는 작성자에게만 허용한다."""
+
+    article = get_object_or_404(
+        Article.objects.select_related("user"),
+        pk=article_pk,
+    )
+
+    if request.method == "GET":
+        comments = (
+            Comment.objects.filter(article=article)
+            .select_related(
+                "user",
+                "parent_comment",
+            )
+            .order_by("created_at")
+        )
         ar_serializer = ArticleSerializer(article)
-        co_serializer=CommentSerializer(comment,many=True)
-        print('게시글들',ar_serializer.data)
-        print('댓글들',co_serializer.data,article_pk)
-        return Response({'article':ar_serializer.data,'comments':co_serializer.data})
-    
-    elif request.method == 'DELETE':
-        if article.user == request.user:
-            article.delete()
-            return Response( 
-                {'delete': f'{article_pk}번 게시글이 삭제되었습니다'}, 
-                status=status.HTTP_204_NO_CONTENT
-            )
-        else:
-            return Response(
-                {'message': '게시글 작성자가 아닙니다'},
-            )
-        
+        co_serializer = CommentSerializer(comments, many=True)
+        return Response(
+            {
+                "article": ar_serializer.data,
+                "comments": co_serializer.data,
+            }
+        )
+
+    if article.user != request.user:
+        return Response(
+            {"message": "게시글 작성자가 아닙니다."},
+            status=status.HTTP_403_FORBIDDEN,
+        )
+
+    if request.method == "PUT":
+        serializer = ArticleSerializer(
+            article,
+            data=request.data,
+            partial=True,
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    article.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 @permission_classes([IsAuthenticated])
-def comments_create(request, article_pk,parent_pk):
-    print('댓글작성!!')
-    article=get_object_or_404(Article,pk=article_pk)
+def comments_create(request, article_pk, parent_pk):
+    """게시글에 일반 댓글 또는 같은 게시글의 대댓글을 작성한다."""
+
+    article = get_object_or_404(Article, pk=article_pk)
     serializer = CommentSerializer(data=request.data)
-    if serializer.is_valid(raise_exception=True):
-        if parent_pk:
-            parent_Comment=Comment.objects.get(pk=parent_pk)
-            serializer.save(user=request.user,article=article,parent_comment=parent_Comment)
-        else:
-            serializer.save(user=request.user,article=article)
-        return Response({'message':'success'})
-    return Response({'message': 'fail'})
+    serializer.is_valid(raise_exception=True)
+
+    parent_comment = None
+    if parent_pk:
+        parent_comment = get_object_or_404(
+            Comment,
+            pk=parent_pk,
+            article=article,
+        )
+
+    serializer.save(
+        user=request.user,
+        article=article,
+        parent_comment=parent_comment,
+    )
+    return Response(
+        {"message": "success"},
+        status=status.HTTP_201_CREATED,
+    )
 
 
-@api_view(['DELETE'])
+@api_view(["DELETE"])
 @permission_classes([IsAuthenticated])
 def comments_delete(request, article_pk, comment_pk):
-    print(12123)
+    """댓글 작성자만 자신의 댓글을 삭제하도록 제한한다."""
+
     comment = get_object_or_404(Comment, article_id=article_pk, pk=comment_pk)
 
-    # 댓글 작성자와 현재 사용자가 같은지 확인
     if request.user != comment.user:
-        return Response({'message': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
+        return Response(
+            {"message": "권한이 없습니다."}, status=status.HTTP_403_FORBIDDEN
+        )
 
     comment.delete()
-    return Response({'message': '댓글이 삭제되었습니다.'}, status=status.HTTP_204_NO_CONTENT)
+    return Response(status=status.HTTP_204_NO_CONTENT)

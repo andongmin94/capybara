@@ -8,23 +8,20 @@ from dj_rest_auth.serializers import PasswordResetSerializer
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('__all__')
+        fields = ("id", "username", "nickname")
+        read_only_fields = fields
 
 
 class CustomRegisterSerializer(RegisterSerializer):
     # 추가할 필드들을 정의합니다.
-    nickname = serializers.CharField(
-    required=False,
-    allow_blank=True,
-    max_length=255
-    )
-    
+    nickname = serializers.CharField(required=False, allow_blank=True, max_length=255)
+
     def get_cleaned_data(self):
         return {
-        'username': self.validated_data.get('username', ''),
-        'password1': self.validated_data.get('password1', ''),
-        'email': self.validated_data.get('email', ''),
-        'nickname': self.validated_data.get('nickname', ''),
+            "username": self.validated_data.get("username", ""),
+            "password1": self.validated_data.get("password1", ""),
+            "email": self.validated_data.get("email", ""),
+            "nickname": self.validated_data.get("nickname", ""),
         }
 
     def save(self, request):
@@ -40,23 +37,21 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
     username = serializers.CharField()
 
 
-class UserDetailSerializer(serializers.ModelSerializer):
-    followers = serializers.SerializerMethodField()
-    financial_products = serializers.StringRelatedField(many=True)  # ManyToManyField
-
-    class Meta:
-        model = User
-        fields = [
-            'username', 'email', 'created_at', 'updated_at', 'followings', 'followers','id'
-        ]
-        depth = 1  # followings 필드를 위한 설정
-
-    def get_followers(self, obj):
-        # obj는 User 모델의 인스턴스
-        return [follower.username for follower in obj.followers.all()]
-    
-    
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude = ('password', 'is_superuser', 'is_staff',)
+        fields = (
+            "id",
+            "username",
+            "nickname",
+            "email",
+            "date_joined",
+            "last_login",
+        )
+        read_only_fields = fields
+
+
+class ProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("nickname", "email")

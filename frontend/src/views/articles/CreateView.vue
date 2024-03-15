@@ -1,117 +1,54 @@
-<template>
-  <div>
-    <v-container>
-      <v-row class="d-flex justify-center mt-4">
-        <h1 class="article-create-header mb-7 mt-1 half-highlight">
-          새 글 작성
-        </h1>
-      </v-row>
-      <v-row>
-        <v-col cols="8" offset="2">
-          <v-sheet elevation="2" class="article-create-wrapper py-10 px-10">
-            <v-text-field v-model="title" label="제목" variant="solo-filled" />
-            <v-textarea v-model="content" label="내용" variant="solo-filled" />
-            <v-file-input
-              v-model="img"
-              label="파일 첨부하기"
-              variant="solo-filled"
-            />
-            <!-- 아래 에디터는 v-model 적용이 안되는 이슈가 있음 -->
-            <!-- <QuillEditor v-model="content" toolbar="essential" theme="snow" style="height: 500px" /> -->
-            <div class="d-flex flex-row-reverse">
-              <v-chip elevation="1" color="primary" @click="createArticle"
-                >게시하기</v-chip
-              >
-              <v-chip elevation="1" class="mr-2" color="red" @click="goBack"
-                >취소하기</v-chip
-              >
-            </div>
-          </v-sheet>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
-import { useCommunityStore } from "@/stores/community";
 import { useRouter } from "vue-router";
-import axios from "axios";
-
-const store = useCommunityStore();
+import { dataApi, dataSourceMeta } from "@/api";
 
 const router = useRouter();
-const title = ref<string>("");
-const content = ref<string>("");
-const img = ref<[]>([]);
+const title = ref("");
+const content = ref("");
+const submitting = ref(false);
+const errorMessage = ref("");
 
-const goBack = function () {
-  if (title.value || content.value) {
-    if (confirm("작성 중인 글이 저장되지 않습니다. 정말 떠나시겠습니까?")) {
-      router.go(-1);
-    }
-  } else {
-    router.go(-1);
+async function submit(): Promise<void> {
+  if (!title.value.trim() || !content.value.trim()) return;
+  submitting.value = true;
+  errorMessage.value = "";
+  try {
+    const article = await dataApi.createArticle({ title: title.value.trim(), content: content.value.trim() });
+    router.push({ name: "articleDetail", params: { id: article.id } });
+  } catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : "이야기를 저장하지 못했습니다.";
+  } finally {
+    submitting.value = false;
   }
-};
-
-const createArticle = function () {
-  axios({
-    method: "post",
-    url: `${store.API_URL}/articles/`,
-    data: {
-      title: title.value,
-      content: content.value,
-      // image: img.value,
-    },
-    headers: {
-      Authorization: `Token ${store.token}`,
-    },
-  })
-    .then((res) => {
-      // console.log(res)
-      store.getArticles();
-    })
-    .then(() => {
-      console.log("게시글 작성 완료");
-      setTimeout(() => {
-        router.push({ name: "article" });
-      }, 500);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+}
 </script>
 
-<style scoped lang="scss">
-$colors: (
-  first: #59452c,
-  second: #8c704f,
-  third: #d9bb96,
-  forth: #402a17,
-  fifth: #f2f2f2,
-);
-* {
-  font-family: Pretendard-regular;
-}
-.article-create-wrapper {
-  min-width: 344px;
-  border-radius: 5px;
-}
+<template>
+  <section class="page-section write-page">
+    <div class="page-width write-layout">
+      <aside>
+        <span class="eyebrow">Write a note</span>
+        <h1>나만의 비교 기준을<br />기록해 보세요.</h1>
+        <p>{{ dataSourceMeta.communityWriteNotice }}</p>
+        <RouterLink class="text-link" :to="{ name: 'article' }">← 이야기 목록</RouterLink>
+      </aside>
+      <form class="write-form surface-card" @submit.prevent="submit">
+        <div class="form-control"><label for="article-title">제목</label><input id="article-title" v-model="title" maxlength="100" placeholder="어떤 기준을 나누고 싶나요?" required /></div>
+        <div class="form-control"><label for="article-content">내용</label><textarea id="article-content" v-model="content" maxlength="2000" placeholder="상품을 비교하며 확인한 점을 적어보세요." required></textarea></div>
+        <p v-if="errorMessage" class="status-message">{{ errorMessage }}</p>
+        <div class="write-form__actions"><RouterLink class="button-secondary" :to="{ name: 'article' }">취소</RouterLink><button class="button" type="submit" :disabled="submitting || !title.trim() || !content.trim()">{{ submitting ? "저장 중…" : "이야기 올리기" }}</button></div>
+      </form>
+    </div>
+  </section>
+</template>
 
-.article-create-header {
-  font-family: Pretendard-Regular;
-  text-align: center;
-}
-
-.half-highlight {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 55%,
-    lighten(#59452c, 35%) 50%
-  );
-  width: fit-content;
-}
+<style scoped>
+.write-page { background: linear-gradient(115deg, var(--sand-100) 0 38%, transparent 38%); }
+.write-layout { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 70px; }
+.write-layout aside h1 { margin-bottom: 20px; color: var(--brown-900); font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.18; letter-spacing: -0.05em; }
+.write-layout aside p { color: var(--ink-soft); line-height: 1.8; }
+.write-form { display: grid; gap: 26px; padding: clamp(24px, 5vw, 46px); }
+.write-form__actions { display: flex; justify-content: flex-end; gap: 10px; }
+@media (max-width: 760px) { .write-page { background: var(--sand-100); } .write-layout { grid-template-columns: 1fr; gap: 34px; } }
 </style>

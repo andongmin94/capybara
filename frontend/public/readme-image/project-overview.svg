@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">카피바라 문제 해결 구조</title>
+  <desc id="desc">분산된 금융상품 비교 문제를 DataApi 실행 경계와 결정적 추천, 복원 가능한 상태로 해결해 일관된 탐색 경험과 무서버 재현성을 만든 과정을 보여주는 3단 인포그래픽</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071725"/>
+      <stop offset="1" stop-color="#0d2633"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#020617" flood-opacity="0.38"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5eead4"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="360" rx="28" fill="url(#background)"/>
+  <circle cx="1085" cy="32" r="145" fill="#0f766e" opacity="0.12"/>
+  <circle cx="85" cy="342" r="115" fill="#059669" opacity="0.10"/>
+
+  <g font-family="Arial, sans-serif">
+    <text x="54" y="50" fill="#99f6e4" font-size="14" font-weight="700" letter-spacing="2">CAPYBARA · PRODUCT STORY</text>
+    <text x="54" y="79" fill="#f8fafc" font-size="22" font-weight="700">금융상품의 복잡한 조건을, 다시 찾을 수 있는 비교 경험으로</text>
+
+    <g filter="url(#shadow)">
+      <rect x="54" y="108" width="300" height="202" rx="20" fill="#102b3a" stroke="#244455"/>
+      <rect x="450" y="108" width="300" height="202" rx="20" fill="#0c3b3b" stroke="#2dd4bf" stroke-width="2"/>
+      <rect x="846" y="108" width="300" height="202" rx="20" fill="#102b3a" stroke="#244455"/>
+    </g>
+
+    <rect x="74" y="126" width="72" height="28" rx="14" fill="#1e3a4a"/>
+    <text x="110" y="145" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="700">01 문제</text>
+    <text x="76" y="181" fill="#f8fafc" font-size="19" font-weight="700">조건이 흩어진 상품 비교</text>
+    <circle cx="82" cy="213" r="4" fill="#34d399"/>
+    <text x="96" y="219" fill="#cbd5e1" font-size="15">회사마다 다른 가입·우대 조건</text>
+    <circle cx="82" cy="246" r="4" fill="#34d399"/>
+    <text x="96" y="252" fill="#cbd5e1" font-size="15">기간별 금리 옵션의 복잡한 비교</text>
+    <circle cx="82" cy="279" r="4" fill="#34d399"/>
+    <text x="96" y="285" fill="#cbd5e1" font-size="15">공유·새로고침에서 사라지는 조건</text>
+
+    <rect x="470" y="126" width="92" height="28" rx="14" fill="#115e59"/>
+    <text x="516" y="145" text-anchor="middle" fill="#ccfbf1" font-size="13" font-weight="700">02 해결 경계</text>
+    <rect x="476" y="174" width="248" height="50" rx="14" fill="url(#accent)"/>
+    <text x="600" y="205" text-anchor="middle" fill="#052e2b" font-size="22" font-weight="800">DataApi</text>
+    <rect x="476" y="237" width="116" height="31" rx="10" fill="#123f4b" stroke="#2dd4bf"/>
+    <rect x="608" y="237" width="116" height="31" rx="10" fill="#123f4b" stroke="#2dd4bf"/>
+    <text x="534" y="258" text-anchor="middle" fill="#ccfbf1" font-size="13" font-weight="700">Mock Provider</text>
+    <text x="666" y="258" text-anchor="middle" fill="#ccfbf1" font-size="13" font-weight="700">Real Provider</text>
+    <text x="600" y="291" text-anchor="middle" fill="#a7f3d0" font-size="13">결정적 추천 · URL 복원 · ID 저장</text>
+
+    <rect x="866" y="126" width="98" height="28" rx="14" fill="#1e3a4a"/>
+    <text x="915" y="145" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="700">03 사용자 가치</text>
+    <text x="868" y="181" fill="#f8fafc" font-size="19" font-weight="700">일관된 탐색과 재현</text>
+    <circle cx="874" cy="213" r="4" fill="#2dd4bf"/>
+    <text x="888" y="219" fill="#cbd5e1" font-size="15">검색부터 옵션 찜·비교까지 한 흐름</text>
+    <circle cx="874" cy="246" r="4" fill="#2dd4bf"/>
+    <text x="888" y="252" fill="#cbd5e1" font-size="15">같은 조건에 같은 추천 결과</text>
+    <circle cx="874" cy="279" r="4" fill="#2dd4bf"/>
+    <text x="888" y="285" fill="#cbd5e1" font-size="15">서버 없이 핵심 경험 즉시 실행</text>
+
+    <path d="M 373 209 C 398 209, 416 209, 435 209" fill="none" stroke="#5eead4" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 769 209 C 794 209, 812 209, 831 209" fill="none" stroke="#5eead4" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="945" y="317" width="201" height="25" rx="12" fill="#064e3b" stroke="#34d399"/>
+    <text x="1045" y="334" text-anchor="middle" fill="#d1fae5" font-size="12" font-weight="700">SSAFY 관통 프로젝트 우수상</text>
+  </g>
+</svg>

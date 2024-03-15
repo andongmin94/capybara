@@ -1,25 +1,15 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import { createVuetify } from "vuetify";
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
-
-import * as components from "vuetify/components";
-import * as directives from "vuetify/directives";
 
 import App from "@/App.vue";
 import router from "@/router";
 import "@/assets/index.css";
 
+/**
+ * 전역 상태와 라우터를 등록한 뒤 카피바라의 루트 컴포넌트를 마운트한다.
+ * 실제 데이터 공급자 선택은 API 경계에서 처리하므로 진입점은 실행 모드를 알지 않는다.
+ */
 const app = createApp(App);
-
-const vuetify = createVuetify({
-  components,
-  directives,
-});
-
-app.component("QuillEditor", QuillEditor);
 app.use(createPinia());
 app.use(router);
-app.use(vuetify);
 app.mount("#app");
